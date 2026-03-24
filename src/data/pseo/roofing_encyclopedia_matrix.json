@@ -1,0 +1,78 @@
+{
+  "meta": {
+    "file_type": "roofing_encyclopedia",
+    "last_updated": "2026-03-24"
+  },
+  "brands": {
+    "GAF": {
+      "tier": "Market leader",
+      "flagship": "Timberline HDZ",
+      "value_prop": "LayerLock helps resist wind uplift—common choice for {{city}} wind seasons.",
+      "price_point": "$$"
+    },
+    "Owens_Corning": {
+      "tier": "Innovation lead",
+      "flagship": "Duration",
+      "value_prop": "SureNail strip adds grip through fastener lines—useful when winds spike near {{neighborhood}}.",
+      "price_point": "$$"
+    },
+    "CertainTeed": {
+      "tier": "Premium / luxury",
+      "flagship": "Landmark",
+      "value_prop": "Heavier laminate lines can look richer on street-facing planes in {{city}}.",
+      "price_point": "$$$"
+    },
+    "TAMKO": {
+      "tier": "Performance value",
+      "flagship": "Titan XT",
+      "value_prop": "Reinforced zones for weather events; budget-conscious {{county}} projects.",
+      "price_point": "$$"
+    }
+  },
+  "styles": {
+    "Gable": {
+      "human_name": "Classic “A” frame",
+      "benefit": "Sheds water efficiently—common around {{landmark}} subdivisions.",
+      "aoe_hint": "Standard for many {{city}} single-family homes."
+    },
+    "Hip": {
+      "human_name": "Pyramid style",
+      "benefit": "Often more wind-stable; insurers sometimes note hip roofs favorably.",
+      "aoe_hint": "Common in wind-conscious {{state}} neighborhoods."
+    },
+    "Mansard": {
+      "human_name": "French / dual pitch",
+      "benefit": "More attic volume; steep visibility means shingle quality shows.",
+      "aoe_hint": "Premium aesthetics matter on high-visibility {{neighborhood}} streets."
+    },
+    "Flat": {
+      "human_name": "Low-slope / modern",
+      "benefit": "Needs membrane systems (TPO/PVC/modified)—not 3-tab shingles.",
+      "aoe_hint": "Check {{city}} code for low-slope minimum slopes."
+    }
+  },
+  "costs_2026": {
+    "asphalt": {
+      "per_sqft": "$4.50 - $7.50",
+      "notes": "Typical architectural laminate range for {{city}} neighborhoods."
+    },
+    "metal_standing_seam": {
+      "per_sqft": "$12.00 - $20.00",
+      "notes": "Long-life option; great when hail risk is a priority in {{county}}."
+    },
+    "clay_tile": {
+      "per_sqft": "$10.00 - $18.00",
+      "notes": "Heavier; verify structure—more common in some {{state}} markets."
+    },
+    "synthetic_slate": {
+      "per_sqft": "$9.00 - $15.00",
+      "notes": "Luxury look at lower weight than natural slate."
+    }
+  },
+  "aoe_hint": [
+    "Hail often dents metal flashings first—if vents are dinged, schedule a close shingle inspection.",
+    "Replacement ranges swing with decking repairs, steep pitch, and layers—always get line-item quotes.",
+    "If a claim is unclear, documented photos + a local inspection report help secondary reviews.",
+    "Patching very old shingles can disturb adjacent tabs—ask whether partial vs full replacement is safer."
+  ]
+}

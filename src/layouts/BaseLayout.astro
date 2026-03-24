@@ -1,0 +1,45 @@
+---
+import '../styles/global.css';
+
+interface Props {
+  title: string;
+  description?: string;
+  schemaJsonLd?: string;
+}
+
+const { title, description = 'Local roofing guidance and certified contractor matching.', schemaJsonLd } = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} />
+    <title>{title}</title>
+    {schemaJsonLd && (
+      <script type="application/ld+json" set:html={schemaJsonLd} />
+    )}
+  </head>
+  <body class="min-h-screen bg-slate-50 text-slate-900 antialiased">
+    <header class="border-b border-slate-200 bg-white/90 backdrop-blur supports-[backdrop-filter]:bg-white/70">
+      <div class="mx-auto flex max-w-6xl items-center justify-between gap-4 px-4 py-4">
+        <a href="/" class="text-lg font-black tracking-tight text-slate-900">
+          Spark Arc
+        </a>
+        <nav class="flex items-center gap-6 text-sm font-semibold text-slate-600">
+          <a href="/" class="hover:text-blue-600">Home</a>
+          <a href="/insights" class="hover:text-blue-600">Local guides</a>
+        </nav>
+      </div>
+    </header>
+    <main>
+      <slot />
+    </main>
+    <footer class="mt-20 border-t border-slate-200 bg-white py-10 text-center text-sm text-slate-500">
+      <p class="px-4">
+        Informational content only. Verify licenses and insurance with any contractor you hire.
+      </p>
+    </footer>
+  </body>
+</html>

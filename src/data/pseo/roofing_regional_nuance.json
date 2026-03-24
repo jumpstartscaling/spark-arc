@@ -1,0 +1,32 @@
+{
+  "meta": {
+    "file_type": "regional_climate_logic",
+    "last_updated": "2026-03-24"
+  },
+  "regions": {
+    "TX": {
+      "focus": "Hail & Heat",
+      "top_brand": "Malarkey Legacy",
+      "tech": "Class 4 Impact Resistance",
+      "logic": "In {{city}}, the hail belt is no joke. We recommend Malarkey because their rubberized shingles resist cracking when hit by large hail."
+    },
+    "FL": {
+      "focus": "Hurricane Wind",
+      "top_brand": "GAF Timberline Ultra HDZ",
+      "tech": "130mph Wind-Lock",
+      "logic": "Near {{neighborhood}}, wind uplift is the primary risk. GAF with LayerLock technology is a strong match for coastal {{state}} wind zones."
+    },
+    "NC": {
+      "focus": "Humidity & Algae",
+      "top_brand": "CertainTeed Landmark",
+      "tech": "StreakFighter 25yr",
+      "logic": "Shade near {{parks}} can drive algae streaks. CertainTeed’s copper-infused granules help {{city}} roofs stay cleaner longer."
+    },
+    "CO": {
+      "focus": "UV & Snow Load",
+      "top_brand": "Owens Corning TruDefinition",
+      "tech": "SureNail High-Altitude",
+      "logic": "Intense UV near {{landmark}} can accelerate wear. Owens Corning Duration with SureNail helps {{state}} freeze-thaw cycles without blow-offs."
+    }
+  }
+}

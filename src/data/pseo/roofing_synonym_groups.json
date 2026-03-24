@@ -1,0 +1,24 @@
+{
+  "meta": {
+    "category": "roofing_human_speak",
+    "version": "1.1"
+  },
+  "synonyms": [
+    {
+      "category": "roof_damage",
+      "terms": "[\"ugly water spots on the ceiling\",\"missing shingles after wind\",\"granules in the gutters\",\"shingle blow-off\",\"hail dents on vents\",\"leaky chimney flashing\",\"rotting fascia\",\"sagging roofline\",\"cracked tiles\",\"daylight in the attic\"]"
+    },
+    {
+      "category": "contractor_vibe",
+      "terms": "[\"local crew that shows up on time\",\"roofing teams near {{neighborhood}}\",\"licensed shingle installers\",\"storm documentation specialists\",\"contractors who handle insurance paperwork\",\"replacement pros near {{landmark}}\"]"
+    },
+    {
+      "category": "price_talk",
+      "terms": "[\"price per square\",\"insurance estimate review\",\"deductible questions\",\"replacement cost in {{city}}\",\"financing options\",\"payment schedule clarity\"]"
+    },
+    {
+      "category": "urgency",
+      "terms": "[\"before the next rain\",\"emergency tarping\",\"documentation window\",\"stop the leak\",\"get dried-in fast\"]"
+    }
+  ]
+}

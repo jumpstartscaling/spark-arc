@@ -1,0 +1,46 @@
+{
+  "meta": {
+    "file_type": "show_tell_logic",
+    "framework": "Astro/Tailwind"
+  },
+  "blocks": {
+    "weather_anchor": {
+      "headline": "{{city}} storm season: did your roof take a hit?",
+      "body": "After high wind and hail risk near {{landmark}}, shingles in {{neighborhood}} can hide damage until the next heavy rain. Document early and compare quotes from certified locals."
+    },
+    "material_comparison": {
+      "title": "Standard shingles vs. impact-minded systems for {{city}}",
+      "table_rows": [
+        {
+          "category": "Hail impact",
+          "cheap": "More prone to cracking at ~1.0\" hail",
+          "premium": "Class 4 rated (larger hail performance)"
+        },
+        {
+          "category": "Wind uplift",
+          "cheap": "Typical 60–90 mph ratings",
+          "premium": "130 mph class warranties (brand-dependent)"
+        },
+        {
+          "category": "Algae resistance",
+          "cheap": "Streaking common in 2–5 years",
+          "premium": "Stain-resistant granules (longer clean look)"
+        },
+        {
+          "category": "Resale story",
+          "cheap": "Basic curb appeal",
+          "premium": "Transferable warranties when installed to spec"
+        }
+      ]
+    },
+    "landmark_proximity": {
+      "trust_badge": "Local verification mindset",
+      "text": "Look for crews with local references, not just out-of-state storm chasing. Pros working {{county}} regularly understand {{city}} codes near {{landmark}}."
+    },
+    "interactive_cost_logic": {
+      "base_sqft_price": 4.5,
+      "complexity_multiplier": 1.2,
+      "markup": "<div class='rounded-xl border border-blue-200 bg-blue-50/80 p-4'><p class='text-xs font-bold uppercase tracking-wider text-blue-700'>Estimate snapshot</p><p class='mt-2 text-sm text-slate-700'>A typical ~2,000 sq.ft. roof in {{city}} often lands roughly <strong>$9k–$16.5k</strong> for quality architectural shingles—pitch, layers, and decking repairs move the number.</p></div>"
+    }
+  }
+}

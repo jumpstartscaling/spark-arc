@@ -1,0 +1,89 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { pseoContent } from '../utils/pseo';
+import locationsData from '../data/pseo/locations.json';
+
+interface LocationRow {
+  city: string;
+  state: string;
+  slug: string;
+  county: string;
+}
+
+const locations = locationsData as unknown as LocationRow[];
+
+const sorted = [...locations].filter((l) => l.state === 'FL').sort((a, b) => a.city.localeCompare(b.city));
+
+const byCounty = new Map<string, LocationRow[]>();
+for (const loc of sorted) {
+  const key = loc.county || 'Other';
+  const list = byCounty.get(key) ?? [];
+  list.push(loc);
+  byCounty.set(key, list);
+}
+const counties = [...byCounty.keys()].sort((a, b) => a.localeCompare(b));
+
+const count = pseoContent.length;
+---
+
+<BaseLayout
+  title="Spark Arc | Tampa Bay & Gulf Coast roofing guides"
+  description="Local roofing education and intake for Hillsborough, Pinellas, Pasco, Polk, Hernando, Sarasota, Manatee, and Collier counties."
+>
+  <section class="border-b border-slate-200 bg-white px-4 py-16 text-center md:py-20">
+    <p class="text-sm font-bold uppercase tracking-widest text-blue-600">West Central Florida</p>
+    <h1 class="mx-auto mt-4 max-w-3xl text-4xl font-black tracking-tight text-slate-900 md:text-5xl">
+      Roofing guides built for real cities—not placeholders
+    </h1>
+    <p class="mx-auto mt-6 max-w-2xl text-lg text-slate-600">
+      Every page is generated from structured location data (county, landmarks, parks) so copy stays grounded.
+      Use the checklist survey to route leads with UTMs and webhook-ready payloads.
+    </p>
+    <p class="mt-4 text-sm text-slate-500">
+      {count} live guide pages in this build.
+    </p>
+    <div class="mt-10 flex flex-wrap justify-center gap-4">
+      <a
+        href="#areas-we-cover"
+        class="inline-flex items-center justify-center rounded-xl bg-blue-600 px-8 py-4 text-sm font-bold uppercase tracking-wider text-white shadow-lg shadow-blue-200 transition hover:bg-blue-700"
+      >
+        Areas we cover
+      </a>
+      <a
+        href="/insights"
+        class="inline-flex items-center justify-center rounded-xl border-2 border-slate-200 bg-white px-8 py-4 text-sm font-bold uppercase tracking-wider text-slate-800 transition hover:border-blue-300 hover:text-blue-700"
+      >
+        All guides (by county)
+      </a>
+    </div>
+  </section>
+
+  <section id="areas-we-cover" class="mx-auto max-w-5xl scroll-mt-24 px-4 py-16">
+    <h2 class="text-center text-2xl font-black text-slate-900 md:text-3xl">Areas we cover</h2>
+    <p class="mx-auto mt-3 max-w-2xl text-center text-slate-600">
+      Open a city to see localized roofing context, FAQs, and the gated intake survey.
+    </p>
+
+    <div class="mt-12 space-y-12">
+      {
+        counties.map((county) => (
+          <div>
+            <h3 class="border-b border-slate-200 pb-2 text-lg font-bold text-slate-800">{county}</h3>
+            <ul class="mt-4 grid gap-2 sm:grid-cols-2 md:grid-cols-3">
+              {(byCounty.get(county) || []).map((loc) => (
+                <li>
+                  <a
+                    href={`/insights/${loc.slug}/roofing`}
+                    class="block rounded-xl border border-slate-200 bg-white px-4 py-3 text-sm font-semibold text-slate-800 shadow-sm transition hover:border-blue-400 hover:text-blue-700"
+                  >
+                    {loc.city}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))
+      }
+    </div>
+  </section>
+</BaseLayout>

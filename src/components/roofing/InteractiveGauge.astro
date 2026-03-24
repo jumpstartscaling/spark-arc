@@ -1,0 +1,67 @@
+---
+interface Props {
+  data: {
+    warning: string;
+    markup?: string;
+  };
+}
+
+const { data } = Astro.props;
+---
+
+<section class="my-16 px-4">
+  <div
+    class="mx-auto max-w-md rounded-[2.5rem] border-2 border-slate-200 bg-white p-8 text-center shadow-xl"
+  >
+    <h3 class="mb-6 text-xs font-bold uppercase tracking-[0.2em] text-slate-500">
+      Local risk snapshot
+    </h3>
+
+    <div class="relative mx-auto h-32 w-64 overflow-hidden">
+      <svg viewBox="0 0 100 50" class="h-full w-full">
+        <path
+          d="M 10 50 A 40 40 0 0 1 90 50"
+          fill="none"
+          stroke="#e2e8f0"
+          stroke-width="10"
+          stroke-linecap="round"></path>
+        <path
+          d="M 10 50 A 40 40 0 0 1 75 15"
+          fill="none"
+          stroke="url(#gaugeGradientSpark)"
+          stroke-width="10"
+          stroke-linecap="round"></path>
+        <defs>
+          <linearGradient id="gaugeGradientSpark" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stop-color="#22c55e"></stop>
+            <stop offset="50%" stop-color="#eab308"></stop>
+            <stop offset="100%" stop-color="#ef4444"></stop>
+          </linearGradient>
+        </defs>
+      </svg>
+
+      <div
+        class="absolute bottom-0 left-1/2 h-24 w-1 origin-bottom -translate-x-1/2 rotate-[45deg] bg-red-500 shadow-[0_0_15px_rgba(239,68,68,0.35)] transition-transform duration-1000 ease-out"
+      >
+      </div>
+      <div
+        class="absolute bottom-[-4px] left-1/2 z-10 h-4 w-4 -translate-x-1/2 rounded-full border-2 border-slate-200 bg-white"
+      >
+      </div>
+    </div>
+
+    <div class="mt-6">
+      <div
+        class="mb-3 inline-flex items-center gap-2 rounded-full border border-red-200 bg-red-50 px-3 py-1"
+      >
+        <span class="h-2 w-2 animate-ping rounded-full bg-red-500"></span>
+        <span class="text-[10px] font-black uppercase tracking-widest text-red-600"
+          >Inspect if unsure</span
+        >
+      </div>
+      <p class="text-lg font-bold leading-tight text-slate-900" set:html={data.warning}></p>
+    </div>
+
+    {data.markup && <div class="prose prose-slate mt-6 max-w-none text-left text-sm" set:html={data.markup} />}
+  </div>
+</section>

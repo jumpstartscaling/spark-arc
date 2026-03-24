@@ -1,0 +1,46 @@
+{
+  "meta": {
+    "file_type": "conversion_logic",
+    "version": "1.2"
+  },
+  "lead_magnets": {
+    "storm_kit": {
+      "headline": "The {{city}} homeowner storm checklist",
+      "subhead": "Five things to verify before you sign a roofing contract in {{county}}.",
+      "bullets": [
+        "Hidden damage cues common in {{state}}",
+        "How to read scope line-items (tear-off, decking, flashing)",
+        "A one-page claim notes template for {{city}} jobs"
+      ],
+      "cta": "Email me the checklist"
+    }
+  },
+  "qualifying_form": {
+    "steps": [
+      {
+        "id": "damage_type",
+        "label": "What are you seeing?",
+        "options": ["Leaking now", "Missing shingles", "Hail dents", "Just an inspection"]
+      },
+      {
+        "id": "roof_age",
+        "label": "How old is the roof?",
+        "options": ["Under 10 years", "10–20 years", "20+ years", "Not sure"]
+      },
+      {
+        "id": "insurance",
+        "label": "Current home insurance carrier",
+        "placeholder": "e.g. State Farm, Allstate"
+      },
+      {
+        "id": "neighborhood_verify",
+        "label": "Street or area in {{neighborhood}}",
+        "placeholder": "123 Main St or cross streets"
+      }
+    ],
+    "contractor_benefit": "High-intent lead with roof age + carrier context."
+  },
+  "closing_blocks": {
+    "trust_final": "We prioritize {{city}} contractors who document scope clearly—no pressure to sign same-day."
+  }
+}

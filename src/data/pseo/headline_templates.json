@@ -1,0 +1,15 @@
+{
+  "meta": { "file_type": "roofing_headlines" },
+  "templates": [
+    "{{city}} roof replacement: what {{neighborhood}} homeowners should know first",
+    "Storm season in {{city}}: signs your roof needs a pro near {{landmark}}",
+    "{{county}} roofing guide: materials, costs, and how to compare quotes",
+    "Is your {{city}} roof ready for the next {{state}} wind event?",
+    "{{neighborhood}} roofing checklist: hail, wind, and insurance basics",
+    "Certified installs in {{city}}: why fastening and underlayment matter",
+    "{{city}} homeowners: how to avoid rushed post-storm decisions",
+    "Roof costs in {{city}} (2026): realistic ranges before you call contractors",
+    "From {{parks}} to downtown: {{city}} roof risks aren’t one-size-fits-all",
+    "Choosing shingles in {{city}}: what {{county}} weather rewards"
+  ]
+}

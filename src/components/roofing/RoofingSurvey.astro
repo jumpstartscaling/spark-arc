@@ -1,0 +1,235 @@
+---
+interface Step {
+  id: string;
+  label: string;
+  options?: string[];
+  placeholder?: string;
+}
+
+interface Props {
+  data: {
+    steps: Step[];
+    title: string;
+    subhead: string;
+  };
+  city: string;
+  neighborhood: string;
+  niche: string;
+}
+
+const { data, city, neighborhood, niche } = Astro.props;
+
+const DEFAULT_PROD =
+  'https://n8n.jumpstartscaling.com/webhook/d282e622-9c83-4936-9d93-05c37eaa7b68';
+const DEFAULT_TEST =
+  'https://n8n.jumpstartscaling.com/webhook-test/d282e622-9c83-4936-9d93-05c37eaa7b68';
+
+const publicEnv =
+  (import.meta as { env?: { [k: string]: string | undefined } }).env ?? {};
+const webhookProd = publicEnv.PUBLIC_N8N_WEBHOOK_URL || DEFAULT_PROD;
+const webhookTest = publicEnv.PUBLIC_N8N_WEBHOOK_TEST_URL || DEFAULT_TEST;
+---
+
+<section class="my-20 px-4" id="roof-survey">
+  <div
+    class="mx-auto max-w-xl overflow-hidden rounded-[3rem] border-2 border-slate-100 bg-white shadow-2xl"
+  >
+    <div class="border-b border-slate-100 bg-slate-50 px-8 py-6 text-center">
+      <h2 class="text-2xl font-black uppercase leading-tight tracking-tighter text-slate-900">
+        {data.title}
+      </h2>
+      <p class="mt-1 text-sm font-medium text-slate-500">{data.subhead}</p>
+
+      <div class="mt-6 h-1.5 w-full overflow-hidden rounded-full bg-slate-200">
+        <div
+          id="survey-progress"
+          class="h-full w-[10%] bg-blue-600 transition-all duration-500"
+        >
+        </div>
+      </div>
+    </div>
+
+    <form id="roofing-lead-survey" class="p-8">
+      <input type="hidden" name="city" value={city} />
+      <input type="hidden" name="neighborhood" value={neighborhood} />
+      <input type="hidden" name="niche_slug" value={niche} />
+      <input type="hidden" id="tracking_data" name="tracking_data" value="" />
+
+      <div id="survey-steps">
+        {
+          data.steps.map((step, index) => (
+            <div class:list={['survey-step', index === 0 ? 'block' : 'hidden']} data-step={index}>
+              <label class="mb-6 block text-xl font-bold text-slate-800">{step.label}</label>
+
+              {step.options ? (
+                <div class="grid gap-3">
+                  {step.options.map((option) => (
+                    <button
+                      type="button"
+                      class="survey-option-btn w-full rounded-2xl border-2 border-slate-100 px-6 py-4 text-left font-semibold text-slate-700 transition-all hover:border-blue-500 hover:bg-blue-50"
+                      data-value={option}
+                      data-id={step.id}
+                    >
+                      {option}
+                    </button>
+                  ))}
+                </div>
+              ) : (
+                <div class="space-y-4">
+                  <input
+                    type="text"
+                    name={step.id}
+                    placeholder={step.placeholder}
+                    class="survey-input w-full rounded-2xl border-2 border-slate-100 px-6 py-4 text-lg font-medium focus:border-blue-500 focus:outline-none"
+                  />
+                  <button
+                    type="button"
+                    class="next-step-btn w-full rounded-2xl bg-slate-900 py-4 font-bold uppercase tracking-widest text-white transition-colors hover:bg-blue-600"
+                  >
+                    Continue
+                  </button>
+                </div>
+              )}
+            </div>
+          ))
+        }
+
+        <div class="survey-step hidden" data-step={data.steps.length}>
+          <label class="mb-6 block text-xl font-bold text-slate-800">
+            Where should we send your {city} documentation kit?
+          </label>
+          <div class="space-y-3">
+            <input
+              type="text"
+              name="full_name"
+              placeholder="Full name"
+              required
+              class="w-full rounded-2xl border-2 border-slate-100 px-6 py-4 focus:border-blue-500 focus:outline-none"
+            />
+            <input
+              type="email"
+              name="email"
+              placeholder="Email address"
+              required
+              class="w-full rounded-2xl border-2 border-slate-100 px-6 py-4 focus:border-blue-500 focus:outline-none"
+            />
+            <input
+              type="tel"
+              name="phone"
+              placeholder="Phone number"
+              required
+              class="w-full rounded-2xl border-2 border-slate-100 px-6 py-4 focus:border-blue-500 focus:outline-none"
+            />
+            <button
+              type="submit"
+              class="mt-4 w-full rounded-2xl bg-blue-600 py-5 font-black uppercase tracking-[0.2em] text-white shadow-lg shadow-blue-200 transition hover:bg-blue-700"
+            >
+              Finish diagnosis
+            </button>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</section>
+
+<script define:vars={{ webhookProd, webhookTest }}>
+  function collectTrackingData() {
+    const params = new URLSearchParams(window.location.search);
+    return {
+      utm_source: params.get('utm_source') || 'organic',
+      utm_medium: params.get('utm_medium') || 'none',
+      utm_campaign: params.get('utm_campaign') || 'none',
+      utm_content: params.get('utm_content') || 'none',
+      utm_term: params.get('utm_term') || 'none',
+      gclid: params.get('gclid') || 'none',
+      fbclid: params.get('fbclid') || 'none',
+      msclkid: params.get('msclkid') || 'none',
+      referrer: document.referrer || 'direct',
+      current_url: window.location.href,
+      user_agent: navigator.userAgent,
+      screen_res: `${window.screen.width}x${window.screen.height}`,
+      timestamp: new Date().toISOString(),
+      timezone: Intl.DateTimeFormat().resolvedOptions().timeZone,
+    };
+  }
+
+  const form = document.getElementById('roofing-lead-survey');
+  const progress = document.getElementById('survey-progress');
+  const trackingInput = document.getElementById('tracking_data');
+  if (!form || !progress || !trackingInput || !(form instanceof HTMLFormElement)) {
+    console.warn('Roofing survey: missing form elements');
+  } else {
+  const steps = () => Array.from(form.querySelectorAll('.survey-step'));
+  let currentStep = 0;
+
+  trackingInput.value = JSON.stringify(collectTrackingData());
+
+  function updateStep(index) {
+    const all = steps();
+    const total = Math.max(all.length, 1);
+    all.forEach((s) => s.classList.add('hidden'));
+    const target = all[index];
+    if (target) target.classList.remove('hidden');
+    progress.style.width = `${((index + 1) / total) * 100}%`;
+  }
+
+  form.querySelectorAll('.survey-option-btn').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const fieldId = btn.getAttribute('data-id');
+      const value = btn.getAttribute('data-value');
+      if (!fieldId || value == null) return;
+      let input = form.querySelector(`input[name="${fieldId}"]`);
+      if (!input) {
+        input = document.createElement('input');
+        input.type = 'hidden';
+        input.name = fieldId;
+        form.appendChild(input);
+      }
+      if (input instanceof HTMLInputElement) input.value = value;
+      currentStep++;
+      updateStep(currentStep);
+    });
+  });
+
+  form.querySelectorAll('.next-step-btn').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      currentStep++;
+      updateStep(currentStep);
+    });
+  });
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const fd = new FormData(form);
+    const payload = Object.fromEntries(fd.entries());
+    try {
+      payload.tracking_data = JSON.parse(String(payload.tracking_data || '{}'));
+    } catch {
+      payload.tracking_data = {};
+    }
+
+    const urls = [webhookTest, webhookProd].filter(Boolean);
+
+    try {
+      await Promise.allSettled(
+        urls.map((url) =>
+          fetch(url, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(payload),
+          })
+        )
+      );
+      const cityVal = encodeURIComponent(String(payload.city || ''));
+      const hoodVal = encodeURIComponent(String(payload.neighborhood || ''));
+      window.location.href = `/thank-you?city=${cityVal}&neighborhood=${hoodVal}`;
+    } catch (err) {
+      console.error(err);
+      window.location.href = '/thank-you';
+    }
+  });
+
+  updateStep(0);
+  }
+</script>

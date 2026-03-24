@@ -1,0 +1,20 @@
+{
+  "meta": {
+    "file_type": "local_trust_logic",
+    "target": "objection_killing"
+  },
+  "stories": {
+    "hiring_local": {
+      "headline": "Why {{city}} homeowners vet contractors carefully",
+      "body": "After major weather in {{county}}, out-of-area crews can appear overnight. Prioritize {{city}}-based references, written warranties, and local permit familiarity—especially work near {{landmark}}."
+    },
+    "neighborhood_pride": {
+      "headline": "From {{neighborhood}} to {{parks}}: micro-climates matter",
+      "body": "Tree cover, western sun, and wind corridors differ block by block. A good {{city}} plan accounts for debris, algae risk, and ventilation—not a one-size quote."
+    },
+    "permitting_logic": {
+      "headline": "Permits and codes in {{county}}",
+      "body": "Fastening patterns, ice/water barriers, and ventilation rules evolve. Local crews who pull permits in {{city}} reduce rework and resale headaches."
+    }
+  }
+}

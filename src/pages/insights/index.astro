@@ -1,0 +1,82 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { STATE_NAME_MAP } from '../../utils/pseo';
+import locationsData from '../../data/pseo/locations.json';
+
+interface LocationRow {
+  city: string;
+  state: string;
+  slug: string;
+  county: string;
+}
+
+const locations = locationsData as unknown as LocationRow[];
+
+const sortedLocs = [...locations].sort((a, b) => {
+  if (a.state !== b.state) return a.state.localeCompare(b.state);
+  return a.city.localeCompare(b.city);
+});
+
+const byStateCounty = new Map<string, Map<string, LocationRow[]>>();
+for (const loc of sortedLocs) {
+  const st = loc.state;
+  if (!byStateCounty.has(st)) byStateCounty.set(st, new Map());
+  const countyMap = byStateCounty.get(st)!;
+  const c = loc.county || 'Other';
+  const list = countyMap.get(c) ?? [];
+  list.push(loc);
+  countyMap.set(c, list);
+}
+
+const states = [...byStateCounty.keys()].sort();
+---
+
+<BaseLayout
+  title="Local roofing guides | Spark Arc"
+  description="Browse all generated roofing guides by state and county."
+>
+  <div class="mx-auto max-w-5xl px-4 py-12">
+    <h1 class="text-3xl font-black text-slate-900">Local guides</h1>
+    <p class="mt-2 max-w-2xl text-slate-600">
+      Pages are keyed to real counties and neighborhoods in the location schema—no dummy “City, ST” placeholders.
+      Florida coverage is grouped by county for faster scanning.
+    </p>
+
+    {
+      states.map((st) => {
+        const countyMap = byStateCounty.get(st)!;
+        const counties = [...countyMap.keys()].sort((a, b) => a.localeCompare(b));
+        return (
+          <section class="mt-14">
+            <h2 class="text-xl font-bold text-slate-800">{STATE_NAME_MAP[st] || st}</h2>
+            <div class="mt-6 space-y-10">
+              {counties.map((county) => (
+                <div>
+                  <h3 class="text-sm font-bold uppercase tracking-widest text-blue-700">{county}</h3>
+                  <ul class="mt-3 grid gap-2 sm:grid-cols-2 lg:grid-cols-3">
+                    {(countyMap.get(county) || []).map((loc) => (
+                      <li>
+                        <a
+                          href={`/insights/${loc.slug}/roofing`}
+                          class="block rounded-xl border border-slate-200 bg-white px-4 py-3 text-sm font-semibold text-slate-800 shadow-sm transition hover:border-blue-300 hover:text-blue-700"
+                        >
+                          {loc.city}
+                          <span class="mt-0.5 block text-xs font-normal text-slate-500">{loc.county}</span>
+                        </a>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
+            </div>
+          </section>
+        );
+      })
+    }
+
+    <p class="mt-12 text-center text-sm text-slate-500">
+      Tip: start on the <a href="/" class="font-semibold text-blue-600 hover:underline">home page</a> for the same list
+      in “Areas we cover.”
+    </p>
+  </div>
+</BaseLayout>

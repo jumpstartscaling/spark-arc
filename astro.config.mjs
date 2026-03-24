@@ -6,7 +6,7 @@ export default defineConfig({
   site: process.env.PUBLIC_SITE_URL || undefined,
   vite: {
     preview: {
-      allowedHosts: ['ion-arc.biz']
+      allowedHosts: true
     }
   }
 });

@@ -1,6 +1,5 @@
----
 import BaseLayout from '../layouts/BaseLayout.astro';
-import { pseoContent } from '../utils/pseo';
+import { pseoContent, STATE_NAME_MAP } from '../utils/pseo';
 import locationsData from '../data/pseo/locations.json';
 
 interface LocationRow {
@@ -12,18 +11,18 @@ interface LocationRow {
 
 const locations = locationsData as unknown as LocationRow[];
 
-const sorted = [...locations].filter((l) => l.state === 'FL').sort((a, b) => a.city.localeCompare(b.city));
-
-const byCounty = new Map<string, LocationRow[]>();
-for (const loc of sorted) {
-  const key = loc.county || 'Other';
-  const list = byCounty.get(key) ?? [];
+// Group by state, then by city
+const byState = new Map<string, LocationRow[]>();
+for (const loc of locations) {
+  const list = byState.get(loc.state) ?? [];
   list.push(loc);
-  byCounty.set(key, list);
+  byState.set(loc.state, list);
 }
-const counties = [...byCounty.keys()].sort((a, b) => a.localeCompare(b));
+
+const states = [...byState.keys()].sort((a, b) => a.localeCompare(b));
 
 const count = pseoContent.length;
+const stateCount = states.length;
 ---
 
 <BaseLayout
@@ -40,49 +39,56 @@ const count = pseoContent.length;
       Use the checklist survey to route leads with UTMs and webhook-ready payloads.
     </p>
     <p class="mt-4 text-sm text-slate-500">
-      {count} live guide pages in this build.
+      {count} live guide pages across {stateCount} states in this build.
     </p>
     <div class="mt-10 flex flex-wrap justify-center gap-4">
       <a
         href="#areas-we-cover"
         class="inline-flex items-center justify-center rounded-xl bg-blue-600 px-8 py-4 text-sm font-bold uppercase tracking-wider text-white shadow-lg shadow-blue-200 transition hover:bg-blue-700"
       >
-        Areas we cover
+        Explore Markets
       </a>
       <a
         href="/insights"
         class="inline-flex items-center justify-center rounded-xl border-2 border-slate-200 bg-white px-8 py-4 text-sm font-bold uppercase tracking-wider text-slate-800 transition hover:border-blue-300 hover:text-blue-700"
       >
-        All guides (by county)
+        All guides
       </a>
     </div>
   </section>
 
-  <section id="areas-we-cover" class="mx-auto max-w-5xl scroll-mt-24 px-4 py-16">
-    <h2 class="text-center text-2xl font-black text-slate-900 md:text-3xl">Areas we cover</h2>
+  <section id="areas-we-cover" class="mx-auto max-w-6xl scroll-mt-24 px-4 py-16">
+    <h2 class="text-center text-2xl font-black text-slate-900 md:text-3xl">Geographic Coverage</h2>
     <p class="mx-auto mt-3 max-w-2xl text-center text-slate-600">
-      Open a city to see localized roofing context, FAQs, and the gated intake survey.
+      Select a state and city to view localized roofing insights and intake resources.
     </p>
 
-    <div class="mt-12 space-y-12">
+    <div class="mt-12 space-y-16">
       {
-        counties.map((county) => (
-          <div>
-            <h3 class="border-b border-slate-200 pb-2 text-lg font-bold text-slate-800">{county}</h3>
-            <ul class="mt-4 grid gap-2 sm:grid-cols-2 md:grid-cols-3">
-              {(byCounty.get(county) || []).map((loc) => (
-                <li>
-                  <a
-                    href={`/insights/${loc.slug}/roofing`}
-                    class="block rounded-xl border border-slate-200 bg-white px-4 py-3 text-sm font-semibold text-slate-800 shadow-sm transition hover:border-blue-400 hover:text-blue-700"
-                  >
-                    {loc.city}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
-        ))
+        states.map((stateCode) => {
+          const stateCities = (byState.get(stateCode) || []).sort((a, b) => a.city.localeCompare(b.city));
+          return (
+            <div>
+              <h3 class="flex items-center gap-3 border-b border-slate-200 pb-3 text-xl font-bold text-slate-900">
+                <span class="rounded-md bg-blue-600 px-2 py-1 text-xs text-white uppercase">{stateCode}</span>
+                {STATE_NAME_MAP[stateCode] || stateCode}
+              </h3>
+              <ul class="mt-6 grid gap-3 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+                {stateCities.map((loc) => (
+                  <li>
+                    <a
+                      href={`/insights/${loc.slug}/roofing`}
+                      class="group block rounded-xl border border-slate-200 bg-white px-4 py-4 text-sm font-bold text-slate-800 shadow-sm transition hover:border-blue-500 hover:bg-blue-50/50 hover:text-blue-700"
+                    >
+                      <span class="block text-slate-900 group-hover:text-blue-700">{loc.city}</span>
+                      <span class="mt-1 block text-xs font-normal text-slate-500 italic">{loc.county || ''}</span>
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          );
+        })
       }
     </div>
   </section>

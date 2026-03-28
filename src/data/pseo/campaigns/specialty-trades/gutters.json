@@ -1,0 +1,89 @@
+{
+  "service_config": {
+    "niche": "Gutters",
+    "niche_slug": "gutters",
+    "category": "Specialty Trades",
+    "category_slug": "specialty-trades",
+    "icon": "🌧️",
+    "sub_niches": [
+      { "label": "Seamless Gutters", "slug": "seamless-gutters" },
+      { "label": "Gutter Guards", "slug": "gutter-guards" },
+      { "label": "Gutter Cleaning", "slug": "gutter-cleaning" },
+      { "label": "Downspouts & Drains", "slug": "downspouts" },
+      { "label": "Cooper Gutters", "slug": "copper-gutters" }
+    ]
+  },
+  "spintax": {
+    "synonyms": [
+      { "category": "urgency", "terms": "[\"before your foundation floods\", \"emergency gutter repair\", \"seasonal drain refresh\", \"immediate gutter quote\"]" },
+      { "category": "contractor_vibe", "terms": "[\"licensed gutter crews\", \"drainage pros near {{neighborhood}}\", \"seamless gutter specialists\", \"guard installation teams in {{county}}\"]" }
+    ]
+  },
+  "show_tell": {
+    "weather_anchor": {
+      "headline": "{{city}} deluge: Is your {{neighborhood}} roof draining?",
+      "body": "Overflowing gutters near {{landmark}} are the principal cause of basement flooding in {{state}}. A 10-minute downpour can put 500+ gallons against your {{county}} foundation."
+    },
+    "process_guide": {
+      "headline": "The {{city}} Professional Gutter Workflow",
+      "steps": [
+        { "title": "Pitch & Load Calc", "text": "Our crews in {{county}} calculate the roof run and set pitch near {{neighborhood}} gables to ensure 100% drainage." },
+        { "title": "Seamless Fabrication", "text": "We extrude gutter runs on-site at your {{city}} property to eliminate leak-prone seams." },
+        { "title": "Fastening & Hangers", "text": "We use hidden screw-in hangers every 24 inches for maximum snow/ice capacity in {{state}}." },
+        { "title": "Downspout Detail", "text": "A full drainage sweep ensures water is diverted 10ft away from your {{neighborhood}} foundation." }
+      ]
+    },
+    "seasonal_maintenance": {
+      "headline": "Low-maintenance drainage for {{state}} homes",
+      "fall_tips": "Clear your downspout elbows near {{parks}} before the first freeze. Ice expansion can burst your gutter seams.",
+      "summer_tips": "Inspect your guard screens near {{neighborhood}}. High {{state}} humidity causes fine organic silt to clog micro-mesh over 5–10 years."
+    },
+    "comparison_guide": {
+      "title": "Open Gutters vs. Micro-Mesh Guards in {{city}}",
+      "comparison": {
+        "option_a": "Standard 6-inch Seamless (High Flow)",
+        "option_b": "Leaf-Filter / Mesh Guard (Maintenance-Free)",
+        "details": "Standard gutters are cheaper but require bi-annual cleaning in {{city}}. Guards near {{neighborhood}} trees prevent climbing and foundation rot from clogs in {{county}}."
+      }
+    }
+  },
+  "encyclopedia": {
+    "brands": {
+      "LeafFilter": { "tier": "National Premium", "flagship": "Gutter Guards", "value_prop": "The industry leader for permanent clog protection in {{county}}.", "price_point": "$$$" },
+      "PlyGem":      { "tier": "Trade-Grade",    "flagship": "Mastic Performance", "value_prop": "High-durability aluminum colors—ideal for {{city}} residential use.", "price_point": "$$" },
+      "Spectra":    { "tier": "Fabrication High", "flagship": "Seamless Coil",  "value_prop": "Best-in-class aluminum coil for on-site {{neighborhood}} extrusions.", "price_point": "$$" }
+    },
+    "styles": {
+      "K-Style": { "human_name": "Standard Crown", "benefit": "Classic aesthetic; highest volume per linear foot in {{city}}.", "aoe_hint": "Check for 6-inch oversize options in {{state}}." },
+      "Half-Round": { "human_name": "Old World Detail", "benefit": "Ideal for copper or historic {{parks}} renovations.", "aoe_hint": "Requires specialty hangers in {{county}}." }
+    },
+    "costs_2026": {
+      "Seamless_Full": { "per_sqft": "$1,200 - $3,500", "notes": "Typical 1,500 sqft home install in {{city}}." },
+      "Gutter_Guards": { "per_sqft": "$15 - $45 / linear ft", "notes": "Depends on mesh grade near {{neighborhood}}." }
+    }
+  },
+  "sub_niche_templates": {
+    "seamless-gutters": {
+      "headline_templates": ["{{city}} Seamless Gutters: Stop your foundation erosion now", "Gutter costs in {{county}}: Materials vs. Install guide"],
+      "faqs": [
+        { "q": "Are 6-inch gutters better than 5-inch in {{city}}?", "a": "Yes, 6-inch gutters handle 40% more volume—essential for heavy {{state}} storms." },
+        { "q": "How long do aluminum gutters last in {{state}}?", "a": "A typical system in {{city}} lasts 20+ years if cleaned bi-annually." }
+      ],
+      "survey": {
+        "title": "Gutter Inquiry",
+        "subhead": "Quick questions to size the project.",
+        "steps": [
+          { "id": "gutter_issue", "label": "Why are you calling?", "options": ["Need new gutters", "Clogged / Cleaning", "Leaking / Repair", "Want gutter guards"] },
+          { "id": "property_levels", "label": "Home levels?", "options": ["Single story", "2-story", "3-story+"] }
+        ]
+      }
+    }
+  },
+  "regional_nuance": {
+    "GA": { "focus": "Pine Needle Clogs", "top_brand": "LeafFilter", "tech": "Stainless Micro-Mesh", "logic": "Pine trees near {{parks}} clog standard guards; we prioritize fine micro-mesh for {{city}}." },
+    "MN": { "focus": "Ice Dam Support", "top_brand": "PlyGem", "tech": "Heavy-Duty Hangers", "logic": "Ice weight near {{landmark}} pulls gutters off; we focus on screw-in hangers every 12-16 inches for {{county}}." }
+  },
+  "conversion": {
+    "closing_trust": "We connect {{city}} homeowners with insured gutter crews who fabricate on-site for a perfect fit."
+  }
+}

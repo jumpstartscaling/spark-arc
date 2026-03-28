@@ -1,82 +1,164 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import { STATE_NAME_MAP } from '../../utils/pseo';
-import locationsData from '../../data/pseo/locations.json';
+import { pseoContent, STATE_NAME_MAP } from '../../utils/pseo';
+import locationsData from '../../data/pseo/globals/locations.json';
 
 interface LocationRow {
   city: string;
   state: string;
   slug: string;
-  county: string;
+  county?: string;
 }
 
 const locations = locationsData as unknown as LocationRow[];
 
-const sortedLocs = [...locations].sort((a, b) => {
-  if (a.state !== b.state) return a.state.localeCompare(b.state);
-  return a.city.localeCompare(b.city);
-});
-
+// Group by state → county
 const byStateCounty = new Map<string, Map<string, LocationRow[]>>();
-for (const loc of sortedLocs) {
-  const st = loc.state;
-  if (!byStateCounty.has(st)) byStateCounty.set(st, new Map());
-  const countyMap = byStateCounty.get(st)!;
-  const c = loc.county || 'Other';
+for (const loc of [...locations].sort((a, b) =>
+  a.state !== b.state ? a.state.localeCompare(b.state) : a.city.localeCompare(b.city)
+)) {
+  if (!byStateCounty.has(loc.state)) byStateCounty.set(loc.state, new Map());
+  const countyMap = byStateCounty.get(loc.state)!;
+  const c = loc.county ?? 'Other';
   const list = countyMap.get(c) ?? [];
   list.push(loc);
   countyMap.set(c, list);
 }
 
 const states = [...byStateCounty.keys()].sort();
+
+// Active niches index for linking each city to its pages
+const nicheIndex: Record<string, string[]> = {};
+for (const entry of pseoContent) {
+  const parts = entry.slug.split('/'); // insights / loc-slug / niche / sub-niche
+  const locSlug = parts[1] ?? '';
+  const niche = parts[2] ?? '';
+  if (!nicheIndex[locSlug]) nicheIndex[locSlug] = [];
+  if (!nicheIndex[locSlug]!.includes(niche)) nicheIndex[locSlug]!.push(niche);
+}
+
+// Find first generated page for a city+niche
+function firstPage(locSlug: string) {
+  return pseoContent.find(e => e.slug.startsWith(`insights/${locSlug}/`));
+}
 ---
 
-<BaseLayout
-  title="Local roofing guides | Spark Arc"
-  description="Browse all generated roofing guides by state and county."
+<BaseLayout 
+  title="Local service guides | Ion Arc Online"
+  description="Explore our full directory of localized service guides and market data."
 >
-  <div class="mx-auto max-w-5xl px-4 py-12">
-    <h1 class="text-3xl font-black text-slate-900">Local guides</h1>
-    <p class="mt-2 max-w-2xl text-slate-600">
-      Pages are keyed to real counties and neighborhoods in the location schema—no dummy “City, ST” placeholders.
-      Florida coverage is grouped by county for faster scanning.
-    </p>
+  <div class="mx-auto max-w-7xl px-4 py-12 md:px-8">
+    <div class="flex flex-col gap-12 lg:flex-row">
+      <!-- Sidebar Navigation -->
+      <aside class="hidden lg:block lg:w-64">
+        <div class="sticky top-24">
+          <h2 class="text-xs font-black uppercase tracking-widest text-slate-400 mb-6">Market Directory</h2>
+          <nav class="space-y-1">
+            {states.map((st) => (
+              <a 
+                href={`#state-${st}`}
+                class="flex items-center justify-between rounded-lg px-3 py-2 text-sm font-bold text-slate-600 transition hover:bg-white hover:text-blue-600 hover:shadow-sm"
+              >
+                {STATE_NAME_MAP[st] ?? st}
+                <span class="text-[10px] opacity-40">{byStateCounty.get(st)?.size || 0}</span>
+              </a>
+            ))}
+          </nav>
+        </div>
+      </aside>
 
-    {
-      states.map((st) => {
-        const countyMap = byStateCounty.get(st)!;
-        const counties = [...countyMap.keys()].sort((a, b) => a.localeCompare(b));
-        return (
-          <section class="mt-14">
-            <h2 class="text-xl font-bold text-slate-800">{STATE_NAME_MAP[st] || st}</h2>
-            <div class="mt-6 space-y-10">
-              {counties.map((county) => (
-                <div>
-                  <h3 class="text-sm font-bold uppercase tracking-widest text-blue-700">{county}</h3>
-                  <ul class="mt-3 grid gap-2 sm:grid-cols-2 lg:grid-cols-3">
-                    {(countyMap.get(county) || []).map((loc) => (
-                      <li>
-                        <a
-                          href={`/insights/${loc.slug}/roofing`}
-                          class="block rounded-xl border border-slate-200 bg-white px-4 py-3 text-sm font-semibold text-slate-800 shadow-sm transition hover:border-blue-300 hover:text-blue-700"
-                        >
-                          {loc.city}
-                          <span class="mt-0.5 block text-xs font-normal text-slate-500">{loc.county}</span>
-                        </a>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              ))}
+      <!-- Main Content -->
+      <div class="flex-1">
+        <header class="mb-16">
+          <h1 class="text-4xl font-black tracking-tight text-slate-900">Local Service Intelligence</h1>
+          <p class="mt-4 max-w-3xl text-lg text-slate-600 leading-relaxed">
+            Direct access to localized home service data. Every market below includes verified 
+            pricing benchmarks, regional code compliance guidelines, and service-specific blueprints.
+          </p>
+          <div class="mt-8 flex flex-wrap gap-4">
+            <div class="flex items-center gap-2 rounded-full bg-blue-50 px-4 py-2 text-xs font-bold text-blue-700">
+              <span class="relative flex h-2 w-2">
+                <span class="relative inline-flex h-2 w-2 rounded-full bg-blue-600"></span>
+              </span>
+              {pseoContent.length.toLocaleString()} Active Guides
             </div>
-          </section>
-        );
-      })
-    }
+            <div class="flex items-center gap-2 rounded-full bg-slate-100 px-4 py-2 text-xs font-bold text-slate-600">
+              {states.length} US States Covered
+            </div>
+          </div>
+        </header>
 
-    <p class="mt-12 text-center text-sm text-slate-500">
-      Tip: start on the <a href="/" class="font-semibold text-blue-600 hover:underline">home page</a> for the same list
-      in “Areas we cover.”
-    </p>
+        <!-- Trending / Popular (Manual highlighted for now) -->
+        <section class="mb-20">
+          <h2 class="text-xs font-black uppercase tracking-widest text-slate-400 mb-6 font-mono">Trending Markets</h2>
+          <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {['anchorage-ak', 'huntsville-al'].slice(0, 3).map((locSlug) => {
+              const loc = locations.find(l => l.slug === locSlug);
+              if (!loc) return null;
+              return (
+                <a href={`/insights/${loc.slug}/roofing/roof-replacement`} class="group relative overflow-hidden rounded-2xl border border-slate-200 bg-white p-6 transition-all hover:-translate-y-1 hover:border-blue-500 hover:shadow-xl">
+                  <div class="absolute -right-4 -top-4 h-16 w-16 bg-blue-50 transition-colors group-hover:bg-blue-600 opacity-20"></div>
+                  <span class="text-xs font-black text-blue-600 uppercase tracking-widest">{loc.state}</span>
+                  <h3 class="mt-1 text-xl font-bold text-slate-900">{loc.city}</h3>
+                  <p class="mt-2 text-sm text-slate-500">Comprehensive guides for {nicheIndex[loc.slug]?.length || 0} services.</p>
+                </a>
+              );
+            })}
+          </div>
+        </section>
+
+        <!-- Main Directory Area -->
+        <div class="space-y-24">
+          {states.map((st) => {
+            const countyMap = byStateCounty.get(st)!;
+            const counties = [...countyMap.keys()].sort();
+            return (
+              <section id={`state-${st}`} class="scroll-mt-24">
+                <div class="flex items-center gap-4 border-b border-slate-200 pb-4 mb-10">
+                  <span class="text-3xl font-black text-slate-300 font-mono">0{states.indexOf(st) + 1}</span>
+                  <h2 class="text-2xl font-black text-slate-900">{STATE_NAME_MAP[st] ?? st}</h2>
+                </div>
+                
+                <div class="space-y-12">
+                  {counties.map((county) => (
+                    <div>
+                      <h3 class="flex items-center gap-2 text-[10px] font-black uppercase tracking-widest text-slate-400 mb-6">
+                        <span class="h-px w-8 bg-slate-200"></span>
+                        {county} County Markets
+                      </h3>
+                      <ul class="grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
+                        {(countyMap.get(county) ?? []).map((loc) => {
+                          const niches = nicheIndex[loc.slug] ?? [];
+                          return (
+                            <li class="group rounded-2xl border border-slate-200 bg-white p-6 transition-all hover:border-blue-500 hover:shadow-lg">
+                              <span class="block text-lg font-bold text-slate-900 mb-4">{loc.city}</span>
+                              <div class="flex flex-wrap gap-1.5">
+                                {niches.map((niche) => {
+                                  const sample = pseoContent.find(e => e.slug.startsWith(`insights/${loc.slug}/${niche}/`));
+                                  const href = sample ? `/${sample.slug}` : null;
+                                  if (!href) return null;
+                                  return (
+                                    <a
+                                      href={href}
+                                      class="inline-flex rounded-lg bg-slate-50 px-2.5 py-1.5 text-[9px] font-bold uppercase tracking-tight text-slate-600 transition hover:bg-blue-600 hover:text-white"
+                                    >
+                                      {niche.replace(/-/g, ' ')}
+                                    </a>
+                                  );
+                                })}
+                              </div>
+                            </li>
+                          );
+                        })}
+                      </ul>
+                    </div>
+                  ))}
+                </div>
+              </section>
+            );
+          })}
+        </div>
+      </div>
+    </div>
   </div>
 </BaseLayout>

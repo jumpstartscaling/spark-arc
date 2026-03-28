@@ -1,13 +1,8 @@
 ---
+import type { MaterialShowdownData } from '../../types/pseo';
+
 interface Props {
-  data: {
-    title: string;
-    rows: Array<{
-      category: string;
-      cheap: string;
-      premium: string;
-    }>;
-  };
+  data: MaterialShowdownData;
 }
 
 const { data } = Astro.props;
@@ -19,8 +14,8 @@ const { data } = Astro.props;
       <h2 class="text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl">
         {data.title}
       </h2>
-      <p class="mt-4 text-lg italic text-slate-600">
-        Not all assemblies are equal for high-event weather—here is a practical contrast.
+      <p class="mt-4 text-lg italic text-slate-600 leading-relaxed">
+        Not all service implementations are equal—here is a practical contrast between standard and high-performance options.
       </p>
     </div>
 
@@ -28,20 +23,20 @@ const { data } = Astro.props;
       <table class="w-full border-collapse text-left">
         <thead>
           <tr class="bg-slate-900 text-white">
-            <th class="px-6 py-5 text-sm font-bold uppercase tracking-widest">Feature</th>
+            <th class="px-6 py-5 text-sm font-bold uppercase tracking-widest">Performance Metric</th>
             <th class="bg-slate-800/50 px-6 py-5 text-sm font-bold uppercase tracking-widest">
-              Standard shingle
+              Standard Grade
             </th>
             <th class="px-6 py-5 text-sm font-bold uppercase tracking-widest text-blue-300">
-              Certified armor
+              Premium Tier
             </th>
           </tr>
         </thead>
         <tbody class="divide-y divide-slate-100">
           {data.rows.map((row) => (
             <tr class="group transition-colors hover:bg-slate-50">
-              <td class="px-6 py-6">
-                <span class="block text-sm font-bold text-slate-900">{row.category}</span>
+              <td class="px-6 py-6 font-bold text-slate-900">
+                {row.category}
               </td>
               <td class="px-6 py-6 text-sm italic text-slate-500">{row.cheap}</td>
               <td class="bg-blue-50/40 px-6 py-6 transition-colors group-hover:bg-blue-50/60">
@@ -61,9 +56,10 @@ const { data } = Astro.props;
         </tbody>
       </table>
 
-      <div class="border-t border-slate-200 bg-slate-50 px-6 py-4">
-        <p class="text-center text-[11px] font-medium uppercase leading-tight tracking-tighter text-slate-500">
-          Educational summary—not a bid. Verify manufacturer specs and local code with your contractor.
+      <div class="border-t border-slate-200 bg-slate-50 px-6 py-4 text-center">
+        <p class="text-[11px] font-medium uppercase leading-tight tracking-tighter text-slate-500">
+          Educational summary only. Detailed specifications should be verified with a licensed professional 
+          before any installation or repair project begins.
         </p>
       </div>
     </div>

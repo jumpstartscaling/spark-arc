@@ -1,0 +1,89 @@
+{
+  "service_config": {
+    "niche": "Restoration",
+    "niche_slug": "restoration",
+    "category": "Home Services",
+    "category_slug": "home-services",
+    "icon": "🌊",
+    "sub_niches": [
+      { "label": "Water Damage", "slug": "water-damage" },
+      { "label": "Fire Damage", "slug": "fire-damage" },
+      { "label": "Mold Remediation", "slug": "mold-remediation" },
+      { "label": "Biohazard Cleanup", "slug": "biohazard-cleanup" },
+      { "label": "Smoke Removal", "slug": "smoke-removal" }
+    ]
+  },
+  "spintax": {
+    "synonyms": [
+      { "category": "urgency", "terms": "[\"before mold takes over\", \"emergency flood dispatch\", \"24/7 restoration crew\", \"immediate smoke cleanup\"]" },
+      { "category": "contractor_vibe", "terms": "[\"certified restoration pros\", \"water mitigation teams near {{neighborhood}}\", \"mold remediation specialists\", \"fire reconstruction crews in {{county}}\"]" }
+    ]
+  },
+  "show_tell": {
+    "weather_anchor": {
+      "headline": "{{city}} Flood Risk: Burst pipes and heavy rain",
+      "body": "After heavy storms or freezing temps near {{landmark}}, water in {{neighborhood}} can find its way into your drywall. Extraction in {{county}} must happen in the first 24 hours to prevent mold."
+    },
+    "process_guide": {
+      "headline": "The {{city}} Emergency Restoration Process",
+      "steps": [
+        { "title": "Extraction & Assessment", "text": "Our crews in {{county}} use industrial truck-mount units to pull standing water from your {{neighborhood}} basement or crawlspace." },
+        { "title": "Structural Drying", "text": "We deploy LGR dehumidifiers and air movers to pull moisture from studs and subfloors frequent in {{state}} older builds." },
+        { "title": "Mold Containment", "text": "We set up negative air pressure near {{landmark}} to ensure mold spores don't spread to unaffected areas during remediation." },
+        { "title": "Full Rebuild Finish", "text": "We work with your {{county}} insurance adjuster to restore your {{city}} home to pre-loss condition with new paint and flooring." }
+      ]
+    },
+    "seasonal_maintenance": {
+      "headline": "Protecting your {{state}} home from total loss",
+      "fall_tips": "Check your sump pump near {{parks}} before the autumn rains start. A failed pump is the #1 cause of {{city}} basement flooding.",
+      "summer_tips": "Keep humidity below 50% near {{neighborhood}}. High {{state}} summer humidity triggers mold growth in attics and crawlspaces."
+    },
+    "comparison_guide": {
+      "title": "Mitigation vs. Full Restoration in {{city}}",
+      "comparison": {
+        "option_a": "Water Mitigation (Stop & Dry)",
+        "option_b": "Full Restoration (Rebuild)",
+        "details": "Mitigation is about stopping the bleed in {{city}}. Full restoration involves putting the drywall, trim, and flooring back together for a perfect finish in {{neighborhood}}."
+      }
+    }
+  },
+  "encyclopedia": {
+    "brands": {
+      "Servpro":    { "tier": "National Franchise", "flagship": "Water Mitigation", "value_prop": "Unmatched scale and dispatch speed for {{county}} disasters.", "price_point": "$$$" },
+      "ServiceMaster":{ "tier": "Cleanup Standard", "flagship": "Fire Restoration", "value_prop": "Deep expertise in smoke and odor removal for {{city}} households.", "price_point": "$$" },
+      "Dri-Eaz":    { "tier": "Equipment High",   "flagship": "LGR Dehumidifier", "value_prop": "The standard for structural drying in moist {{state}} climates.", "price_point": "$$$" }
+    },
+    "styles": {
+      "Remediation": { "human_name": "Mold Removal", "benefit": "Ensures air quality is safe for {{city}} families.", "aoe_hint": "Check for IICRC-certified techs in {{state}}." },
+      "Emergency": { "human_name": "Flood Extraction", "benefit": "Stops structural rot near {{landmark}} flooding events.", "aoe_hint": "Response time is critical for {{county}} claims." }
+    },
+    "costs_2026": {
+      "Water_Mitigation": { "per_sqft": "$1,500 - $4,500", "notes": "Typical residential drying plan in {{city}}." },
+      "Mold_Removal":     { "per_sqft": "$2,500 - $8,000", "notes": "Depends on square footage and moisture source near {{neighborhood}}." }
+    }
+  },
+  "sub_niche_templates": {
+    "water-damage": {
+      "headline_templates": ["{{city}} Water Damage Repair: 24/7 Flood Extraction", "Water restoration costs in {{county}}: How to file an insurance claim"],
+      "faqs": [
+        { "q": "How long does it take to dry out a basement in {{city}}?", "a": "Typically 3–5 days with industrial LGR dehumidifiers running in {{county}}." },
+        { "q": "Does my insurance cover water damage in {{state}}?", "a": "Sudden leaks (pipe bursts) are usually covered; flood damage (rising water) requires a separate policy in {{city}}." }
+      ],
+      "survey": {
+        "title": "Restoration Dispatch",
+        "subhead": "Quick questions to prioritize your case.",
+        "steps": [
+          { "id": "damage_type", "label": "Source of damage?", "options": ["Pipe Burst", "Sewer Backup", "Flooding / Rain", "Fire / Smoke"] },
+          { "id": "standing_water", "label": "Standing water present?", "options": ["Yes, obvious", "Dampness only", "Smoke only"] }
+        ]
+      }
+    }
+  },
+  "regional_nuance": {
+    "TX": { "focus": "Mold Growth Speed", "top_brand": "Servpro", "tech": "HEPA Scrubbers", "logic": "Humidity in {{city}} near {{parks}} means mold takes root in just 48 hours; we prioritize instant drying in {{county}}." },
+    "CO": { "focus": "Frozen Pipe Bursts", "top_brand": "Dri-Eaz", "tech": "Dehumidification", "logic": "Cold snaps near {{landmark}} cause pipe insulation failures; we focus on attic pipe repairs for {{city}}." }
+  },
+  "conversion": {
+    "closing_trust": "We connect {{city}} homeowners with IICRC-certified restoration pros who work directly with your insurance carrier."
+  }
+}

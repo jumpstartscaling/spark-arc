@@ -1,0 +1,112 @@
+[
+  {
+    "city": "New York City",
+    "state": "NY",
+    "neighborhood": "Lower Manhattan / Financial District",
+    "zip": "10004",
+    "landmarks": ["Statue of Liberty", "Empire State Building", "World Trade Center near Home Depot 23rd St"],
+    "motto": "Excelsior",
+    "county": "New York County",
+    "parks": ["Central Park", "The Battery", "High Line"],
+    "slug": "new-york-city-ny"
+  },
+  {
+    "city": "Los Angeles",
+    "state": "CA",
+    "neighborhood": "Downtown LA / Arts District",
+    "zip": "90012",
+    "landmarks": ["Hollywood Sign", "Griffith Observatory", "Wilshire Blvd near Home Depot Sunset"],
+    "motto": "City of Angels",
+    "county": "Los Angeles County",
+    "parks": ["Elysian Park", "Grand Park", "Exposition Park"],
+    "slug": "los-angeles-ca"
+  },
+  {
+    "city": "Chicago",
+    "state": "IL",
+    "neighborhood": "Loop / River North",
+    "zip": "60601",
+    "landmarks": ["Millennium Park", "Willis Tower", "North Ave near Home Depot Lincoln Park"],
+    "motto": "City in a Garden",
+    "county": "Cook County",
+    "parks": ["Grant Park", "Lincoln Park", "Millennium Park"],
+    "slug": "chicago-il"
+  },
+  {
+    "city": "Houston",
+    "state": "TX",
+    "neighborhood": "Downtown / Heights",
+    "zip": "77002",
+    "landmarks": ["Space Center Houston", "Buffalo Bayou Park", "West Loop near Home Depot Meyerland"],
+    "motto": "The Bayou City",
+    "county": "Harris County",
+    "parks": ["Hermann Park", "Memorial Park", "Sam Houston Park"],
+    "slug": "houston-tx"
+  },
+  {
+    "city": "Phoenix",
+    "state": "AZ",
+    "neighborhood": "Downtown / Roosevelt Row",
+    "zip": "85003",
+    "landmarks": ["Camelback Mountain", "Heard Museum", "Camelback Rd near Home Depot Arcadia"],
+    "motto": "Valley of the Sun",
+    "county": "Maricopa County",
+    "parks": ["South Mountain Park", "Papago Park", "Encanto Park"],
+    "slug": "phoenix-az"
+  },
+  {
+    "city": "Philadelphia",
+    "state": "PA",
+    "neighborhood": "Center City / Old City",
+    "zip": "19106",
+    "landmarks": ["Liberty Bell", "Independence Hall", "Castor Ave near Home Depot Port Richmond"],
+    "motto": "Maneto",
+    "county": "Philadelphia County",
+    "parks": ["Fairmount Park", "Love Park", "Franklin Square"],
+    "slug": "philadelphia-pa"
+  },
+  {
+    "city": "San Antonio",
+    "state": "TX",
+    "neighborhood": "Downtown / River Walk",
+    "zip": "78205",
+    "landmarks": ["The Alamo", "River Walk", "Loop 410 near Home Depot North Star"],
+    "motto": "Liberty and Independence",
+    "county": "Bexar County",
+    "parks": ["Brackenridge Park", "San Antonio Missions National Historical Park", "Phil Hardberger Park"],
+    "slug": "san-antonio-tx"
+  },
+  {
+    "city": "San Diego",
+    "state": "CA",
+    "neighborhood": "Downtown / Gaslamp Quarter",
+    "zip": "92101",
+    "landmarks": ["Balboa Park", "San Diego Zoo", "Fairmount Ave near Home Depot City Heights"],
+    "motto": "Semper Vigilans",
+    "county": "San Diego County",
+    "parks": ["Balboa Park", "Mission Bay Park", "Chicano Park"],
+    "slug": "san-diego-ca"
+  },
+  {
+    "city": "Dallas",
+    "state": "TX",
+    "neighborhood": "Downtown / Arts District",
+    "zip": "75201",
+    "landmarks": ["Reunion Tower", "Dealey Plaza", "Central Expwy near Home Depot Forest Ln"],
+    "motto": "Live Large Think Big",
+    "county": "Dallas County",
+    "parks": ["Klyde Warren Park", "White Rock Lake Park", "Main Street District"],
+    "slug": "dalllas-tx"
+  },
+  {
+    "city": "San Jose",
+    "state": "CA",
+    "neighborhood": "Downtown / San Pedro Square",
+    "zip": "95113",
+    "landmarks": ["Winchester Mystery House", "Tech Interactive", "Capitol Ave near Home Depot Berryessa"],
+    "motto": "Spirit of Innovation",
+    "county": "Santa Clara County",
+    "parks": ["Kelley Park", "Alum Rock Park", "Guadalupe River Park"],
+    "slug": "san-jose-ca"
+  }
+]

@@ -1,63 +1,24 @@
-import locationsDataRaw from '../data/pseo/locations.json';
-import { generateRoofingPseoPages, type LocationRecord } from './generateRoofingPseoPages';
+import locationsDataRaw from '../data/pseo/globals/locations.json';
+import { generatePseoPages, type LocationRecord } from './generatePseoPages';
 
 export const STATE_NAME_MAP: Record<string, string> = {
-  AL: 'Alabama',
-  AK: 'Alaska',
-  AZ: 'Arizona',
-  AR: 'Arkansas',
-  CA: 'California',
-  CO: 'Colorado',
-  CT: 'Connecticut',
-  DE: 'Delaware',
-  FL: 'Florida',
-  GA: 'Georgia',
-  HI: 'Hawaii',
-  ID: 'Idaho',
-  IL: 'Illinois',
-  IN: 'Indiana',
-  IA: 'Iowa',
-  KS: 'Kansas',
-  KY: 'Kentucky',
-  LA: 'Louisiana',
-  ME: 'Maine',
-  MD: 'Maryland',
-  MA: 'Massachusetts',
-  MI: 'Michigan',
-  MN: 'Minnesota',
-  MS: 'Mississippi',
-  MO: 'Missouri',
-  MT: 'Montana',
-  NE: 'Nebraska',
-  NV: 'Nevada',
-  NH: 'New Hampshire',
-  NJ: 'New Jersey',
-  NM: 'New Mexico',
-  NY: 'New York',
-  NC: 'North Carolina',
-  ND: 'North Dakota',
-  OH: 'Ohio',
-  OK: 'Oklahoma',
-  OR: 'Oregon',
-  PA: 'Pennsylvania',
-  RI: 'Rhode Island',
-  SC: 'South Carolina',
-  SD: 'South Dakota',
-  TN: 'Tennessee',
-  TX: 'Texas',
-  UT: 'Utah',
-  VT: 'Vermont',
-  VA: 'Virginia',
-  WA: 'Washington',
-  WV: 'West Virginia',
-  WI: 'Wisconsin',
-  WY: 'Wyoming',
-  DC: 'District of Columbia',
+  AL: 'Alabama', AK: 'Alaska', AZ: 'Arizona', AR: 'Arkansas', CA: 'California',
+  CO: 'Colorado', CT: 'Connecticut', DE: 'Delaware', FL: 'Florida', GA: 'Georgia',
+  HI: 'Hawaii', ID: 'Idaho', IL: 'Illinois', IN: 'Indiana', IA: 'Iowa',
+  KS: 'Kansas', KY: 'Kentucky', LA: 'Louisiana', ME: 'Maine', MD: 'Maryland',
+  MA: 'Massachusetts', MI: 'Michigan', MN: 'Minnesota', MS: 'Mississippi',
+  MO: 'Missouri', MT: 'Montana', NE: 'Nebraska', NV: 'Nevada', NH: 'New Hampshire',
+  NJ: 'New Jersey', NM: 'New Mexico', NY: 'New York', NC: 'North Carolina',
+  ND: 'North Dakota', OH: 'Ohio', OK: 'Oklahoma', OR: 'Oregon', PA: 'Pennsylvania',
+  RI: 'Rhode Island', SC: 'South Carolina', SD: 'South Dakota', TN: 'Tennessee',
+  TX: 'Texas', UT: 'Utah', VT: 'Vermont', VA: 'Virginia', WA: 'Washington',
+  WV: 'West Virginia', WI: 'Wisconsin', WY: 'Wyoming', DC: 'District of Columbia',
 };
 
 const locations = locationsDataRaw as LocationRecord[];
 
 function locFromSlug(slug: string): LocationRecord | null {
+  // slug format: "insights/[loc-slug]/[niche]/[sub-niche]"
   const parts = slug.split('/');
   const locSlug = parts[1];
   if (!locSlug) return null;
@@ -69,18 +30,18 @@ function extractHeadline(blocksStr: string): string {
     const blocks = JSON.parse(blocksStr) as Array<{ block_type?: string; data?: { headline?: string } }>;
     const hero = blocks.find((b) => b.block_type === 'hero');
     if (hero?.data?.headline) return hero.data.headline;
-  } catch {
-    /* ignore */
-  }
-  return 'Local roofing guide';
+  } catch { /* ignore */ }
+  return 'Local service guide';
 }
 
-const rawContentFromEngine = generateRoofingPseoPages();
+const rawContentFromEngine = generatePseoPages();
 
 export interface PseoEntry {
   title: string;
   slug: string;
-  category: string;
+  category: string;    // e.g. "home-services"
+  niche: string;       // e.g. "plumbing"
+  subNiche: string;    // e.g. "emergency-repair"
   city: string;
   state: string;
   neighborhood: string;
@@ -100,7 +61,9 @@ export const pseoContent: PseoEntry[] = rawContentFromEngine
     return {
       title: item.title,
       slug: item.slug,
-      category: 'roofing',
+      category: item.category,
+      niche: item.niche,
+      subNiche: item.subNiche,
       city,
       state,
       neighborhood,

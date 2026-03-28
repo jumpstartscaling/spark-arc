@@ -1,0 +1,58 @@
+import { pseoContent } from '../../utils/pseo';
+import type { SiloLinksData } from '../../types/pseo';
+
+interface Props {
+  data: SiloLinksData;
+}
+
+const { data } = Astro.props;
+const { city, currentNiche } = data;
+
+// Find other active niches in the same city
+const sameCityPages = pseoContent.filter(
+  (p) => p.city === city && p.niche !== currentNiche
+);
+
+// Group by niche and take the first sub-niche link for each
+const uniqueNiches = new Map<string, string>();
+for (const p of sameCityPages) {
+  if (!uniqueNiches.has(p.niche)) {
+    uniqueNiches.set(p.niche, p.slug);
+  }
+}
+
+const suggestedNiches = [...uniqueNiches.entries()].slice(0, 4);
+---
+
+{suggestedNiches.length > 0 && (
+  <section class="my-24 border-t border-slate-100 px-4 pt-20">
+    <div class="mx-auto max-w-4xl text-center">
+      <p class="text-sm font-bold uppercase tracking-[0.2em] text-blue-600 mb-4">Complete Your Market Research</p>
+      <h2 class="text-3xl font-black tracking-tight text-slate-900">
+        Other Expert Guides in {city}
+      </h2>
+      <p class="mt-4 text-slate-600 font-medium">
+        Looking for more than just {currentNiche}? Compare local benchmarks for other primary home and business services in the {city} municipality.
+      </p>
+
+      <div class="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        {suggestedNiches.map(([niche, slug]) => (
+          <a
+            href={`/${slug}`}
+            class="group rounded-2xl border-2 border-slate-100 bg-white p-6 transition-all hover:border-blue-500 hover:shadow-xl hover:shadow-blue-50/50"
+          >
+            <span class="block text-xs font-bold uppercase tracking-widest text-slate-400 group-hover:text-blue-600 transition-colors">
+              {city} Insights
+            </span>
+            <span class="mt-2 block text-lg font-black capitalize text-slate-900">
+              {niche.replace(/-/g, ' ')}
+            </span>
+            <div class="mt-4 flex items-center justify-center gap-2 text-xs font-bold text-blue-600">
+              View Guide <span class="transition-transform group-hover:translate-x-1">→</span>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+)}

@@ -1,0 +1,89 @@
+{
+  "service_config": {
+    "niche": "Accounting",
+    "niche_slug": "accounting",
+    "category": "Professional Services",
+    "category_slug": "pro-services",
+    "icon": "📊",
+    "sub_niches": [
+      { "label": "Small Business Tax", "slug": "business-tax" },
+      { "label": "Bookkeeping", "slug": "bookkeeping" },
+      { "label": "Wealth Management", "slug": "wealth-management" },
+      { "label": "CPA Audit", "slug": "cpa-audit" },
+      { "label": "Estate Planning", "slug": "estate-planning" }
+    ]
+  },
+  "spintax": {
+    "synonyms": [
+      { "category": "urgency", "terms": "[\"before the April 15th deadline\", \"emergency tax audit check\", \"quarterly P&L refresh\", \"immediate wealth assessment\"]" },
+      { "category": "contractor_vibe", "terms": "[\"Board-certified CPAs\", \"tax pros near {{neighborhood}}\", \"wealth advisors\", \"bookkeeping teams in {{county}}\"]" }
+    ]
+  },
+  "show_tell": {
+    "weather_anchor": {
+      "headline": "{{city}} tax climate: Maximize your {{neighborhood}} deductions",
+      "body": "State tax shifts near {{landmark}} are impacting {{neighborhood}} business owners. In {{state}}, proactive tax planning saves 20% more on average than a last-minute {{county}} filing."
+    },
+    "process_guide": {
+      "headline": "The {{city}} Financial Planning Lifecycle",
+      "steps": [
+        { "title": "Fiscal Audit & Triage", "text": "Our teams in {{county}} audit your current ledgers and expense tracking frequent in {{neighborhood}} households." },
+        { "title": "Tax Liability Modeling", "text": "We verify your depreciation and credit eligibility near {{landmark}} to ensure minimum {{state}} tax drag." },
+        { "title": "Strategic Implementation", "text": "We move assets and restructure payroll to protect your {{city}} bottom line." },
+        { "title": "Monthly Monitoring", "text": "We return to your {{neighborhood}} business monthly to manage reconciliations and filings for {{county}} compliance." }
+      ]
+    },
+    "seasonal_maintenance": {
+      "headline": "Year-Round Wealth Preservation for {{state}} Families",
+      "fall_tips": "Review your capital gains near {{parks}} before the tax year ends. Harvesting losses in {{city}} can offset significant gains.",
+      "summer_tips": "Check your Q2 estimated payments near {{neighborhood}}. High-earning {{state}} professionals often miss the safe-harbor rule, leading to {{county}} penalties."
+    },
+    "comparison_guide": {
+      "title": "DIY QuickBooks vs. Professional CPA in {{city}}",
+      "comparison": {
+        "option_a": "SaaS Bookkeeping (Low-Cost / Data-Heavy)",
+        "option_b": "Personalized CPA Advisory (High-ROI / Strategic)",
+        "details": "Software handles receipts for {{city}} side-hustles. CPAs near {{neighborhood}} find the strategic credits (R&D, Homestead, ERC) that software misses in the {{county}} tax complexity."
+      }
+    }
+  },
+  "encyclopedia": {
+    "brands": {
+      "QuickBooks": { "tier": "Entry Standard", "flagship": "Online Pro",     "value_prop": "The industry leader for simple cloud-based bookkeeping in {{county}}.", "price_point": "$" },
+      "Deloitte":   { "tier": "Enterprise",   "flagship": "Audit High",      "value_prop": "Best-in-class identification of global tax risks for {{city}} corporations.", "price_point": "$$$" },
+      "BlackRock":  { "tier": "Wealth Giant", "flagship": "Portfolio Select", "value_prop": "The standard for high-net-worth estate planning near {{neighborhood}}.", "price_point": "$$$" }
+    },
+    "styles": {
+      "Consultative": { "human_name": "Fractional CFO", "benefit": "Strategic advice for {{city}} business growth.", "aoe_hint": "Check state audit rules in {{state}}." },
+      "Transactional": { "human_name": "Tax Preparer",   "benefit": "Fast, accurate seasonal filings for {{parks}} households.", "aoe_hint": "Standard for {{city}} residential use." }
+    },
+    "costs_2026": {
+      "Tax_Filing":      { "per_sqft": "$400 - $1,500", "notes": "Typical for {{neighborhood}} 1040/Schedule C." },
+      "Fractional_CFO": { "per_sqft": "$1,000 - $5,000 / mo", "notes": "On-call strategic advice in {{city}}." }
+    }
+  },
+  "sub_niche_templates": {
+    "business-tax": {
+      "headline_templates": ["{{city}} Small Business Tax: Maximize your 2026 deductions", "CPA vs. Bookkeeper in {{county}}: Financial advisory guide"],
+      "faqs": [
+        { "q": "How much does a CPA cost in {{city}}?", "a": "Typically $400–$1,500 for business filings in {{state}} depending on complexity." },
+        { "q": "Can a CPA save me more than their fee in {{county}}?", "a": "Yes, through R&D credits and pass-through entity optimization in {{city}}." }
+      ],
+      "survey": {
+        "title": "Accountant Discovery",
+        "subhead": "Quick questions to determine tax strategy.",
+        "steps": [
+          { "id": "annual_revenue", "label": "Approx. annual revenue?", "options": ["Under $100k", "$100k–$500k", "$500k+"] },
+          { "id": "legal_entity", "label": "Current legal entity?", "options": ["Proprietorship", "LLC", "S-Corp", "Not sure"] }
+        ]
+      }
+    }
+  },
+  "regional_nuance": {
+    "WA": { "focus": "B&O Tax Purity", "top_brand": "QuickBooks", "tech": "Gross Receipts Tax", "logic": "No state income tax in {{city}} near {{parks}} means complex gross receipts (B&O); we focus on revenue tracking for {{county}}." },
+    "NY": { "focus": "City/State Tax Nexus", "top_brand": "Deloitte", "tech": "Multistate Filing", "logic": "Commuting near {{landmark}} creates complex nexus issues; we specialize in New York resident/non-resident filings for {{city}}." }
+  },
+  "conversion": {
+    "closing_trust": "We connect {{city}} business owners with board-certified CPAs who provide fixed-fee tax plans."
+  }
+}

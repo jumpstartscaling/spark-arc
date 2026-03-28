@@ -1,0 +1,29 @@
+{
+  "meta": {
+    "file_type": "global_shared_spintax",
+    "description": "Universal word pools reused across ALL niches. Any niche-level spintax with the same category key will override these.",
+    "last_updated": "2026-03-27"
+  },
+  "synonyms": [
+    {
+      "category": "quality_badge",
+      "terms": "[\"licensed & insured\",\"background-checked crew\",\"certified local professionals\",\"verified contractors\",\"rated 5-star in {{city}}\"]"
+    },
+    {
+      "category": "urgency",
+      "terms": "[\"before the problem gets worse\",\"same-day service available\",\"don't wait until it's an emergency\",\"fast response in {{city}}\",\"protect your home now\"]"
+    },
+    {
+      "category": "social_proof",
+      "terms": "[\"trusted by {{city}} homeowners\",\"serving {{county}} since 2015\",\"hundreds of jobs completed near {{neighborhood}}\",\"top-reviewed in {{state}}\"]"
+    },
+    {
+      "category": "cta_verb",
+      "terms": "[\"Start\",\"Run\",\"Get\",\"Grab\",\"Request\",\"Download\"]"
+    },
+    {
+      "category": "price_qualifier",
+      "terms": "[\"transparent pricing\",\"no surprise fees\",\"written estimate before work begins\",\"flat-rate options available\"]"
+    }
+  ]
+}

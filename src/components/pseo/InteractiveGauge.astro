@@ -1,9 +1,8 @@
 ---
+import type { InteractiveGaugeData } from '../../types/pseo';
+
 interface Props {
-  data: {
-    warning: string;
-    markup?: string;
-  };
+  data: InteractiveGaugeData;
 }
 
 const { data } = Astro.props;
@@ -14,7 +13,7 @@ const { data } = Astro.props;
     class="mx-auto max-w-md rounded-[2.5rem] border-2 border-slate-200 bg-white p-8 text-center shadow-xl"
   >
     <h3 class="mb-6 text-xs font-bold uppercase tracking-[0.2em] text-slate-500">
-      Local risk snapshot
+      Regional Risk Assessment
     </h3>
 
     <div class="relative mx-auto h-32 w-64 overflow-hidden">
@@ -56,7 +55,7 @@ const { data } = Astro.props;
       >
         <span class="h-2 w-2 animate-ping rounded-full bg-red-500"></span>
         <span class="text-[10px] font-black uppercase tracking-widest text-red-600"
-          >Inspect if unsure</span
+          >Local Priority Alert</span
         >
       </div>
       <p class="text-lg font-bold leading-tight text-slate-900" set:html={data.warning}></p>

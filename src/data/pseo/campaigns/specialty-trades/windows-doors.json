@@ -1,0 +1,89 @@
+{
+  "service_config": {
+    "niche": "Windows & Doors",
+    "niche_slug": "windows-doors",
+    "category": "Specialty Trades",
+    "category_slug": "specialty-trades",
+    "icon": "🪟",
+    "sub_niches": [
+      { "label": "Window Replacement", "slug": "window-replacement" },
+      { "label": "Entry Door Install", "slug": "entry-door-install" },
+      { "label": "Sliding Glass Doors", "slug": "sliding-glass-doors" },
+      { "label": "Energy Efficient Windows", "slug": "energy-efficient-windows" },
+      { "label": "Storm Windows", "slug": "storm-windows" }
+    ]
+  },
+  "spintax": {
+    "synonyms": [
+      { "category": "urgency", "terms": "[\"before your heating bill spikes\", \"emergency glass repair\", \"seasonal energy refresh\", \"immediate window quote\"]" },
+      { "category": "contractor_vibe", "terms": "[\"licensed window installers\", \"door pros near {{neighborhood}}\", \"energy-efficiency specialists\", \"impact glass teams in {{county}}\"]" }
+    ]
+  },
+  "show_tell": {
+    "weather_anchor": {
+      "headline": "{{city}} seal failure: Is your {{neighborhood}} comfort leaking?",
+      "body": "Foggy glass near {{landmark}} signs that your double-pane seals have failed. In {{state}} climates, this means your HVAC is working 20% harder to fight drafts."
+    },
+    "process_guide": {
+      "headline": "The {{city}} Window Installation Workflow",
+      "steps": [
+        { "title": "Measurement & QC", "text": "Our crews in {{county}} verify three points of contact on every frame common in {{neighborhood}} homes." },
+        { "title": "Sill & Flashing Prep", "text": "We install new pan flashings near {{landmark}} to prevent the window-frame rot frequent in {{state}}." },
+        { "title": "Insulated Seat & Seal", "text": "We use low-expansion foam and high-grade silicone to ensure your {{city}} window is airtight." },
+        { "title": "Final Trim & Finish", "text": "We install new interior casing for your {{neighborhood}} windows to provide a custom, factory look." }
+      ]
+    },
+    "seasonal_maintenance": {
+      "headline": "Lowering your {{state}} energy bills",
+      "fall_tips": "Check your weatherstripping near {{parks}} before the first freeze. Replacing worn fuzzy seals saves $50+ on {{city}} heating bills.",
+      "summer_tips": "Wash your window tracks near {{neighborhood}}. High {{state}} humidity can cause weep holes to clog, leading to sill wood rot."
+    },
+    "comparison_guide": {
+      "title": "Vinyl vs. Composite Windows for {{city}}",
+      "comparison": {
+        "option_a": "High-Grade Vinyl (Value)",
+        "option_b": "Fibrex / Composite (Performance)",
+        "details": "Vinyl is the cost-effective leader for {{city}}. Composite frames near {{neighborhood}} won't expand/contract as much, leading to better seal integrity over 20 years."
+      }
+    }
+  },
+  "encyclopedia": {
+    "brands": {
+      "Andersen":  { "tier": "Premium", "flagship": "400 Series", "value_prop": "The industry leader for wood-clad and Fibrex windows in {{county}}.", "price_point": "$$$" },
+      "Pella":     { "tier": "Innovation", "flagship": "Lifestyle", "value_prop": "Best-in-class integrated blinds and sound damping for {{city}} homes.", "price_point": "$$$" },
+      "Simonton":  { "tier": "Performance Value", "flagship": "Ascona", "value_prop": "Reliable vinyl windows for {{neighborhood}} budget renovations.", "price_point": "$$" }
+    },
+    "styles": {
+      "Double_Hung": { "human_name": "Classic Slide", "benefit": "Easy cleaning from the inside—standard for {{parks}} colonial homes.", "aoe_hint": "Look for E-Star 2026 ratings in {{state}}." },
+      "Casement":   { "human_name": "Crank-Out Window", "benefit": "Best for airflow; creates a tighter structural seal in {{city}} winds.", "aoe_hint": "Ideal for kitchens near {{landmark}}." }
+    },
+    "costs_2026": {
+      "Full_Home_Vinyl": { "per_sqft": "$800 - $1,500 / window", "notes": "Typical install cost for standard sizes in {{city}}." },
+      "Impact_Glass":    { "per_sqft": "$1,200 - $2,500 / window", "notes": "Mandatory in some coastal {{state}} zones." }
+    }
+  },
+  "sub_niche_templates": {
+    "window-replacement": {
+      "headline_templates": ["{{city}} Window Replacement: Enhance your curb appeal and energy savings", "Window costs in {{county}}: Materials vs. Install guide"],
+      "faqs": [
+        { "q": "How long does a full home install take in {{city}}?", "a": "Most residential jobs complete in 1–2 days for a crew in {{county}}." },
+        { "q": "What is the warranty for windows in {{state}}?", "a": "Most premium brands offer a 20-year glass and 10-year frame warranty in {{city}}." }
+      ],
+      "survey": {
+        "title": "Window Inquiry",
+        "subhead": "Quick questions to size the project.",
+        "steps": [
+          { "id": "window_count", "label": "Estimated window count?", "options": ["1–5 (Small)", "6–15 (Standard)", "16+ (Full Home)"] },
+          { "id": "material_pref", "label": "Material preference?", "options": ["Vinyl", "Wood-Clad", "Composite", "Not sure"] }
+        ]
+      }
+    }
+  },
+  "regional_nuance": {
+    "TX": { "focus": "Low-E Sun Protection", "top_brand": "Andersen", "tech": "SmartSun™ Glass", "logic": "Intense summer heat near {{landmark}} requires triple-pane or high-efficiency Low-E coatings for {{city}}." },
+    "NJ": { "focus": "Lead Safety & Air Sealing", "top_brand": "Pella", "tech": "Air Infiltration Rating", "logic": "Old builds near {{parks}} suffer from drafty frames; we prioritize full-frame replacement over inserts for {{county}}." }
+  },
+  "conversion": {
+    "closing_trust": "We connect {{city}} homeowners with certified window pros who provide energy audits and financing options."
+  }
+}

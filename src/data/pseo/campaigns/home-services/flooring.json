@@ -1,0 +1,89 @@
+{
+  "service_config": {
+    "niche": "Flooring",
+    "niche_slug": "flooring",
+    "category": "Home Services",
+    "category_slug": "home-services",
+    "icon": "🪵",
+    "sub_niches": [
+      { "label": "Hardwood Refinishing", "slug": "hardwood-refinishing" },
+      { "label": "Tile Installation", "slug": "tile-installation" },
+      { "label": "Vinyl Plank", "slug": "vinyl-plank" },
+      { "label": "Carpet Laying", "slug": "carpet-laying" },
+      { "label": "Epoxy Garage", "slug": "epoxy-garage" }
+    ]
+  },
+  "spintax": {
+    "synonyms": [
+      { "category": "urgency", "terms": "[\"before your holiday event\", \"emergency floor repair\", \"seasonal room refresh\", \"immediate flooring assessment\"]" },
+      { "category": "contractor_vibe", "terms": "[\"certified flooring crews\", \"hardwood pros near {{neighborhood}}\", \"tile specialists in {{county}}\", \"epoxy installation teams\"]" }
+    ]
+  },
+  "show_tell": {
+    "weather_anchor": {
+      "headline": "{{city}} humidity and your floors",
+      "body": "Seasonal humidity swings near {{landmark}} can cause hardwood in {{neighborhood}} to cup or gap. Professional acclimation in {{county}} is essential for a stable finish."
+    },
+    "process_guide": {
+      "headline": "The {{city}} Floor Installation Standard",
+      "steps": [
+        { "title": "Subfloor Demo & Prep", "text": "Our crews in {{county}} remove old carpet and leveling concrete common in {{neighborhood}} older builds." },
+        { "title": "Moisture Testing", "text": "We verify slab moisture levels near {{landmark}} to ensure LVP or hardwood glue-down won't fail." },
+        { "title": "Precision Cut & Layout", "text": "We manage the pattern and transition strips for any {{city}} floor plan—ensuring a seamless aesthetic." },
+        { "title": "Finish & Trim", "text": "We install baseboards and quarter-round for your {{neighborhood}} room to provide a custom, showroom look." }
+      ]
+    },
+    "seasonal_maintenance": {
+      "headline": "Year-Round Care for {{state}} Flooring",
+      "fall_tips": "Check your door seals near {{parks}} to prevent rain intrusion from damaging your hardwood or laminate.",
+      "summer_tips": "Monitor humidity in {{neighborhood}}. High {{state}} humidity can cause laminate to swell—keep HVAC at 50% max."
+    },
+    "comparison_guide": {
+      "title": "Solid Hardwood vs. Luxury Vinyl (LVP) in {{city}}",
+      "comparison": {
+        "option_a": "Solid Oak Hardwood (Classic)",
+        "option_b": "SPC Vinyl Plank (Waterproof)",
+        "details": "Hardwood adds the most value in {{city}} but is prone to water damage. LVP in {{neighborhood}} kitchens/baths is 100% waterproof and scratch-resistant for pets."
+      }
+    }
+  },
+  "encyclopedia": {
+    "brands": {
+      "Shaw":     { "tier": "Industry Leader", "flagship": "Floorte", "value_prop": "Best-in-class LVP durability for {{county}} households.", "price_point": "$$" },
+      "Mohawk":   { "tier": "Quality Standard", "flagship": "SolidTech", "value_prop": "Stain-resistant carpet and hard surfaces for {{city}} families.", "price_point": "$$" },
+      "Bona":     { "tier": "Hardwood Care", "flagship": "Traffic HD", "value_prop": "The standard set for commercial-grade hardwood refinishing in {{state}}.", "price_point": "$$$" }
+    },
+    "styles": {
+      "European_Oak": { "human_name": "Wide Plank Hardwood", "benefit": "Modern, elegant aesthetic for {{neighborhood}} renovations.", "aoe_hint": "Needs stable {{city}} climate control." },
+      "Large_Format": { "human_name": "Modern Tile", "benefit": "Fewer grout lines; great for {{parks}} master baths.", "aoe_hint": "Requires perfectly level subfloor in {{county}}." }
+    },
+    "costs_2026": {
+      "Hardwood_Refinsh": { "per_sqft": "$4.50 - $7.50", "notes": "Dustless sand and 3 coats of finish in {{city}}." },
+      "LVP_Installation": { "per_sqft": "$6.00 - $12.00", "notes": "Includes material and basic floor prep near {{neighborhood}}." }
+    }
+  },
+  "sub_niche_templates": {
+    "hardwood-refinishing": {
+      "headline_templates": ["{{city}} Hardwood Refinishing: Bring your floors back to life", "Hardwood sanding costs in {{county}}: Dustless vs. Traditional guide"],
+      "faqs": [
+        { "q": "How long does refinishing take in {{city}}?", "a": "Typically 3–5 days depending on the number of coats and humidity in {{state}}." },
+        { "q": "Can I stay in my home during refinishing in {{county}}?", "a": "We recommend staying off the floors for 24-48 hours after the final coat in {{city}}." }
+      ],
+      "survey": {
+        "title": "Flooring Quote Inquiry",
+        "subhead": "Quick questions to size the job.",
+        "steps": [
+          { "id": "flooring_type", "label": "Current floor material?", "options": ["Solid Hardwood", "Tile", "Carpet", "Concrete / Subfloor"] },
+          { "id": "sqft", "label": "Approximate square footage?", "options": ["Under 500", "500–1200", "1200+"] }
+        ]
+      }
+    }
+  },
+  "regional_nuance": {
+    "FL": { "focus": "Moisture & Tile Focus", "top_brand": "Shaw Floorte", "tech": "Waterproof SPC", "logic": "Slab moisture near {{landmark}} makes wood risky; we prioritize high-end tile and LVP for {{city}}." },
+    "NJ": { "focus": "Hardwood Preservation", "top_brand": "Bona", "tech": "Dustless Sanding", "logic": "Historic homes in {{neighborhood}} have original oak; we focus on sand-and-refinish to save value in {{county}}." }
+  },
+  "conversion": {
+    "closing_trust": "We connect {{city}} homeowners with bonded flooring pros who offer showroom-quality installation and full warranties."
+  }
+}

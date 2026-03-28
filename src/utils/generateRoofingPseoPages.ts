@@ -1,4 +1,4 @@
-import locationsRaw from '../data/pseo/locations.json';
+import locationsRaw from '../data/pseo/globals/locations.json';
 import regionalNuanceRaw from '../data/pseo/roofing_regional_nuance.json';
 import showTellRaw from '../data/pseo/roofing_dynamic_show_tell.json';
 import encyclopediaRaw from '../data/pseo/roofing_encyclopedia_matrix.json';

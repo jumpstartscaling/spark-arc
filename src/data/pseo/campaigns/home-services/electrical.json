@@ -1,0 +1,89 @@
+{
+  "service_config": {
+    "niche": "Electrical",
+    "niche_slug": "electrical",
+    "category": "Home Services",
+    "category_slug": "home-services",
+    "icon": "⚡",
+    "sub_niches": [
+      { "label": "Panel Upgrades", "slug": "panel-upgrades" },
+      { "label": "EV Charger Install", "slug": "ev-charger-install" },
+      { "label": "Lighting Design", "slug": "lighting-design" },
+      { "label": "Rewiring", "slug": "rewiring" },
+      { "label": "Surge Protection", "slug": "surge-protection" }
+    ]
+  },
+  "spintax": {
+    "synonyms": [
+      { "category": "urgency", "terms": "[\"before your breakers trip again\", \"emergency electrical dispatch\", \"24/7 wire assessment\", \"immediate electrical safety check\"]" },
+      { "category": "contractor_vibe", "terms": "[\"licensed master electricians\", \"certified wiremen near {{neighborhood}}\", \"electrical safety pros\", \"residential electrical crews\"]" }
+    ]
+  },
+  "show_tell": {
+    "weather_anchor": {
+      "headline": "{{city}} grid load: Is your {{neighborhood}} home safe?",
+      "body": "After heatwaves or winter spikes near {{landmark}}, older panels in {{neighborhood}} can trip under load. Check your breakers early and compare quotes from certified electricians."
+    },
+    "process_guide": {
+      "headline": "The {{city}} Electrical Upgrade Lifecycle",
+      "steps": [
+        { "title": "Load Calculation", "text": "Our crews in {{county}} audit your current appliance draw and future growth (like EV chargers) to size your panel upgrade correctly." },
+        { "title": "Code & Permit Filing", "text": "We handle the full {{state}} electrical permit process near {{landmark}} to ensure your work passes national safety inspections." },
+        { "title": "Installation & Grounds", "text": "We swap the main breaker and install new copper ground rods for maximum safety in {{city}}'s unique soil profile." },
+        { "title": "Inspection Finish", "text": "A {{county}} inspector verifies the work. We then provide a full circuit map for your {{neighborhood}} home." }
+      ]
+    },
+    "seasonal_maintenance": {
+      "headline": "Seasonal Electrical Safety for {{state}} Homes",
+      "fall_tips": "Check your exterior outlets near {{parks}} for water intrusion before the first rain. Moisture can cause GFCI failure.",
+      "summer_tips": "Inspect your AC circuit breaker near {{landmark}}. High {{state}} humidity and heat can lead to overheating at the bus bar."
+    },
+    "comparison_guide": {
+      "title": "Choosing 100A vs. 200A Upgrades in {{city}}",
+      "comparison": {
+        "option_a": "100A (Standard/Legacy)",
+        "option_b": "200A (Modern Tech-Ready)",
+        "details": "100A is often undersized for {{city}} homes with modern electronics. 200A provides the headroom for EV charging, mini-splits, and smart appliances in {{neighborhood}}."
+      }
+    }
+  },
+  "encyclopedia": {
+    "brands": {
+      "Square D": { "tier": "Premium", "flagship": "QO Series", "value_prop": "Industry gold standard for reliability and circuit-trip speed.", "price_point": "$$$" },
+      "Eaton":    { "tier": "Standard", "flagship": "BR Series", "value_prop": "Cost-effective protection for residential use in {{county}}.", "price_point": "$$" },
+      "Leviton": { "tier": "Smart Tech", "flagship": "Load Center", "value_prop": "Smart circuit monitoring via app—ideal for tech-forward {{city}} homes.", "price_point": "$$$" }
+    },
+    "styles": {
+      "Main Lug": { "human_name": "Sub-panel setup", "benefit": "Great for garage EV installs or basement renovations.", "aoe_hint": "Check code requirements for main disconnects in {{state}}." },
+      "Circuit Breaker": { "human_name": "Standard Service", "benefit": "Most common and safest standard for {{city}} homes.", "aoe_hint": "Modern AFCI/GFCI combos are now standard in {{county}}." }
+    },
+    "costs_2026": {
+      "200A_Upgrade": { "per_sqft": "$2,800 - $4,500", "notes": "Typical total cost for a full panel swap in {{city}}." },
+      "EV_Charger":   { "per_sqft": "$800 - $1,500", "notes": "Level 2 charger install near {{neighborhood}}." }
+    }
+  },
+  "sub_niche_templates": {
+    "panel-upgrades": {
+      "headline_templates": ["{{city}} Panel Upgrades: Is your home ready for 200 Amps?", "Electrical panel replacement in {{county}}: costs and code guide"],
+      "faqs": [
+        { "q": "How much is a panel upgrade in {{city}}?", "a": "Most residential 200A upgrades land between $2,800 and $4,500 in {{city}}." },
+        { "q": "Is my old Zinsco or Federal Pacific panel safe in {{state}}?", "a": "No, these are known fire risks. Consult a {{city}} electrician immediately if you see these brands." }
+      ],
+      "survey": {
+        "title": "Panel Safety Check",
+        "subhead": "Quick questions to determine your upgrade needs.",
+        "steps": [
+          { "id": "amps", "label": "Current Amperage", "options": ["60A", "100A", "200A", "Unknown"] },
+          { "id": "issue", "label": "Primary issue?", "options": ["Tripping breakers", "Burning smell", "Planning EV charger", "Kitchen remodel"] }
+        ]
+      }
+    }
+  },
+  "regional_nuance": {
+    "CA": { "focus": "AFCI Fire Safety", "top_brand": "Square D", "tech": "Arc-Fault Protection", "logic": "California code requires Arc Fault protection on most residential circuits to prevent wildfires." },
+    "NJ": { "focus": "Basement Flooding Safety", "top_brand": "Leviton", "tech": "GFCI Main Panel", "logic": "In {{city}}, basement moisture near {{parks}} means high-sensitivity GFCI grounding is a local priority." }
+  },
+  "conversion": {
+    "closing_trust": "We connect {{city}} homeowners with licensed master electricians who pull every required permit for {{county}} safety."
+  }
+}

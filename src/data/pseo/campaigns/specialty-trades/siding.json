@@ -1,0 +1,89 @@
+{
+  "service_config": {
+    "niche": "Siding",
+    "niche_slug": "siding",
+    "category": "Specialty Trades",
+    "category_slug": "specialty-trades",
+    "icon": "🏡",
+    "sub_niches": [
+      { "label": "Vinyl Siding", "slug": "vinyl-siding" },
+      { "label": "James Hardie / Board", "slug": "hardie-board" },
+      { "label": "Stone Veneer", "slug": "stone-veneer" },
+      { "label": "Siding Repair", "slug": "siding-repair" },
+      { "label": "Soffit & Fascia", "slug": "soffit-fascia" }
+    ]
+  },
+  "spintax": {
+    "synonyms": [
+      { "category": "urgency", "terms": "[\"before the next storm front\", \"emergency siding repair\", \"seasonal exterior refresh\", \"immediate siding estimate\"]" },
+      { "category": "contractor_vibe", "terms": "[\"licensed siding installers\", \"cladding pros near {{neighborhood}}\", \"James Hardie certified teams\", \"exterior envelope specialists in {{county}}\"]" }
+    ]
+  },
+  "show_tell": {
+    "weather_anchor": {
+      "headline": "{{city}} wind and your {{neighborhood}} home",
+      "body": "Loose panels near {{landmark}} are the first sign of wind damage to your siding. In {{state}} storms, we often see unfastened vinyl blow off, exposing your sheathing to rot."
+    },
+    "process_guide": {
+      "headline": "The {{city}} Siding Replacement Workflow",
+      "steps": [
+        { "title": "Old Removal & Sheathing Review", "text": "Our crews in {{county}} expose the base sheathing to check for rot frequent in {{neighborhood}} older builds." },
+        { "title": "Weather-Resist Barrier", "text": "We install Tyvek or similar wrap near {{landmark}} to ensure a moisture-sealed exterior envelope." },
+        { "title": "Courses & Flashing", "text": "We install new J-channels and kick-out flashings to meet modern {{state}} building codes." },
+        { "title": "Detailed Caulk & Finish", "text": "A full perimeter sealant application ensures your {{city}} home is airtight and maintenance-free." }
+      ]
+    },
+    "seasonal_maintenance": {
+      "headline": "Cleaning your {{state}} exterior",
+      "fall_tips": "Check your soffit vents near {{parks}} for bird nests or debris before winter hibernation. Blocked vents cause attic mold.",
+      "summer_tips": "Soft-wash your siding near {{neighborhood}} after spring pollen. High {{state}} humidity can cause algae growth on the north-facing planes."
+    },
+    "comparison_guide": {
+      "title": "Vinyl vs. James Hardie Board for {{city}}",
+      "comparison": {
+        "option_a": "High-Grade Vinyl Siding (Value)",
+        "option_b": "Fiber Cement Hardie Board (Performance)",
+        "details": "Vinyl is the affordable standard for {{city}}. Hardie Board near {{neighborhood}} is fire-rated and resists woodpecker and termite damage better in {{county}}."
+      }
+    }
+  },
+  "encyclopedia": {
+    "brands": {
+      "James_Hardie": { "tier": "Premium", "flagship": "HardiePlank", "value_prop": "The industry leader for fiber cement durability and resale value in {{county}}.", "price_point": "$$$" },
+      "CertainTeed":  { "tier": "Versatile", "flagship": "Monogram Vinyl", "value_prop": "Best-in-class vinyl thickness and color retention for {{city}} homes.", "price_point": "$$" },
+      "Alside":       { "tier": "Performance Value", "flagship": "Charter Oak", "value_prop": "Reinforced structural siding—great for {{neighborhood}} wind zones.", "price_point": "$$" }
+    },
+    "styles": {
+      "Lap":    { "human_name": "Horizontal Plank", "benefit": "Classic suburban look for {{parks}} properties.", "aoe_hint": "Check overlap specs for {{state}} wind codes." },
+      "Shake":  { "human_name": "Cedar Impressions", "benefit": "Adds texture and premium curb appeal near {{landmark}} gables.", "aoe_hint": "Ideal for architectural highlights in {{city}}." }
+    },
+    "costs_2026": {
+      "Full_Home_Vinyl":  { "per_sqft": "$8,000 - $18,000", "notes": "Typical residential install in {{city}}." },
+      "James_Hardie_Full": { "per_sqft": "$14,000 - $32,000", "notes": "Depends on square footage and trim choices near {{neighborhood}}." }
+    }
+  },
+  "sub_niche_templates": {
+    "hardie-board": {
+      "headline_templates": ["{{city}} Fiber Cement Siding: Why James Hardie matters in {{county}}", "Hardie Board costs in {{state}}: Materials vs. Install guide"],
+      "faqs": [
+        { "q": "Is James Hardie worth it in {{city}}?", "a": "Yes, it offers 50% better fire and pest resistance than vinyl in {{county}}." },
+        { "q": "How long does siding install take in {{state}}?", "a": "A typical home in {{city}} takes 5–8 days for a full replacement including trim." }
+      ],
+      "survey": {
+        "title": "Siding Inquiry",
+        "subhead": "Quick questions to size the project.",
+        "steps": [
+          { "id": "siding_count", "label": "Full home or repair?", "options": ["Full replacement", "Partial/Repair", "Planning only"] },
+          { "id": "material_pref", "label": "Material preference?", "options": ["Vinyl", "Fiber Cement", "Stone/Mixed", "Not sure"] }
+        ]
+      }
+    }
+  },
+  "regional_nuance": {
+    "CO": { "focus": "Extreme UV & Fire", "top_brand": "James Hardie", "tech": "Fire-Rated Cladding", "logic": "Intense altitude sun near {{landmark}} kills vinyl; we prioritize fire-rated Hardie for {{city}}." },
+    "NC": { "focus": "Moisture & Mold", "top_brand": "CertainTeed Vinyl", "tech": "Weather-Resist Wrap", "logic": "Humidity near {{parks}} traps moisture; we focus on proper air gaps and wrap for {{county}}." }
+  },
+  "conversion": {
+    "closing_trust": "We connect {{city}} homeowners with VSI-certified siding pros who provide full-home transformation designs."
+  }
+}

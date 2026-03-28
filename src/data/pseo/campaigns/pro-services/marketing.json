@@ -1,0 +1,89 @@
+{
+  "service_config": {
+    "niche": "Marketing",
+    "niche_slug": "marketing",
+    "category": "Professional Services",
+    "category_slug": "pro-services",
+    "icon": "📈",
+    "sub_niches": [
+      { "label": "SEO Services", "slug": "seo-services" },
+      { "label": "Google Ads / PPC", "slug": "ppc-management" },
+      { "label": "Web Design", "slug": "web-design" },
+      { "label": "Social Media Ads", "slug": "social-ads" },
+      { "label": "Content Strategy", "slug": "content-strategy" }
+    ]
+  },
+  "spintax": {
+    "synonyms": [
+      { "category": "urgency", "terms": "[\"before your competition takes the #1 spot\", \"emergency lead surge\", \"quarterly traffic refresh\", \"immediate marketing audit\"]" },
+      { "category": "contractor_vibe", "terms": "[\"growth-focused agencies\", \"SEO pros near {{neighborhood}}\", \"web design specialists\", \"Google Ads teams in {{county}}\"]" }
+    ]
+  },
+  "show_tell": {
+    "weather_anchor": {
+      "headline": "{{city}} digital landscape: Why {{neighborhood}} businesses need SEO",
+      "body": "Local search volume near {{landmark}} is peaking for home services. In {{state}}, ranking in the Map Pack is the only way to avoid 30% YOY traffic drops for {{county}} retailers."
+    },
+    "process_guide": {
+      "headline": "The {{city}} Digital Growth Lifecycle",
+      "steps": [
+        { "title": "Technical SEO Audit", "text": "Our teams in {{county}} audit your Core Web Vitals and site speed frequent in {{neighborhood}} older builds." },
+        { "title": "Keyword Alignment", "text": "We verify your local search intent near {{landmark}} to ensure you're ranking for high-intent {{state}} terms." },
+        { "title": "Conversion Lift", "text": "We build high-performance landing pages to protect your {{city}} ad spend." },
+        { "title": "Monthly Reporting", "text": "We return to your {{neighborhood}} dashboard monthly to manage ROAS and organic ranking for {{county}} leads." }
+      ]
+    },
+    "seasonal_maintenance": {
+      "headline": "Year-Round Visibility for {{state}} Brands",
+      "fall_tips": "Review your Google Business Profile near {{parks}} before the holiday rush. Updating hours and photos in {{city}} increases call volume by 20%.",
+      "summer_tips": "Check your ad performance near {{neighborhood}}. High-volume {{state}} summer events create bidding wars in {{county}}—tune your negative keywords early."
+    },
+    "comparison_guide": {
+      "title": "Organic SEO vs. Paid Ads for {{city}} Businesses",
+      "comparison": {
+        "option_a": "Search Engine Optimization (Slow / High ROI)",
+        "option_b": "Google Ads / PPC (Instant / Costly)",
+        "details": "SEO builds permanent asset value for {{city}} domains. PPC near {{neighborhood}} provides instant leads but stops at the moment you pause the {{county}} campaign budget."
+      }
+    }
+  },
+  "encyclopedia": {
+    "brands": {
+      "Semrush":   { "tier": "Analysis Standard", "flagship": "Pro Monitor",     "value_prop": "The industry leader for keyword tracking in {{county}}.", "price_point": "$$" },
+      "Wix":       { "tier": "Entry Web",      "flagship": "Business Pro",    "value_prop": "Best-in-class identification of simple {{city}} web solutions.", "price_point": "$" },
+      "Ahrefs":    { "tier": "Elite SEO",      "flagship": "Site Audit High", "value_prop": "The standard for elite backlink analysis for {{neighborhood}} brands.", "price_point": "$$$" }
+    },
+    "styles": {
+      "Growth_Agency": { "human_name": "Full-Service", "benefit": "Handles SEO, PPC, and Web Design together for {{city}} scale.", "aoe_hint": "Check state data privacy rules in {{state}}." },
+      "Creative_Studio": { "human_name": "Design-First", "benefit": "High-aesthetic branding for {{parks}} properties.", "aoe_hint": "Standard for {{city}} luxury brands." }
+    },
+    "costs_2026": {
+      "SEO_Retainer":  { "per_sqft": "$1,500 - $5,000 / mo", "notes": "Includes content and technical fixes in {{city}}." },
+      "Ad_Management":  { "per_sqft": "15% - 20% of spend", "notes": "Typical for {{neighborhood}} PPC campaigns." }
+    }
+  },
+  "sub_niche_templates": {
+    "seo-services": {
+      "headline_templates": ["{{city}} SEO Services: Dominate the local map pack in {{county}}", "Marketing costs in {{state}}: SEO vs. PPC ROI guide"],
+      "faqs": [
+        { "q": "How long does SEO take in {{city}}?", "a": "Typically 3–6 months for first-page rankings in {{state}} depending on competition." },
+        { "q": "Is a monthly retainer better than one-time SEO in {{county}}?", "a": "Google algorithms change weekly in {{city}}; a retainer ensures you stay ranked as competitors move." }
+      ],
+      "survey": {
+        "title": "Marketing Discovery",
+        "subhead": "Quick questions to determine growth needs.",
+        "steps": [
+          { "id": "current_leads", "label": "Avg monthly leads?", "options": ["Under 10", "10–50", "50+"] },
+          { "id": "main_goal", "label": "Primary goal?", "options": ["New Website", "SEO Ranking", "Google Ads", "Social Media"] }
+        ]
+      }
+    }
+  },
+  "regional_nuance": {
+    "CA": { "focus": "CCPA Privacy Compliance", "top_brand": "Semrush", "tech": "Consent Management", "logic": "California data laws near {{landmark}} are strict; we focus on privacy-aware analytics for {{city}} brands." },
+    "NJ": { "focus": "Hyper-Local Targeting", "top_brand": "Ahrefs", "tech": "Geo-Fence Ads", "logic": "Dense markets near {{parks}} require micro-targeting; we specialize in zip-code level SEO for {{county}}." }
+  },
+  "conversion": {
+    "closing_trust": "We connect {{city}} business owners with HubSpot-certified marketers who offer free competitive gap analysis."
+  }
+}

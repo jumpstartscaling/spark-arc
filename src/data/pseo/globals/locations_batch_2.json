@@ -1,0 +1,112 @@
+[
+  {
+    "city": "Austin",
+    "state": "TX",
+    "neighborhood": "Downtown / East Austin",
+    "zip": "78701",
+    "landmarks": ["Texas State Capitol", "Barton Springs Pool", "I-35 near Home Depot Mueller"],
+    "motto": "Keep Austin Weird",
+    "county": "Travis County",
+    "parks": ["Zilker Park", "Lady Bird Lake", "Mt. Bonnell"],
+    "slug": "austin-tx"
+  },
+  {
+    "city": "Jacksonville",
+    "state": "FL",
+    "neighborhood": "Downtown / San Marco",
+    "zip": "32202",
+    "landmarks": ["TIAA Bank Field", "Cummer Museum", "Beach Blvd near Home Depot Southside"],
+    "motto": "Where Florida Begins",
+    "county": "Duval County",
+    "parks": ["Riverside Park", "Memorial Park", "Fort Caroline National Memorial"],
+    "slug": "jacksonville-fl"
+  },
+  {
+    "city": "Fort Worth",
+    "state": "TX",
+    "neighborhood": "Stockyards / Downtown",
+    "zip": "76102",
+    "landmarks": ["Stockyards", "Sundance Square", "I-30 near Home Depot Westworth Village"],
+    "motto": "Where the West Begins",
+    "county": "Tarrant County",
+    "parks": ["Fort Worth Botanic Garden", "Trinity Park", "Water Gardens"],
+    "slug": "fort-worth-tx"
+  },
+  {
+    "city": "Columbus",
+    "state": "OH",
+    "neighborhood": "German Village / Short North",
+    "zip": "43215",
+    "landmarks": ["Ohio Stadium", "German Village", "Morse Rd near Home Depot Easton"],
+    "motto": "The Discovery City",
+    "county": "Franklin County",
+    "parks": ["Scioto Mile", "Goodale Park", "Franklin Park"],
+    "slug": "columbus-oh"
+  },
+  {
+    "city": "Charlotte",
+    "state": "NC",
+    "neighborhood": "Uptown / South End",
+    "zip": "28202",
+    "landmarks": ["NASCAR Hall of Fame", "Discovery Place", "Wendover Rd near Home Depot Grier Heights"],
+    "motto": "Queen City",
+    "county": "Mecklenburg County",
+    "parks": ["Freedom Park", "Romare Bearden Park", "Little Sugar Creek Greenway"],
+    "slug": "charlotte-nc"
+  },
+  {
+    "city": "Indianapolis",
+    "state": "IN",
+    "neighborhood": "Downtown / Broad Ripple",
+    "zip": "46204",
+    "landmarks": ["Indianapolis Motor Speedway", "Soldiers and Sailors Monument", "Pendleton Pike near Home Depot Lawrence"],
+    "motto": "Crossroads of America",
+    "county": "Marion County",
+    "parks": ["White River State Park", "Holliday Park", "Eagle Creek Park"],
+    "slug": "indianapolis-in"
+  },
+  {
+    "city": "San Francisco",
+    "state": "CA",
+    "neighborhood": "Mission / SoMa",
+    "zip": "94103",
+    "landmarks": ["Golden Gate Bridge", "Alcatraz", "Bayshore Blvd near Home Depot Bernal Heights"],
+    "motto": "Oro en Paz, Fierro en Guerra",
+    "county": "San Francisco County",
+    "parks": ["Golden Gate Park", "Dolores Park", "Presidio"],
+    "slug": "san-francisco-ca"
+  },
+  {
+    "city": "Seattle",
+    "state": "WA",
+    "neighborhood": "Capitol Hill / Ballard",
+    "zip": "98101",
+    "landmarks": ["Space Needle", "Pike Place Market", "Aurora Ave near Home Depot Bitter Lake"],
+    "motto": "The Emerald City",
+    "county": "King County",
+    "parks": ["Discovery Park", "Gas Works Park", "Green Lake Park"],
+    "slug": "seattle-wa"
+  },
+  {
+    "city": "Denver",
+    "state": "CO",
+    "neighborhood": "LoDo / RiNo",
+    "zip": "80202",
+    "landmarks": ["Red Rocks Amphitheatre", "Union Station", "Colorado Blvd near Home Depot Glendale"],
+    "motto": "The Mile High City",
+    "county": "Denver County",
+    "parks": ["City Park", "Cheesman Park", "Washington Park"],
+    "slug": "denver-co"
+  },
+  {
+    "city": "Oklahoma City",
+    "state": "OK",
+    "neighborhood": "Bricktown / Midtown",
+    "zip": "73102",
+    "landmarks": ["OKC National Memorial", "Myriad Botanical Gardens", "Shields Blvd near Home Depot South OKC"],
+    "motto": "Labor Omnia Vincit",
+    "county": "Oklahoma County",
+    "parks": ["Scissortail Park", "Wheeler District", "Martin Park"],
+    "slug": "oklahoma-city-ok"
+  }
+]

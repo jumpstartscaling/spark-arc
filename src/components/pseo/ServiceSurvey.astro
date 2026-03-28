@@ -30,7 +30,7 @@ const webhookProd = publicEnv.PUBLIC_N8N_WEBHOOK_URL || DEFAULT_PROD;
 const webhookTest = publicEnv.PUBLIC_N8N_WEBHOOK_TEST_URL || DEFAULT_TEST;
 ---
 
-<section class="my-20 px-4" id="roof-survey">
+<section class="my-20 px-4 scroll-mt-24" id="service-survey">
   <div
     class="mx-auto max-w-xl overflow-hidden rounded-[3rem] border-2 border-slate-100 bg-white shadow-2xl"
   >
@@ -49,7 +49,7 @@ const webhookTest = publicEnv.PUBLIC_N8N_WEBHOOK_TEST_URL || DEFAULT_TEST;
       </div>
     </div>
 
-    <form id="roofing-lead-survey" class="p-8">
+    <form id="service-lead-survey" class="p-8">
       <input type="hidden" name="city" value={city} />
       <input type="hidden" name="neighborhood" value={neighborhood} />
       <input type="hidden" name="niche_slug" value={niche} />
@@ -80,6 +80,7 @@ const webhookTest = publicEnv.PUBLIC_N8N_WEBHOOK_TEST_URL || DEFAULT_TEST;
                     type="text"
                     name={step.id}
                     placeholder={step.placeholder}
+                    required
                     class="survey-input w-full rounded-2xl border-2 border-slate-100 px-6 py-4 text-lg font-medium focus:border-blue-500 focus:outline-none"
                   />
                   <button
@@ -96,7 +97,7 @@ const webhookTest = publicEnv.PUBLIC_N8N_WEBHOOK_TEST_URL || DEFAULT_TEST;
 
         <div class="survey-step hidden" data-step={data.steps.length}>
           <label class="mb-6 block text-xl font-bold text-slate-800">
-            Where should we send your {city} documentation kit?
+            Where should we send your {city} {niche} guide?
           </label>
           <div class="space-y-3">
             <input
@@ -124,7 +125,7 @@ const webhookTest = publicEnv.PUBLIC_N8N_WEBHOOK_TEST_URL || DEFAULT_TEST;
               type="submit"
               class="mt-4 w-full rounded-2xl bg-blue-600 py-5 font-black uppercase tracking-[0.2em] text-white shadow-lg shadow-blue-200 transition hover:bg-blue-700"
             >
-              Finish diagnosis
+              Finish Assessment
             </button>
           </div>
         </div>
@@ -133,7 +134,7 @@ const webhookTest = publicEnv.PUBLIC_N8N_WEBHOOK_TEST_URL || DEFAULT_TEST;
   </div>
 </section>
 
-<script define:vars={{ webhookProd, webhookTest }}>
+<script define:vars={{ webhookProd, webhookTest, niche }}>
   function collectTrackingData() {
     const params = new URLSearchParams(window.location.search);
     return {
@@ -154,82 +155,104 @@ const webhookTest = publicEnv.PUBLIC_N8N_WEBHOOK_TEST_URL || DEFAULT_TEST;
     };
   }
 
-  const form = document.getElementById('roofing-lead-survey');
+  const form = document.getElementById('service-lead-survey');
   const progress = document.getElementById('survey-progress');
   const trackingInput = document.getElementById('tracking_data');
+  
   if (!form || !progress || !trackingInput || !(form instanceof HTMLFormElement)) {
-    console.warn('Roofing survey: missing form elements');
+    console.warn('Service survey: missing form elements');
   } else {
-  const steps = () => Array.from(form.querySelectorAll('.survey-step'));
-  let currentStep = 0;
+    const steps = () => Array.from(form.querySelectorAll('.survey-step'));
+    let currentStep = 0;
 
-  trackingInput.value = JSON.stringify(collectTrackingData());
+    trackingInput.value = JSON.stringify(collectTrackingData());
 
-  function updateStep(index) {
-    const all = steps();
-    const total = Math.max(all.length, 1);
-    all.forEach((s) => s.classList.add('hidden'));
-    const target = all[index];
-    if (target) target.classList.remove('hidden');
-    progress.style.width = `${((index + 1) / total) * 100}%`;
-  }
-
-  form.querySelectorAll('.survey-option-btn').forEach((btn) => {
-    btn.addEventListener('click', () => {
-      const fieldId = btn.getAttribute('data-id');
-      const value = btn.getAttribute('data-value');
-      if (!fieldId || value == null) return;
-      let input = form.querySelector(`input[name="${fieldId}"]`);
-      if (!input) {
-        input = document.createElement('input');
-        input.type = 'hidden';
-        input.name = fieldId;
-        form.appendChild(input);
+    function updateStep(index) {
+      const all = steps();
+      const total = Math.max(all.length, 1);
+      all.forEach((s) => s.classList.add('hidden'));
+      const target = all[index];
+      if (target) target.classList.remove('hidden');
+      progress.style.width = `${((index + 1) / total) * 100}%`;
+      
+      // Analytics hook
+      if (window.track) {
+        window.track('survey_step_view', {
+          niche,
+          step: index,
+          total_steps: total
+        });
       }
-      if (input instanceof HTMLInputElement) input.value = value;
-      currentStep++;
-      updateStep(currentStep);
-    });
-  });
-
-  form.querySelectorAll('.next-step-btn').forEach((btn) => {
-    btn.addEventListener('click', () => {
-      currentStep++;
-      updateStep(currentStep);
-    });
-  });
-
-  form.addEventListener('submit', async (e) => {
-    e.preventDefault();
-    const fd = new FormData(form);
-    const payload = Object.fromEntries(fd.entries());
-    try {
-      payload.tracking_data = JSON.parse(String(payload.tracking_data || '{}'));
-    } catch {
-      payload.tracking_data = {};
     }
 
-    const urls = [webhookTest, webhookProd].filter(Boolean);
+    form.querySelectorAll('.survey-option-btn').forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const fieldId = btn.getAttribute('data-id');
+        const value = btn.getAttribute('data-value');
+        if (!fieldId || value == null) return;
+        let input = form.querySelector(`input[name="${fieldId}"]`);
+        if (!input) {
+          input = document.createElement('input');
+          input.type = 'hidden';
+          input.name = fieldId;
+          form.appendChild(input);
+        }
+        if (input instanceof HTMLInputElement) input.value = value;
+        currentStep++;
+        updateStep(currentStep);
+      });
+    });
 
-    try {
-      await Promise.allSettled(
-        urls.map((url) =>
-          fetch(url, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(payload),
-          })
-        )
-      );
-      const cityVal = encodeURIComponent(String(payload.city || ''));
-      const hoodVal = encodeURIComponent(String(payload.neighborhood || ''));
-      window.location.href = `/thank-you?city=${cityVal}&neighborhood=${hoodVal}`;
-    } catch (err) {
-      console.error(err);
-      window.location.href = '/thank-you';
-    }
-  });
+    form.querySelectorAll('.next-step-btn').forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const currentInput = form.querySelector(`.survey-step[data-step="${currentStep}"] input`);
+        if (currentInput instanceof HTMLInputElement && !currentInput.checkValidity()) {
+          currentInput.reportValidity();
+          return;
+        }
+        currentStep++;
+        updateStep(currentStep);
+      });
+    });
 
-  updateStep(0);
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const fd = new FormData(form);
+      const payload = Object.fromEntries(fd.entries());
+      try {
+        payload.tracking_data = JSON.parse(String(payload.tracking_data || '{}'));
+      } catch {
+        payload.tracking_data = {};
+      }
+
+      const urls = [webhookTest, webhookProd].filter(Boolean);
+
+      try {
+        // Track final submission
+        if (window.track) window.track('lead_submission_start', { niche });
+
+        await Promise.allSettled(
+          urls.map((url) =>
+            fetch(url, {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify(payload),
+            })
+          )
+        );
+        
+        const cityVal = encodeURIComponent(String(payload.city || ''));
+        const hoodVal = encodeURIComponent(String(payload.neighborhood || ''));
+        
+        if (window.track) window.track('lead_submission_success', { niche });
+        
+        window.location.href = `/thank-you?city=${cityVal}&neighborhood=${hoodVal}&niche=${niche}`;
+      } catch (err) {
+        console.error(err);
+        window.location.href = '/thank-you';
+      }
+    });
+
+    updateStep(0);
   }
 </script>

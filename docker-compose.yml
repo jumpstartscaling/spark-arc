@@ -1,0 +1,9 @@
+services:
+  ion-arc-online:
+    build: .
+    ports:
+      - "8080:80"
+    restart: unless-stopped
+    environment:
+      - NODE_ENV=production
+      - PUBLIC_SITE_URL=http://localhost:8080

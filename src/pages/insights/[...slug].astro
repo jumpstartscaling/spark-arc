@@ -1,15 +1,22 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { pseoContent, type PseoEntry } from '../../utils/pseo';
-import RegionalBrandShowcase from '../../components/roofing/RegionalBrandShowcase.astro';
-import MaterialShowdown from '../../components/roofing/MaterialShowdown.astro';
-import InteractiveGauge from '../../components/roofing/InteractiveGauge.astro';
-import StormRadar from '../../components/roofing/StormRadar.astro';
-import RoofCrossSection from '../../components/roofing/RoofCrossSection.astro';
-import EncyclopediaSection from '../../components/roofing/EncyclopediaSection.astro';
-import RoofingSurvey from '../../components/roofing/RoofingSurvey.astro';
+import RegionalBrandShowcase from '../../components/pseo/RegionalBrandShowcase.astro';
+import MaterialShowdown from '../../components/pseo/MaterialShowdown.astro';
+import InteractiveGauge from '../../components/pseo/InteractiveGauge.astro';
+import ServiceTracker from '../../components/pseo/ServiceTracker.astro';
+import EncyclopediaSection from '../../components/pseo/EncyclopediaSection.astro';
+import ServiceSurvey from '../../components/pseo/ServiceSurvey.astro';
+import ProcessGuide from '../../components/pseo/ProcessGuide.astro';
+import SeasonalTips from '../../components/pseo/SeasonalTips.astro';
+import ComparisonGuide from '../../components/pseo/ComparisonGuide.astro';
+import MarketAnalytics from '../../components/pseo/MarketAnalytics.astro';
+import ComplianceChecklist from '../../components/pseo/ComplianceChecklist.astro';
+import SiloLinks from '../../components/pseo/SiloLinks.astro';
+import LocalMap from '../../components/pseo/LocalMap.astro';
 
 export function getStaticPaths() {
+  // slug format: "[loc-slug]/[niche]/[sub-niche]"
   return pseoContent.map((entry) => ({
     params: { slug: entry.slug.replace(/^insights\//, '') },
     props: { entry },
@@ -41,11 +48,12 @@ interface SurveyStep {
   placeholder?: string;
 }
 
-interface RoofingSurveyBlockData {
+interface ServiceSurveyBlockData {
   title: string;
   subhead: string;
   steps: SurveyStep[];
   niche: string;
+  sub_niche: string;
 }
 
 const { entry } = Astro.props;
@@ -74,10 +82,13 @@ try {
 
 <BaseLayout
   title={entry.title}
-  description={entry.excerpt ?? `${entry.city} roofing guide.`}
+  description={entry.excerpt ?? `${entry.city} ${entry.niche} guide.`}
   schemaJsonLd={entry.schema}
+  niche={entry.niche}
+  city={entry.city}
+  state={entry.state}
 >
-  <article class="pseo-roofing-page">
+  <article class="pseo-service-page" data-niche={entry.niche} data-sub-niche={entry.subNiche}>
     {
       blocks.map((block) => {
         const { block_type, data } = block;
@@ -109,7 +120,7 @@ try {
                 )}
                 {d.cta_label && (
                   <a
-                    href={d.cta_href || '#roof-survey'}
+                    href={d.cta_href || '#service-survey'}
                     class="inline-flex items-center justify-center rounded-xl bg-blue-600 px-8 py-4 text-sm font-bold uppercase tracking-wider text-white shadow-lg shadow-blue-200 transition hover:bg-blue-700"
                     set:html={renderMarkdown(d.cta_label)}
                   />
@@ -119,8 +130,13 @@ try {
           );
         }
 
-        if (block_type === 'regional_brand_showcase') {
+        if (block_type === 'regional_brand_showcase' || block_type === 'regional_snapshot') {
           return <RegionalBrandShowcase data={data as any} />;
+        }
+
+        if (block_type === 'brand_showcase') {
+          // Generic brand showcase — reuses the same component, data shape is compatible
+          return <EncyclopediaSection data={{ brands: (data as any).brands, styles: {}, costs: {}, aoe_intro: '' }} />;
         }
 
         if (block_type === 'interactive_gauge') {
@@ -128,7 +144,27 @@ try {
         }
 
         if (block_type === 'weather_alert') {
-          return <StormRadar data={data as any} />;
+          return <ServiceTracker data={data as any} />;
+        }
+
+        if (block_type === 'process_guide') {
+          return <ProcessGuide data={data as any} />;
+        }
+
+        if (block_type === 'seasonal_tips') {
+          return <SeasonalTips data={data as any} city={entry.city} />;
+        }
+
+        if (block_type === 'comparison_guide') {
+          return <ComparisonGuide data={data as any} />;
+        }
+
+        if (block_type === 'market_analytics') {
+          return <MarketAnalytics data={data as any} city={entry.city} />;
+        }
+
+        if (block_type === 'compliance_checklist') {
+          return <ComplianceChecklist data={data as any} />;
         }
 
         if (block_type === 'roof_cross_section') {
@@ -140,7 +176,7 @@ try {
         }
 
         if (block_type === 'encyclopedia') {
-          return <EncyclopediaSection data={data as any} />;
+          return <EncyclopediaSection data={data as any} niche={entry.niche} />;
         }
 
         if (block_type === 'local_trust') {
@@ -218,7 +254,7 @@ try {
                   ))}
                 </ul>
                 <a
-                  href="#roof-survey"
+                  href="#service-survey"
                   class="mt-10 inline-flex rounded-xl bg-blue-600 px-8 py-4 text-sm font-bold uppercase tracking-wider text-white shadow-md hover:bg-blue-700"
                 >
                   {d.button}
@@ -239,10 +275,10 @@ try {
           );
         }
 
-        if (block_type === 'roofing_survey') {
-          const d = data as RoofingSurveyBlockData;
+        if (block_type === 'roofing_survey' || block_type === 'service_survey') {
+          const d = data as ServiceSurveyBlockData;
           return (
-            <RoofingSurvey
+            <ServiceSurvey
               data={{ title: d.title, subhead: d.subhead, steps: d.steps }}
               city={entry.city}
               neighborhood={entry.neighborhood}
@@ -254,5 +290,8 @@ try {
         return null;
       })
     }
+    
+    <LocalMap city={entry.city} state={entry.state} neighborhood={entry.neighborhood} />
+    <SiloLinks city={entry.city} currentNiche={entry.niche} />
   </article>
 </BaseLayout>

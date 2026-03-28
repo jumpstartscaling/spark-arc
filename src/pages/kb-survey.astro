@@ -1,0 +1,303 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { pseoContent } from '../utils/pseo';
+import locationsData from '../data/pseo/globals/locations.json';
+
+const niches = [...new Set(pseoContent.map(e => e.niche))].sort();
+const locations = (locationsData as any[]).sort((a, b) => a.city.localeCompare(b.city));
+
+// Pre-calculate sub-niches per niche for stage 2
+const subNicheMap: Record<string, string[]> = {};
+for (const entry of pseoContent) {
+  if (!subNicheMap[entry.niche]) subNicheMap[entry.niche] = [];
+  if (!subNicheMap[entry.niche].includes(entry.subNiche)) {
+    subNicheMap[entry.niche].push(entry.subNiche);
+  }
+}
+---
+
+<BaseLayout 
+  title="Find Your Local Guide | Ion Arc Online"
+  description="Take our 30-second survey to find the most relevant home service guide for your specific city and situation."
+>
+  <div class="relative min-h-[80vh] flex items-center justify-center p-4">
+    <div class="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_center,theme(colors.blue.50),transparent)] opacity-40"></div>
+    
+    <div class="w-full max-w-2xl bg-white rounded-[2.5rem] border border-slate-200 shadow-2xl p-8 md:p-12 overflow-hidden relative">
+      <!-- Progress Bar -->
+      <div class="absolute top-0 left-0 w-full h-1.5 bg-slate-100">
+        <div id="survey-progress" class="h-full bg-blue-600 transition-all duration-500 w-[33%]"></div>
+      </div>
+
+      <form id="kb-survey-form" class="space-y-10">
+        <!-- Step 1: Human-Centric Problem Discovery -->
+        <div id="step-1" class="survey-step">
+          <div class="text-center mb-12">
+            <span class="inline-block px-4 py-1.5 rounded-full bg-blue-50 text-blue-600 text-[10px] font-black uppercase tracking-widest mb-4">Discovery Phase</span>
+            <h1 class="text-3xl font-black text-slate-900 md:text-4xl leading-tight">Finding you the <span class="text-blue-600">right intelligence</span>.</h1>
+            <p class="mt-4 text-lg text-slate-500 max-w-lg mx-auto">
+              Choose the category that best matches your current situation. We'll surface the exact metrics you need.
+            </p>
+          </div>
+          
+          <div class="grid gap-4 sm:grid-cols-2">
+            {[
+              { 
+                id: 'home-systems', 
+                label: 'Critical Home Systems', 
+                desc: 'Roofing, HVAC, Plumbing, & Electrical',
+                icon: '🏠',
+                niches: ['roofing', 'plumbing', 'hvac', 'electrical', 'gutters', 'solar']
+              },
+              { 
+                id: 'surface-exterior', 
+                label: 'Surface & Exterior', 
+                desc: 'Painting, Siding, Windows, & Flooring',
+                icon: '🎨',
+                niches: ['painting', 'flooring', 'windows-doors', 'siding', 'fencing']
+              },
+              { 
+                id: 'pro-business', 
+                label: 'Professional & Business', 
+                desc: 'Legal, Accounting, & Marketing',
+                icon: '💼',
+                niches: ['business-law', 'accounting', 'marketing', 'legal-pi']
+              },
+              { 
+                id: 'maintenance-outdoor', 
+                label: 'Maintenance & Outdoor', 
+                desc: 'Landscaping, Cleaning, & Restoration',
+                icon: '🌳',
+                niches: ['cleaning', 'landscaping', 'pest-control', 'restoration', 'pool-service', 'remodeling', 'kitchen-bath']
+              }
+            ].map(cat => (
+              <div class="category-card group relative cursor-pointer" data-category={cat.id} data-niches={JSON.stringify(cat.niches)}>
+                <div class="flex flex-col h-full rounded-3xl border-2 border-slate-100 bg-white p-7 transition-all hover:border-blue-600 hover:shadow-2xl hover:shadow-blue-50">
+                  <span class="text-4xl mb-4 transition-transform group-hover:scale-110 group-hover:rotate-6 inline-block">{cat.icon}</span>
+                  <h3 class="text-lg font-black text-slate-900">{cat.label}</h3>
+                  <p class="mt-2 text-xs font-medium text-slate-400 leading-relaxed">{cat.desc}</p>
+                  
+                  <div class="mt-6 flex items-center text-[10px] font-black uppercase tracking-widest text-blue-600 opacity-0 group-hover:opacity-100 transition-opacity">
+                    Select Category →
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <!-- Hidden input to store chosen category niches -->
+          <input type="hidden" name="category_niches" id="category-niches-input" />
+          
+          <!-- Sub-step: Niche Selection (appears after category pick) -->
+          <div id="niche-selection-substep" class="mt-12 hidden animate-in fade-in slide-in-from-bottom-4 duration-500">
+            <p class="text-[10px] font-black uppercase tracking-widest text-slate-400 mb-6 text-center">Which specific service?</p>
+            <div id="niche-items-container" class="grid grid-cols-2 gap-3 sm:grid-cols-3">
+               <!-- Dynamic niches injected here -->
+            </div>
+          </div>
+        </div>
+
+        <!-- Step 2: Sub-Niche (Dynamic) -->
+        <div id="step-2" class="survey-step hidden">
+          <div class="text-center mb-10">
+            <span class="inline-block px-4 py-1.5 rounded-full bg-blue-50 text-blue-600 text-[10px] font-black uppercase tracking-widest mb-4">Step 02/03</span>
+            <h2 class="text-3xl font-black text-slate-900">What's your current situation?</h2>
+            <p class="mt-3 text-slate-500">Choosing the right focus helps us provide the correct localized data.</p>
+          </div>
+          
+          <div id="subniche-container" class="grid gap-3 sm:grid-cols-2">
+            <!-- Dynamic content injected here -->
+          </div>
+        </div>
+
+        <!-- Step 3: Location -->
+        <div id="step-3" class="survey-step hidden">
+          <div class="text-center mb-10">
+            <span class="inline-block px-4 py-1.5 rounded-full bg-blue-50 text-blue-600 text-[10px] font-black uppercase tracking-widest mb-4">Step 03/03</span>
+            <h2 class="text-3xl font-black text-slate-900">Where are you located?</h2>
+            <p class="mt-3 text-slate-500">We analyze data across {locations.length} major US markets.</p>
+          </div>
+          
+          <div class="space-y-4">
+            <div class="relative">
+              <input 
+                type="text" 
+                id="location-search" 
+                placeholder="Search your city..." 
+                class="w-full rounded-2xl border-2 border-slate-100 bg-white p-4 text-lg font-bold placeholder-slate-300 focus:border-blue-600 focus:outline-none"
+              />
+              <div id="location-results" class="absolute z-10 mt-2 max-h-60 w-full overflow-y-auto rounded-2xl border border-slate-200 bg-white shadow-2xl hidden">
+                {locations.slice(0, 100).map(loc => (
+                  <div 
+                    class="location-option cursor-pointer p-4 text-sm font-bold text-slate-700 hover:bg-blue-50 hover:text-blue-600"
+                    data-slug={loc.slug}
+                    data-city={loc.city}
+                    data-state={loc.state}
+                  >
+                    {loc.city}, {loc.state}
+                  </div>
+                ))}
+              </div>
+            </div>
+            <input type="hidden" name="location" id="location-slug" required />
+            <div id="selected-location" class="hidden rounded-xl bg-blue-600 p-4 text-white font-bold flex justify-between items-center">
+               <span id="selected-text"></span>
+               <button type="button" id="clear-location" class="text-xs uppercase tracking-widest bg-white/20 px-2 py-1 rounded-md">Change</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Navigation Buttons -->
+        <div class="flex items-center justify-between pt-6">
+          <button type="button" id="prev-btn" class="hidden text-sm font-bold text-slate-400 hover:text-slate-600">
+            ← Back
+          </button>
+          <div class="flex-1"></div>
+          <button type="button" id="next-btn" class="rounded-xl bg-slate-900 px-10 py-4 text-sm font-black uppercase tracking-widest text-white shadow-xl shadow-slate-200 transition hover:bg-blue-600 disabled:opacity-30" disabled>
+            Continue
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script is:inline define:vars={{ subNicheMap }}>
+    let currentStep = 1;
+    const form = document.getElementById('kb-survey-form');
+    const steps = [document.getElementById('step-1'), document.getElementById('step-2'), document.getElementById('step-3')];
+    const nextBtn = document.getElementById('next-btn');
+    const prevBtn = document.getElementById('prev-btn');
+    const progressBar = document.getElementById('survey-progress');
+    const subnicheContainer = document.getElementById('subniche-container');
+    const locationInput = document.getElementById('location-search');
+    const locationResults = document.getElementById('location-results');
+    const locationHiddenInput = document.getElementById('location-slug');
+
+    function updateUI() {
+      steps.forEach((s, i) => {
+        if (i + 1 === currentStep) s.classList.remove('hidden');
+        else s.classList.add('hidden');
+      });
+
+      progressBar.style.width = `${(currentStep / 3) * 100}%`;
+      prevBtn.style.display = currentStep === 1 ? 'none' : 'block';
+      nextBtn.innerText = currentStep === 3 ? 'Get My Guide →' : 'Continue';
+      
+      validateStep();
+    }
+
+    function validateStep() {
+      let valid = false;
+      if (currentStep === 1) {
+        valid = !!form.elements['niche']?.value;
+      } else if (currentStep === 2) {
+        valid = !!form.elements['subniche']?.value;
+      } else if (currentStep === 3) {
+        valid = !!locationHiddenInput.value;
+      }
+      nextBtn.disabled = !valid;
+    }
+
+    // Category Card Selection logic
+    document.querySelectorAll('.category-card').forEach(card => {
+      card.addEventListener('click', () => {
+        // Highlight active card
+        document.querySelectorAll('.category-card').forEach(c => c.querySelector('div').classList.remove('border-blue-600', 'bg-blue-50', 'shadow-2xl'));
+        card.querySelector('div').classList.add('border-blue-600', 'bg-blue-50', 'shadow-2xl');
+
+        const niches = JSON.parse(card.getAttribute('data-niches') || '[]');
+        const container = document.getElementById('niche-items-container');
+        const substep = document.getElementById('niche-selection-substep');
+
+        container.innerHTML = niches.map(n => `
+          <label class="group relative cursor-pointer">
+            <input type="radio" name="niche" value="${n}" class="peer sr-only" required />
+            <div class="flex flex-col items-center justify-center rounded-2xl border-2 border-slate-100 bg-white p-4 transition-all group-hover:bg-slate-50 peer-checked:border-blue-600 peer-checked:bg-blue-50">
+              <span class="text-[10px] font-black uppercase tracking-widest text-slate-600 text-center peer-checked:text-blue-700">${n.replace(/-/g, ' ')}</span>
+            </div>
+          </label>
+        `).join('');
+
+        substep.classList.remove('hidden');
+        substep.scrollIntoView({ behavior: 'smooth', block: 'end' });
+        validateStep();
+      });
+    });
+
+    form.addEventListener('change', (e) => {
+      if (e.target.name === 'niche') {
+        const niche = e.target.value;
+        if (niche) {
+          const subniches = subNicheMap[niche] || [];
+          subnicheContainer.innerHTML = subniches.map(sn => `
+            <label class="group relative cursor-pointer">
+              <input type="radio" name="subniche" value="${sn}" class="peer sr-only" required />
+              <div class="flex items-center rounded-2xl border-2 border-slate-100 bg-white p-5 transition-all group-hover:bg-slate-50 peer-checked:border-blue-600 peer-checked:bg-blue-50 peer-checked:shadow-lg">
+                <div class="flex h-6 w-6 shrink-0 items-center justify-center rounded-full border border-slate-200 bg-white text-[10px] font-bold peer-checked:border-blue-600 peer-checked:bg-blue-600 peer-checked:text-white mr-3">
+                  ${subniches.indexOf(sn) + 1}
+                </div>
+                <span class="text-xs font-black uppercase tracking-widest text-slate-600 peer-checked:text-blue-700">${sn.replace(/-/g, ' ')}</span>
+              </div>
+            </label>
+          `).join('');
+        }
+      }
+      validateStep();
+    });
+
+    nextBtn.addEventListener('click', () => {
+      if (currentStep < 3) {
+        currentStep++;
+        updateUI();
+      } else {
+        // Final Redirect
+        const niche = form.elements['niche'].value;
+        const subniche = form.elements['subniche'].value;
+        const location = locationHiddenInput.value;
+        window.location.href = `/insights/${location}/${niche}/${subniche}`;
+      }
+    });
+
+    prevBtn.addEventListener('click', () => {
+      if (currentStep > 1) {
+        currentStep--;
+        updateUI();
+      }
+    });
+
+    // Location Auto-suggest
+    locationInput?.addEventListener('focus', () => locationResults?.classList.remove('hidden'));
+    locationInput?.addEventListener('input', (e) => {
+       const term = e.target.value.toLowerCase();
+       const options = document.querySelectorAll('.location-option');
+       options.forEach(opt => {
+         const text = opt.innerText.toLowerCase();
+         opt.style.display = text.includes(term) ? 'block' : 'none';
+       });
+    });
+
+    document.querySelectorAll('.location-option').forEach(opt => {
+      opt.addEventListener('click', () => {
+        const city = opt.getAttribute('data-city');
+        const state = opt.getAttribute('data-state');
+        const slug = opt.getAttribute('data-slug');
+        
+        locationHiddenInput.value = slug;
+        document.getElementById('selected-text').innerText = `${city}, ${state}`;
+        document.getElementById('selected-location').classList.remove('hidden');
+        locationInput.parentElement.classList.add('hidden');
+        locationResults.classList.add('hidden');
+        validateStep();
+      });
+    });
+
+    document.getElementById('clear-location')?.addEventListener('click', () => {
+      locationHiddenInput.value = '';
+      document.getElementById('selected-location').classList.add('hidden');
+      locationInput.parentElement.classList.remove('hidden');
+      validateStep();
+    });
+
+    updateUI();
+  </script>
+</BaseLayout>

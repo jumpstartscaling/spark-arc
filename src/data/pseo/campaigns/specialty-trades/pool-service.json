@@ -1,0 +1,89 @@
+{
+  "service_config": {
+    "niche": "Pool Service",
+    "niche_slug": "pool-service",
+    "category": "Specialty Trades",
+    "category_slug": "specialty-trades",
+    "icon": "🏊",
+    "sub_niches": [
+      { "label": "Weekly Maintenance", "slug": "weekly-maintenance" },
+      { "label": "Pool Opening", "slug": "pool-opening" },
+      { "label": "Liner Replacement", "slug": "liner-replacement" },
+      { "label": "Pump & Filter Repair", "slug": "pump-repair" },
+      { "label": "Salt-Water Conversion", "slug": "salt-water-conversion" }
+    ]
+  },
+  "spintax": {
+    "synonyms": [
+      { "category": "urgency", "terms": "[\"before your holiday pool party\", \"emergency pump repair\", \"seasonal opening refresh\", \"immediate chemical assessment\"]" },
+      { "category": "contractor_vibe", "terms": "[\"certified pool technicians\", \"maintenance pros near {{neighborhood}}\", \"pool equipment specialists\", \"water chemistry teams in {{county}}\"]" }
+    ]
+  },
+  "show_tell": {
+    "weather_anchor": {
+      "headline": "{{city}} pool chemistry: Heat waves and algae",
+      "body": "Intense sun near {{landmark}} can burn through 5ppm of chlorine in just 3 hours. In {{state}} summers, we prioritize variable-speed pumps and UV sanitation for unstable {{neighborhood}} water."
+    },
+    "process_guide": {
+      "headline": "The {{city}} Professional Pool Lifecycle",
+      "steps": [
+        { "title": "Chemical Balance Sweep", "text": "Our crews in {{county}} verify LSI (Langelier Saturation Index) to ensure your {{neighborhood}} plaster or vinyl isn't etching." },
+        { "title": "Baskets & Debris", "text": "We clear skimmers and pump baskets laden with leaves near {{parks}} common in {{city}} properties." },
+        { "title": "Equipment Diagnostic", "text": "We check filter pressure and seal integrity near {{landmark}} to prevent the prime-loss frequent in {{state}}." },
+        { "title": "Safety & Net Finish", "text": "A full surface skim and gate-latch check ensures your {{city}} pool is ready for safe family switch-on." }
+      ]
+    },
+    "seasonal_maintenance": {
+      "headline": "Year-round enjoyment in {{state}}",
+      "fall_tips": "Winterize your heater and blow out the lines near {{parks}} before the first freeze. Cracked manifolds in {{city}} cost $1,200+.",
+      "summer_tips": "Increase pump run-time by 2-3 hours near {{neighborhood}} during July/August. High {{state}} humidity requires more turnover to stay clear."
+    },
+    "comparison_guide": {
+      "title": "Traditional Chlorine vs. Salt-Water Systems for {{city}}",
+      "comparison": {
+        "option_a": "Liquid / Tablet Chlorine (Standard)",
+        "option_b": "Salt Chlorine Generator (Premium / Soft)",
+        "details": "Chlorine is cheaper upfront for {{city}}. Salt systems near {{neighborhood}} provide softer water and lower long-term chemical costs in {{county}} without the red-eye irritation."
+      }
+    }
+  },
+  "encyclopedia": {
+    "brands": {
+      "Hayward":  { "tier": "Industry Leader", "flagship": "TriStar VS", "value_prop": "The gold standard for variable-speed energy efficiency in {{county}}.", "price_point": "$$$" },
+      "Pentair":  { "tier": "Innovation High", "flagship": "IntelliFlo", "value_prop": "Smart automation and whisper-quiet operation for {{city}} residential use.", "price_point": "$$$" },
+      "Polaris":  { "tier": "Cleaner Standard", "flagship": "Alpha iQ+", "value_prop": "Best-in-class robotic cleaning for debris-heavy {{neighborhood}} pools.", "price_point": "$$" }
+    },
+    "styles": {
+      "Inground": { "human_name": "Plaster / Concrete", "benefit": "Endless customization; highest home resale value for {{parks}} estates.", "aoe_hint": "Check state fencing rules in {{state}}." },
+      "Vinyl_Liner": { "human_name": "Modular Floor", "benefit": "Lower upfront cost and softer feel for {{city}} families.", "aoe_hint": "Budget for liner replacement every 10 years in {{county}}." }
+    },
+    "costs_2026": {
+      "Monthly_Service": { "per_sqft": "$150 - $350 / mo", "notes": "Typical weekly plan including chemicals in {{city}}." },
+      "Salt_Conversion":  { "per_sqft": "$1,800 - $3,500", "notes": "Includes cell, controller, and salt bags near {{neighborhood}}." }
+    }
+  },
+  "sub_niche_templates": {
+    "weekly-maintenance": {
+      "headline_templates": ["{{city}} Pool Service: Weekly maintenance you can trust", "Pool maintenance costs in {{county}}: Basic vs. Full-Service guide"],
+      "faqs": [
+        { "q": "How often should I test my pool in {{city}}?", "a": "At least 2–3 times a week during {{state}} summers, or once weekly during winter in {{county}}." },
+        { "q": "Is salt water better for my skin in {{state}}?", "a": "Yes, salt generators maintain a constant, lower level of chlorine which is much softer on eyes and hair in {{city}}." }
+      ],
+      "survey": {
+        "title": "Pool Inquiry",
+        "subhead": "Quick questions to size the project.",
+        "steps": [
+          { "id": "pool_type_input", "label": "Pool type?", "options": ["Inground Plaster", "Vinyl Liner", "Above Ground"] },
+          { "id": "service_type", "label": "Service needed?", "options": ["Weekly Maint", "One-time Cleaning", "Repair / Parts", "New Liner"] }
+        ]
+      }
+    }
+  },
+  "regional_nuance": {
+    "FL": { "focus": "Algae Control & Salt-Air", "top_brand": "Pentair IntelliFlo", "tech": "Salt Generator Pool", "logic": "Heat near {{parks}} makes algae 3x faster; we prioritize 24/7 salt generation for {{city}}." },
+    "NJ": { "focus": "Opening & Closing Purity", "top_brand": "Hayward VS", "tech": "Safety Cover Install", "logic": "Freeze-thaw cycles near {{landmark}} damage tiles; we focus on mesh safety covers for {{county}} winterizing." }
+  },
+  "conversion": {
+    "closing_trust": "We connect {{city}} homeowners with CPO-certified pool techs who handle your chemicals and equipment with precision."
+  }
+}

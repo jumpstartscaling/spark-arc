@@ -1,0 +1,89 @@
+{
+  "service_config": {
+    "niche": "Business Law",
+    "niche_slug": "business-law",
+    "category": "Professional Services",
+    "category_slug": "pro-services",
+    "icon": "🏢",
+    "sub_niches": [
+      { "label": "Entity Formation", "slug": "entity-formation" },
+      { "label": "Contract Review", "slug": "contract-review" },
+      { "label": "M&A Advisory", "slug": "mergers-acquisitions" },
+      { "label": "IP & Trademark", "slug": "ip-trademark" },
+      { "label": "Employment Law", "slug": "employment-law" }
+    ]
+  },
+  "spintax": {
+    "synonyms": [
+      { "category": "urgency", "terms": "[\"before your deal closes\", \"emergency contract assessment\", \"quarterly compliance check\", \"immediate legal audit\"]" },
+      { "category": "contractor_vibe", "terms": "[\"certified corporate attorneys\", \"business counsel near {{neighborhood}}\", \"transactional specialists\", \"startup legal teams in {{county}}\"]" }
+    ]
+  },
+  "show_tell": {
+    "weather_anchor": {
+      "headline": "{{city}} business climate: Navigating local regulations",
+      "body": "New zoning codes near {{landmark}} are shifting the liability landscape for {{neighborhood}} small businesses. In {{state}}, proactive entity formation protects your personal assets from {{county}} business debts."
+    },
+    "process_guide": {
+      "headline": "The {{city}} Corporate Counsel Lifecycle",
+      "steps": [
+        { "title": "Risk Compliance Audit", "text": "Our teams in {{county}} audit your current operating agreements and employment handbooks frequent in {{neighborhood}} startups." },
+        { "title": "Entity Alignment", "text": "We verify your LLC or S-Corp status near {{landmark}} to ensure maximum tax efficiency in {{state}}." },
+        { "title": "Contract Drafting", "text": "We build enforceable client and vendor agreements to protect your {{city}} bottom line." },
+        { "title": "On-Call Support", "text": "We return to your {{neighborhood}} business monthly to manage shareholder minutes and filings for {{county}} compliance." }
+      ]
+    },
+    "seasonal_maintenance": {
+      "headline": "Year-Round Compliance for {{state}} Firms",
+      "fall_tips": "Review your employee handbooks near {{parks}} before Q1 hiring spikes. Updating policies in {{city}} prevents wrongful termination claims.",
+      "summer_tips": "Consult with a lawyer before signing new commercial leases near {{neighborhood}}. High-demand {{state}} retail zones have aggressive escalation clauses."
+    },
+    "comparison_guide": {
+      "title": "LLC vs. S-Corp for {{city}} Entrepreneurs",
+      "comparison": {
+        "option_a": "Single Member LLC (Simplicity)",
+        "option_b": "S-Corporation (Tax Savings)",
+        "details": "LLCs offer easiest management for {{city}} side hustles. S-Corps near {{neighborhood}} allow owners to save thousands on self-employment taxes once profit exceeds $60k in {{county}}."
+      }
+    }
+  },
+  "encyclopedia": {
+    "brands": {
+      "Legal_Zoom": { "tier": "DIY Standard", "flagship": "Starter Plan", "value_prop": "The industry leader for simple DIY filings—good for {{county}} side-gigs.", "price_point": "$" },
+      "Clio":       { "tier": "Management",  "flagship": "Manage Pro",    "value_prop": "Best-in-class tracking for complex {{city}} law firm operations.", "price_point": "$$" },
+      "Martindale-Hubbell": { "tier": "Top Counsel", "flagship": "Corporate Elite", "value_prop": "The standard for elite transactional counsel in {{neighborhood}}.", "price_point": "$$$" }
+    },
+    "styles": {
+      "Transactional": { "human_name": "Deal-Heavy", "benefit": "Focuses on closing M&A and leases—critical for {{city}} growth.", "aoe_hint": "Standard for {{state}} business brokers." },
+      "Litigation":    { "human_name": "Courtroom Defense", "benefit": "Defends your {{city}} entity in contract disputes.", "aoe_hint": "Budget for hourly defense in {{county}}." }
+    },
+    "costs_2026": {
+      "LLC_Formation": { "per_sqft": "$800 - $2,500", "notes": "Typical attorney-led filing near {{neighborhood}}." },
+      "Monthly_Retain": { "per_sqft": "$500 - $2,000 / mo", "notes": "On-call business advice in {{city}}." }
+    }
+  },
+  "sub_niche_templates": {
+    "entity-formation": {
+      "headline_templates": ["{{city}} LLC Formation: The right way to start your {{neighborhood}} business", "S-Corp vs. LLC in {{county}}: Corporate formation guide"],
+      "faqs": [
+        { "q": "How much is an LLC in {{city}}?", "a": "Typically $800–$2,500 for full operating agreement drafting in {{state}}." },
+        { "q": "Do I need a lawyer for a contract in {{county}}?", "a": "A pro-drafted agreement in {{city}} avoids 'handshake' loopholes that destroy small businesses." }
+      ],
+      "survey": {
+        "title": "Business Intake",
+        "subhead": "Quick questions to determine legal needs.",
+        "steps": [
+          { "id": "entity_type", "label": "Current entity?", "options": ["None (Proprietorship)", "LLC", "S-Corp", "C-Corp"] },
+          { "id": "goal", "label": "Immediate goal?", "options": ["New Formation", "Contract Review", "M&A Advisory", "Employment Dispute"] }
+        ]
+      }
+    }
+  },
+  "regional_nuance": {
+    "DE": { "focus": "Chancery Court Purity", "top_brand": "Clio", "tech": "Delaware Entity Setup", "logic": "The gold standard for {{city}} tech companies; we prioritize DE formations for venture-ready {{neighborhood}} startups." },
+    "NY": { "focus": "Aggressive Commercial Lease", "top_brand": "Martindale-Hubbell", "tech": "Good Guy Clause", "logic": "Real estate near {{landmark}} is brutal; we focus on personal guarantee protection for {{city}} retailers." }
+  },
+  "conversion": {
+    "closing_trust": "We connect {{city}} business owners with board-certified corporate lawyers who provide fixed-fee audits."
+  }
+}

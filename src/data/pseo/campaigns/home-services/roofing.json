@@ -1,0 +1,324 @@
+{
+  "service_config": {
+    "niche": "Roofing",
+    "niche_slug": "roofing",
+    "category": "Home Services",
+    "category_slug": "home-services",
+    "icon": "🏠",
+    "sub_niches": [
+      { "label": "Roof Replacement", "slug": "roof-replacement" },
+      { "label": "Emergency Roof Repair", "slug": "emergency-repair" },
+      { "label": "Shingle Installation", "slug": "shingle-install" },
+      { "label": "Flat Roof Services", "slug": "flat-roofing" }
+    ]
+  },
+  "branding": {
+    "business_name_suffix": "Roofing & Exterior"
+  },
+
+  "spintax": {
+    "synonyms": [
+      {
+        "category": "service_damage",
+        "terms": "[\"ugly water spots on the ceiling\",\"missing shingles after wind\",\"granules in the gutters\",\"shingle blow-off\",\"hail dents on vents\",\"leaky chimney flashing\",\"rotting fascia\",\"sagging roofline\",\"cracked tiles\",\"daylight in the attic\"]"
+      },
+      {
+        "category": "contractor_vibe",
+        "terms": "[\"local crew that shows up on time\",\"roofing teams near {{neighborhood}}\",\"licensed shingle installers\",\"storm documentation specialists\",\"contractors who handle insurance paperwork\",\"replacement pros near {{landmark}}\"]"
+      },
+      {
+        "category": "price_talk",
+        "terms": "[\"price per square\",\"insurance estimate review\",\"deductible questions\",\"replacement cost in {{city}}\",\"financing options\",\"payment schedule clarity\"]"
+      },
+      {
+        "category": "urgency",
+        "terms": "[\"before the next rain\",\"emergency tarping\",\"documentation window\",\"stop the leak\",\"get dried-in fast\"]"
+      }
+    ]
+  },
+
+  "show_tell": {
+    "weather_anchor": {
+      "headline": "{{city}} storm season: did your roof take a hit?",
+      "body": "After high wind and hail risk near {{landmark}}, shingles in {{neighborhood}} can hide damage until the next heavy rain. Document early and compare quotes from certified locals."
+    },
+    "material_comparison": {
+      "title": "Standard shingles vs. impact-minded systems for {{city}}",
+      "table_rows": [
+        { "category": "Hail impact",      "cheap": "More prone to cracking at ~1.0\" hail",   "premium": "Class 4 rated (larger hail performance)" },
+        { "category": "Wind uplift",      "cheap": "Typical 60–90 mph ratings",                "premium": "130 mph class warranties (brand-dependent)" },
+        { "category": "Algae resistance", "cheap": "Streaking common in 2–5 years",            "premium": "Stain-resistant granules (longer clean look)" },
+        { "category": "Resale story",     "cheap": "Basic curb appeal",                         "premium": "Transferable warranties when installed to spec" }
+      ]
+    },
+    "landmark_proximity": {
+      "trust_badge": "Local verification mindset",
+      "text": "Look for crews with local references, not just out-of-state storm chasing. Pros working {{county}} regularly understand {{city}} codes near {{landmark}}."
+    },
+    "interactive_cost_logic": {
+      "base_sqft_price": 4.5,
+      "complexity_multiplier": 1.2,
+      "markup": "<div class='rounded-xl border border-blue-200 bg-blue-50/80 p-4'><p class='text-xs font-bold uppercase tracking-wider text-blue-700'>Estimate snapshot</p><p class='mt-2 text-sm text-slate-700'>A typical ~2,000 sq.ft. roof in {{city}} often lands roughly <strong>$9k–$16.5k</strong> for quality architectural shingles—pitch, layers, and decking repairs move the number.</p></div>"
+    },
+    "process_guide": {
+      "headline": "The {{city}} Roof Replacement Process",
+      "steps": [
+        { "title": "Site Prep & Tarping", "text": "Our teams protect your {{neighborhood}} landscaping and decks before the first shingle is removed. Proper tarping near {{parks}} prevents debris issues." },
+        { "title": "Tear-off & Decking Review", "text": "We remove all old layers down to the wood. In {{state}} climates, we often find rotted decking near {{landmark}} that needs replacement for a flat finish." },
+        { "title": "Underlayment & Barriers", "text": "We install ice and water shields in the valleys and synthetic underlayment across the field to meet {{county}} building codes." },
+        { "title": "Shingle Installation", "text": "Using {{reg_top_brand}} or similar, we apply 6-nail patterns for maximum wind resistance near {{neighborhood}} corridors." }
+      ]
+    },
+    "seasonal_maintenance": {
+      "headline": "Maintaining your {{state}} roof through the seasons",
+      "fall_tips": "Clear gutters near {{parks}} and check for hail-bruised granules before the first freeze. Impact damage can expand under snow load.",
+      "summer_tips": "Inspect sealants around chimney flashing and vents near {{landmark}}. High {{state}} humidity can dry out boots and lead to slow leaks."
+    },
+    "comparison_guide": {
+      "title": "Choosing 3-Tab vs. Architectural Shingles for {{city}}",
+      "comparison": {
+        "option_a": "Standard 3-Tab Asphalt (Value)",
+        "option_b": "Dimensional / Architectural (Performance)",
+        "details": "Standard shingles are cheaper for {{city}} budget homes but have shorter lifespans. Architectural shingles near {{neighborhood}} offer 50-year warranties and better wind resistance in {{county}}."
+      }
+    },
+    "market_analytics": {
+      "headline": "Local {{city}} Roofing Data (2026 Perspective)",
+      "analysis": "Property records near {{landmark}} indicate that over 65% of homes in {{neighborhood}} are now opting for Class-4 impact resistant shingles to reduce {{state}} insurance premiums.",
+      "stats": [
+        { "label": "Avg Roof Age", "value": "18 Years", "hint": "Typical for {{county}} area" },
+        { "label": "Insurance ROI", "value": "12-22%", "hint": "For impact materials in {{city}}" },
+        { "label": "Permit Approval", "value": "24h - 72h", "hint": "Current {{state}} average" }
+      ]
+    },
+    "compliance_checklist": {
+      "title": "{{city}} Roofing Code & Safety Verification",
+      "warning": "Before hiring a {{sub_niche}} crew in {{county}}, verify they carry both General Liability AND Worker's Comp for steep-slope projects in {{state}}.",
+      "items": [
+        { "title": "Permit Pulling", "text": "Ensure the {{city}} building department has a record of the project near {{neighborhood}}." },
+        { "title": "Nailing Pattern", "text": "Verify the 6-nail wind code is followed for {{reg_focus}} conditions in {{county}}." },
+        { "title": "Underlayment Check", "text": "Synthetic underlayment is now the standard for high-heat {{state}} summers near {{landmark}}." },
+        { "title": "Ice & Water Shield", "text": "Mandatory in some {{county}} zones to prevent leaks during {{city}} freeze-thaw cycles." }
+      ]
+    }
+  },
+
+  "trust": {
+    "hiring_local": {
+      "headline": "Why {{city}} homeowners vet contractors carefully",
+      "body": "After major weather in {{county}}, out-of-area crews can appear overnight. Prioritize {{city}}-based references, written warranties, and local permit familiarity—especially work near {{landmark}}."
+    },
+    "neighborhood_pride": {
+      "headline": "From {{neighborhood}} to {{parks}}: micro-climates matter",
+      "body": "Tree cover, western sun, and wind corridors differ block by block. A good {{city}} plan accounts for debris, algae risk, and ventilation—not a one-size quote."
+    },
+    "permitting_logic": {
+      "headline": "Permits and codes in {{county}}",
+      "body": "Fastening patterns, ice/water barriers, and ventilation rules evolve. Local crews who pull permits in {{city}} reduce rework and resale headaches."
+    }
+  },
+
+  "encyclopedia": {
+    "brands": {
+      "GAF": { "tier": "Premium", "flagship": "Timberline HDZ", "value_prop": "Best-selling shingle with WindProven warranty.", "price_point": "$$$" },
+      "Owens_Corning": { "tier": "Standard", "flagship": "Duration", "value_prop": "SureNail technology for high-wind resistance.", "price_point": "$$" },
+      "CertainTeed": { "tier": "Luxury", "flagship": "Grand Manor", "value_prop": "Dual-layered design for depth and maximum durability.", "price_point": "$$$$" },
+      "TAMKO":        { "tier": "Performance value","flagship": "Titan XT",            "value_prop": "Reinforced zones for weather events; budget-conscious {{county}} projects.",                              "price_point": "$$"  },
+      "Malarkey":     { "tier": "Impact specialist","flagship": "Legacy",              "value_prop": "Rubberized polymer shingles rated Class 4—ideal for the {{state}} hail belt.",                            "price_point": "$$$" }
+    },
+    "pricing_benchmarks": [
+      { "item": "Asphalt Shingle (Full Install)", "price": "$4.50 - $6.50", "note": "Average per sq ft in {{city}} market." },
+      { "item": "Emergency Patch / Leak Fix", "price": "$350 - $850", "note": "Depends on storm severity near {{neighborhood}}." },
+      { "item": "Skylight Resealing", "price": "$250 - $550", "note": "Critical for {{state}} rainy seasons." },
+      { "item": "Annual Maintenance Check", "price": "$149 - $299", "note": "Includes gutter clear and seal check." }
+    ],
+    "styles": {
+      "Gable":   { "human_name": "Classic A-frame",       "benefit": "Sheds water efficiently—common around {{landmark}} subdivisions.",                         "aoe_hint": "Standard for many {{city}} single-family homes."        },
+      "Hip":     { "human_name": "Pyramid style",         "benefit": "Often more wind-stable; insurers sometimes note hip roofs favorably.",                     "aoe_hint": "Common in wind-conscious {{state}} neighborhoods."      },
+      "Mansard": { "human_name": "French / dual pitch",   "benefit": "More attic volume; steep visibility means shingle quality shows.",                         "aoe_hint": "Premium aesthetics matter on high-visibility {{neighborhood}} streets." },
+      "Flat":    { "human_name": "Low-slope / modern",    "benefit": "Needs membrane systems (TPO/PVC/modified)—not 3-tab shingles.",                            "aoe_hint": "Check {{city}} code for low-slope minimum slopes."      }
+    },
+    "costs_2026": {
+      "asphalt":           { "per_sqft": "$4.50 - $7.50",  "notes": "Typical architectural laminate range for {{city}} neighborhoods."                        },
+      "metal_standing_seam":{ "per_sqft": "$12.00 - $20.00","notes": "Long-life option; great when hail risk is a priority in {{county}}."                   },
+      "clay_tile":         { "per_sqft": "$10.00 - $18.00","notes": "Heavier; verify structure—more common in some {{state}} markets."                        },
+      "synthetic_slate":   { "per_sqft": "$9.00 - $15.00", "notes": "Luxury look at lower weight than natural slate."                                         }
+    },
+    "aoe_hints": [
+      "Hail often dents metal flashings first—if vents are dinged, schedule a close shingle inspection.",
+      "Replacement ranges swing with decking repairs, steep pitch, and layers—always get line-item quotes.",
+      "If a claim is unclear, documented photos + a local inspection report help secondary reviews.",
+      "Patching very old shingles can disturb adjacent tabs—ask whether partial vs full replacement is safer."
+    ]
+  },
+
+  "sub_niche_templates": {
+    "roof-replacement": {
+      "headline_templates": [
+        "{{city}} roof replacement: what {{neighborhood}} homeowners should know first",
+        "{{county}} roofing guide: materials, costs, and how to compare quotes",
+        "Roof costs in {{city}} (2026): realistic ranges before you call contractors",
+        "Choosing shingles in {{city}}: what {{county}} weather rewards"
+      ],
+      "faqs": [
+        { "q": "How much does a full roof replacement cost in {{city}}?",        "a": "A full architectural shingle replacement for a ~2,000 sq.ft. home in {{city}} typically runs $9,000–$16,500. Steep pitch, decking repairs, and multiple layers all push the number higher." },
+        { "q": "How long does a roof replacement take in {{state}}?",            "a": "Most {{city}} single-family home replacements complete in 1–2 days. Larger homes, complex pitches, or supply delays can extend it." },
+        { "q": "What warranty should I expect from a roofer in {{county}}?",    "a": "Look for both a manufacturer's warranty (20–50-year on shingles) and a separate workmanship warranty from your {{city}} contractor—typically 5–10 years." },
+        { "q": "Should I replace my roof before selling my {{city}} home?",     "a": "A documented roof in good condition adds value. If the roof is near end of life, buyers in {{county}} often negotiate hard on price or ask for credits." }
+      ],
+      "lead_magnet": {
+        "headline": "The {{city}} homeowner storm checklist",
+        "subhead": "Five things to verify before you sign a roofing contract in {{county}}.",
+        "bullets": ["Hidden damage cues common in {{state}}", "How to read scope line-items (tear-off, decking, flashing)", "A one-page claim notes template for {{city}} jobs"],
+        "cta": "Email me the checklist"
+      },
+      "survey": {
+        "title": "{Roof|Home} health check",
+        "subhead": "Answer a few questions—takes under a minute.",
+        "steps": [
+          { "id": "damage_type",         "label": "What are you seeing?",                         "options": ["Leaking now","Missing shingles","Hail dents","Just an inspection"] },
+          { "id": "roof_age",            "label": "How old is the roof?",                         "options": ["Under 10 years","10–20 years","20+ years","Not sure"] },
+          { "id": "insurance",           "label": "Current home insurance carrier",                "placeholder": "e.g. State Farm, Allstate" },
+          { "id": "neighborhood_verify", "label": "Street or area in {{neighborhood}}",           "placeholder": "123 Main St or cross streets" }
+        ]
+      }
+    },
+    "storm-damage-repair": {
+      "headline_templates": [
+        "Storm season in {{city}}: signs your roof needs a pro near {{landmark}}",
+        "{{neighborhood}} roofing checklist: hail, wind, and insurance basics",
+        "{{city}} homeowners: how to avoid rushed post-storm decisions"
+      ],
+      "faqs": [
+        { "q": "How do I know if my {{city}} roof has storm damage?",      "a": "Check for missing shingles, granule loss in gutters, dents on vents and flashings, and interior water stains. A professional {{city}} inspection after major storms is the most reliable method." },
+        { "q": "How long do I have to file a storm damage claim in {{state}}?", "a": "Most {{state}} policies require claims within 1–2 years of the storm date. Document everything with photos and get a contractor's written inspection first." }
+      ],
+      "lead_magnet": {
+        "headline": "{{city}} Storm Documentation Kit",
+        "subhead": "Capture the right evidence for your {{state}} insurance claim.",
+        "bullets": ["Photo checklist by roof zone", "Insurance adjuster prep tips", "Scope of work comparison template"],
+        "cta": "Get the Free Kit"
+      },
+      "survey": {
+        "title": "Storm damage check",
+        "subhead": "Tell us what happened—we'll help you document it.",
+        "steps": [
+          { "id": "storm_type",  "label": "What kind of weather hit?",         "options": ["Hail","High winds","Tornado near-miss","Heavy rain","Not sure"] },
+          { "id": "visible",     "label": "Visible damage so far?",            "options": ["Yes, obvious","Minor signs only","Haven't checked yet"] },
+          { "id": "insurance",   "label": "Current insurance carrier",         "placeholder": "e.g. State Farm, Allstate" },
+          { "id": "timeline",    "label": "When did the storm hit?",           "placeholder": "Approximate date" }
+        ]
+      }
+    },
+    "hail-damage": {
+      "headline_templates": [
+        "Is your {{city}} roof ready for the next {{state}} wind event?",
+        "From {{parks}} to downtown: {{city}} roof risks aren't one-size-fits-all"
+      ],
+      "faqs": [
+        { "q": "How do I know if my {{city}} roof has hail damage?",      "a": "Look for bruised or cracked shingles, dents on metal vents and flashings, and granules in gutters near your downspouts. A licensed {{city}} inspector can provide documentation for insurance." },
+        { "q": "What is the typical cost of a roof in {{city}} right now?","a": "A standard architectural shingle roof in {{city}} typically costs $4.50–$7.50 per sq.ft. installed, or $9k–$16k for most homes." },
+        { "q": "What if my insurance company denies my roof claim in {{state}}?", "a": "Request a re-inspection, bring a licensed {{city}} contractor's written damage report, and consider hiring a public adjuster if the gap is significant." }
+      ],
+      "lead_magnet": {
+        "headline": "{{city}} Hail Damage Guide",
+        "subhead": "What to document and when to call your insurer.",
+        "bullets": ["How to spot class 4 impact damage", "Reading your {{state}} policy deductible", "Supplement request letter template"],
+        "cta": "Download the Guide"
+      },
+      "survey": {
+        "title": "Hail damage assessment",
+        "subhead": "Quick questions to scope your situation.",
+        "steps": [
+          { "id": "hail_size",   "label": "Approximate hail size?",            "options": ["Quarter (1\")","Golf ball (1.75\")","Baseball (2.75\")","Not sure"] },
+          { "id": "roof_age",    "label": "How old is the roof?",              "options": ["Under 10 years","10–20 years","20+ years","Not sure"] },
+          { "id": "insurance",   "label": "Insurance carrier",                 "placeholder": "e.g. Allstate, USAA" },
+          { "id": "location",    "label": "Street or area in {{neighborhood}}","placeholder": "123 Main St" }
+        ]
+      }
+    },
+    "leak-repair": {
+      "headline_templates": [
+        "Certified installs in {{city}}: why fastening and underlayment matter",
+        "{{city}} roof leak repair: stop the water before the damage spreads"
+      ],
+      "faqs": [
+        { "q": "How much does roof leak repair cost in {{city}}?",         "a": "Minor leak repairs (flashing, single penetration) in {{city}} often run $200–$800. Larger failures involving decking or multiple zones can reach $2,000+." },
+        { "q": "Can I temporarily patch a roof leak in {{state}}?",       "a": "Tarping or emergency patching can protect the interior short-term, but permanent repair from a licensed {{city}} contractor is needed to prevent mold and structural damage." }
+      ],
+      "lead_magnet": {
+        "headline": "{{city}} Leak Response Checklist",
+        "subhead": "Immediate steps to limit water damage while you wait.",
+        "bullets": ["Interior leak containment steps", "How to safely tarp a section", "Documentation tips for insurance"],
+        "cta": "Get the Checklist"
+      },
+      "survey": {
+        "title": "Leak triage",
+        "subhead": "Describe what you're seeing.",
+        "steps": [
+          { "id": "leak_location","label": "Where is it leaking?",             "options": ["Around chimney","Skylight area","Ridge/peak","Flat section","Not sure"] },
+          { "id": "frequency",   "label": "How often does it leak?",           "options": ["Every rain","Only heavy storms","Random","First time"] },
+          { "id": "interior",    "label": "Interior damage visible?",          "options": ["Yes, water stains","Yes, active dripping","No","Not sure"] },
+          { "id": "insurance",   "label": "Insurance carrier",                 "placeholder": "e.g. State Farm" }
+        ]
+      }
+    },
+    "flat-roofing": {
+      "headline_templates": [
+        "Flat roofing in {{city}}: TPO, PVC, and modified bitumen compared",
+        "{{city}} commercial and residential flat roof repair guide"
+      ],
+      "faqs": [
+        { "q": "What is the best flat roof material for {{city}} weather?", "a": "TPO is cost-effective and reflects heat—great for {{state}} sun. PVC offers better chemical resistance. Modified bitumen is durable for {{county}} buildings with heavy foot traffic." },
+        { "q": "How long does a flat roof last in {{city}}?",               "a": "A quality TPO or PVC flat roof in {{city}} lasts 15–25 years with bi-annual inspections and proper drainage maintenance." }
+      ],
+      "lead_magnet": {
+        "headline": "{{city}} Flat Roof Comparison Guide",
+        "subhead": "TPO vs PVC vs Modified Bitumen: what's right for your building.",
+        "bullets": ["Cost per sq.ft. in {{state}} markets", "Warranty comparison by membrane type", "Drainage requirements for {{county}} code"],
+        "cta": "Download the Comparison"
+      },
+      "survey": {
+        "title": "Flat roof assessment",
+        "subhead": "We'll help you identify the right membrane system.",
+        "steps": [
+          { "id": "building_type","label": "Building type?",                   "options": ["Residential","Commercial","Mixed-use","HOA common area"] },
+          { "id": "current_material","label": "Current roof material?",        "options": ["TPO","EPDM","Modified Bitumen","Tar & Gravel","Not sure"] },
+          { "id": "issue",       "label": "Primary issue?",                    "options": ["Active leak","Ponding water","Membrane tears","Full replacement","Inspection only"] },
+          { "id": "sqft",        "label": "Approximate roof sq.ft.",           "placeholder": "e.g. 2000" }
+        ]
+      }
+    }
+  },
+
+  "regional_nuance": {
+    "TX": {
+      "focus": "Hail & Heat",
+      "top_brand": "Malarkey Legacy",
+      "tech": "Class 4 Impact Resistance",
+      "logic": "In {{city}}, the hail belt is no joke. We recommend Malarkey because their rubberized shingles resist cracking when hit by large hail."
+    },
+    "FL": {
+      "focus": "Hurricane Wind",
+      "top_brand": "GAF Timberline Ultra HDZ",
+      "tech": "130mph Wind-Lock",
+      "logic": "Near {{neighborhood}}, wind uplift is the primary risk. GAF with LayerLock technology is a strong match for coastal {{state}} wind zones."
+    },
+    "NC": {
+      "focus": "Humidity & Algae",
+      "top_brand": "CertainTeed Landmark",
+      "tech": "StreakFighter 25yr",
+      "logic": "Shade near {{parks}} can drive algae streaks. CertainTeed's copper-infused granules help {{city}} roofs stay cleaner longer."
+    },
+    "CO": {
+      "focus": "UV & Snow Load",
+      "top_brand": "Owens Corning TruDefinition",
+      "tech": "SureNail High-Altitude",
+      "logic": "Intense UV near {{landmark}} can accelerate wear. Owens Corning Duration with SureNail helps {{state}} freeze-thaw cycles without blow-offs."
+    }
+  },
+
+  "conversion": {
+    "closing_trust": "We prioritize {{city}} contractors who document scope clearly—no pressure to sign same-day."
+  }
+}

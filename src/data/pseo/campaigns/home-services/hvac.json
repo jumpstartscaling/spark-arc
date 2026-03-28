@@ -1,0 +1,288 @@
+{
+  "service_config": {
+    "niche": "HVAC",
+    "niche_slug": "hvac",
+    "category": "Home Services",
+    "category_slug": "home-services",
+    "icon": "❄️",
+    "sub_niches": [
+      { "label": "AC Installation",          "slug": "ac-installation"         },
+      { "label": "Furnace Repair",           "slug": "furnace-repair"          },
+      { "label": "Duct Cleaning",            "slug": "duct-cleaning"           },
+      { "label": "Smart Thermostat Setup",   "slug": "smart-thermostat-setup"  },
+      { "label": "Energy Audits",            "slug": "energy-audits"           }
+    ]
+  },
+
+  "spintax": {
+    "synonyms": [
+      {
+        "category": "service_damage",
+        "terms": "[\"AC blowing warm air\",\"unit not turning on\",\"frozen evaporator coil\",\"furnace not igniting\",\"high energy bills\",\"uneven cooling\",\"thermostat blank screen\",\"refrigerant leak\",\"loud compressor noise\",\"no airflow from vents\"]"
+      },
+      {
+        "category": "contractor_vibe",
+        "terms": "[\"NATE-certified tech in {{city}}\",\"HVAC crew near {{neighborhood}}\",\"local comfort specialists in {{county}}\",\"licensed AC pros near {{landmark}}\",\"energy-efficient system installers\"]"
+      },
+      {
+        "category": "price_talk",
+        "terms": "[\"SEER2 rating vs. energy savings\",\"tonnage and load calculation\",\"installed cost per ton\",\"financing on a new {{city}} system\",\"repair vs. replace cost analysis\"]"
+      },
+      {
+        "category": "urgency",
+        "terms": "[\"before summer heat hits {{city}}\",\"same-day emergency dispatch\",\"don't sweat through the weekend\",\"before the unit fails completely\",\"heating season is coming\"]"
+      }
+    ]
+  },
+
+  "show_tell": {
+    "weather_anchor": {
+      "headline": "{{city}} climate puts HVAC systems to the test",
+      "body": "{{state}} weather means your system runs hard. Units near {{landmark}} that skip annual tune-ups fail 3x more often during peak demand. Document age and service history before you're stranded."
+    },
+    "material_comparison": {
+      "title": "HVAC system types for {{city}} homes",
+      "table_rows": [
+        { "category": "Central AC",     "cheap": "Standard split system; requires ductwork",             "premium": "High-SEER2 variable-speed units cut bills 30–40%" },
+        { "category": "Heat Pump",      "cheap": "Handles both heating and cooling",                      "premium": "Best efficiency in {{state}} mild winters; poor in extreme cold" },
+        { "category": "Mini Split",     "cheap": "No ductwork needed; per-zone control",                 "premium": "Ideal for {{neighborhood}} additions or older homes" },
+        { "category": "Packaged Unit", "cheap": "All-in-one rooftop system",                            "premium": "Common in {{county}} commercial and smaller homes" }
+      ]
+    },
+    "landmark_proximity": {
+      "trust_badge": "NATE-Certified in {{city}}",
+      "text": "A technician who knows {{county}} humidity levels, soil conditions, and local utility rebates will right-size your system correctly—not just swap what was there before."
+    },
+    "interactive_cost_logic": {
+      "base_sqft_price": null,
+      "markup": "<div class='rounded-xl border border-blue-200 bg-blue-50/80 p-4'><p class='text-xs font-bold uppercase tracking-wider text-blue-700'>Cost snapshot</p><p class='mt-2 text-sm text-slate-700'>A new central AC system in {{city}} typically runs <strong>$5,800–$14,000</strong> installed, depending on tonnage and SEER2 rating. Mini-splits start at <strong>$2,500–$5,000</strong> per zone.</p></div>"
+    },
+    "process_guide": {
+      "headline": "The {{city}} HVAC Installation & Repair Process",
+      "steps": [
+        { "title": "Manual J Load Calculation", "text": "Our technicians near {{landmark}} calculate the exact BTU/tonnage needed for your {{neighborhood}} home based on square footage, insulation, and window area." },
+        { "title": "System Selection & Permitting", "text": "We help you select high-SEER2 equipment (like {{reg_top_brand}}) and pull all required {{county}} mechanical and electrical permits." },
+        { "title": "Precision Install & Vacuum", "text": "We braze all refrigerant lines and pull a deep vacuum to 500 microns to ensure your {{city}} system is moisture-free and efficient." },
+        { "title": "Airflow Balancing", "text": "We adjust dampers and test static pressure at your {{neighborhood}} vents to ensure even cooling and heating in every room." }
+      ]
+    },
+    "seasonal_maintenance": {
+      "headline": "Seasonal HVAC readiness for {{state}} climates",
+      "fall_tips": "Check your furnace ignitor and flame sensor before the first {{county}} freeze. A failed sensor is the #1 cause of 'no-heat' calls in {{city}}.",
+      "summer_tips": "Clear debris 2ft around your outdoor condenser near {{parks}}. High {{state}} humidity requires maximum airflow to reject heat efficiently."
+    },
+    "comparison_guide": {
+      "title": "Central AC vs. Heat Pump: What works for {{city}}?",
+      "comparison": {
+        "option_a": "Standard Central Air (Split System)",
+        "option_b": "High-Efficiency Hybrid Heat Pump",
+        "details": "Standard units are great for basic cooling, but hybrid heat pumps in {{city}} can significantly reduce winter heating costs by using electricity for mild cold and switching to gas/electric backup only when {{county}} temps drop."
+      }
+    }
+  },
+
+  "trust": {
+    "hiring_local": {
+      "headline": "Why {{city}} homeowners verify HVAC credentials",
+      "body": "HVAC installs require EPA 608 certification and often a state mechanical license. {{city}}-based technicians who pull permits in {{county}} protect your warranty and your resale value."
+    },
+    "neighborhood_pride": {
+      "headline": "From {{neighborhood}} to {{parks}}: load calculations matter",
+      "body": "Ceiling height, insulation grade, window area, and sun exposure all change block by block in {{city}}. A Manual J load calculation ensures your system is sized right—not over or undersized."
+    },
+    "permitting_logic": {
+      "headline": "Permits and HVAC code in {{county}}",
+      "body": "Every equipment changeout in {{city}} requires a mechanical permit and inspection. Unpermitted installs void manufacturer warranties and create issues at {{county}} home sale."
+    }
+  },
+
+  "encyclopedia": {
+    "brands": {
+      "Carrier":  { "tier": "Market leader",    "flagship": "Infinity 24 Series",    "value_prop": "Variable-speed compressor with Greenspeed intelligence—very efficient in {{state}} mixed climates.",   "price_point": "$$$" },
+      "Trane":    { "tier": "Reliability leader","flagship": "XV21",                  "value_prop": "TruComfort variable speed—TXV control responds precisely to {{city}} load swings.",                     "price_point": "$$$" },
+      "Lennox":   { "tier": "Efficiency leader", "flagship": "SL28XCV",              "value_prop": "Highest SEER2 ratings available; best for high-use {{county}} climates and utility rebate stacking.",    "price_point": "$$$" },
+      "Rheem":    { "tier": "Value leader",      "flagship": "Prestige Series",       "value_prop": "Solid mid-tier option; wide parts availability for faster {{city}} emergency repairs.",                  "price_point": "$$"  },
+      "Goodman":  { "tier": "Budget-friendly",   "flagship": "GSXC18",               "value_prop": "Reliable compressor with 10-year warranty; strong value for {{county}} rental and flip projects.",        "price_point": "$"   }
+    },
+    "aoe_hints": [
+      "Oversized AC units short-cycle in {{city}} humidity, leaving air feeling clammy even at the set temperature.",
+      "SEER2 ratings replace SEER starting 2023—compare apples to apples when getting {{county}} quotes.",
+      "R-410A refrigerant is being phased out; ask if your replacement unit uses the new R-454B standard.",
+      "Dirty evaporator coils reduce efficiency by 30%—annual coil cleaning in {{city}} pays for itself."
+    ]
+  },
+
+  "sub_niche_templates": {
+    "ac-installation": {
+      "headline_templates": [
+        "{{brand}} AC Installation in {{city}}: sizing, SEER2, and what to expect",
+        "New AC system for your {{city}} home: how to avoid the 3 most common sizing mistakes",
+        "{{county}} central air installation guide (2026): costs, brands, and rebates"
+      ],
+      "faqs": [
+        { "q": "What size AC do I need for my {{city}} home?",            "a": "A Manual J load calculation is required for accurate sizing. In {{city}}, a 2,000 sq.ft. home typically needs 3–4 tons, but ceiling height, insulation, and sun exposure in {{county}} all shift that number." },
+        { "q": "How much does a new AC installation cost in {{city}}?",  "a": "A mid-range central AC installation in {{city}} runs $6,500–$11,000. High-efficiency variable-speed systems reach $10,000–$14,000 but qualify for {{state}} utility rebates and federal tax credits." },
+        { "q": "How long does an AC installation take in {{county}}?",   "a": "Most single-system changeouts in {{county}} complete in one day. New construction or first-time installs requiring ductwork take 2–5 days." }
+      ],
+      "lead_magnet": {
+        "headline": "{{city}} AC Buyer's Checklist",
+        "subhead": "What to ask before signing any HVAC contract in {{county}}.",
+        "bullets": ["How to verify contractor licensing in {{state}}","Manual J load calculation—what it is and why you need it","SEER2 vs. SEER explained simply","Rebates available in {{county}} right now"],
+        "cta": "Get the Checklist"
+      },
+      "survey": {
+        "title": "AC installation quote intake",
+        "subhead": "Help us size the right system for {{city}}.",
+        "steps": [
+          { "id": "home_sqft",    "label": "Home square footage?",             "options": ["Under 1,000","1,000–2,000","2,000–3,000","3,000+","Not sure"] },
+          { "id": "current_sys",  "label": "Current system type?",             "options": ["None (first install)","Old central AC","Window units","Heat pump","Other"] },
+          { "id": "timing",       "label": "When do you need it?",             "options": ["ASAP","Within 1 month","This season","Just planning"] },
+          { "id": "address",      "label": "Street or area in {{neighborhood}}","placeholder": "123 Main St" }
+        ]
+      }
+    },
+    "furnace-repair": {
+      "headline_templates": [
+        "Furnace Repair in {{city}}: when to fix vs. replace your heating system",
+        "{{city}} furnace won't ignite? Common causes and what a {{county}} tech will check",
+        "Heating repair guide for {{neighborhood}} homeowners: furnace, heat pump, and air handler"
+      ],
+      "faqs": [
+        { "q": "How much does furnace repair cost in {{city}}?",          "a": "Common furnace repairs in {{city}} range from $150 (ignitor replacement) to $1,200 (heat exchanger). A cracked heat exchanger often means replacement is smarter than repair." },
+        { "q": "Why is my furnace blowing cold air in {{county}}?",      "a": "Common causes: dirty filter reducing airflow, failed ignitor, faulty flame sensor, or a tripped limit switch. A {{city}} tech can diagnose in under an hour." },
+        { "q": "Should I repair or replace my furnace in {{city}}?",     "a": "If repair cost exceeds 50% of replacement and the unit is over 15 years old, replacement is typically smarter. New units also carry {{state}} utility rebate eligibility." }
+      ],
+      "lead_magnet": {
+        "headline": "{{city}} Furnace Troubleshooting Guide",
+        "subhead": "Diagnose before you call—save an unnecessary service fee.",
+        "bullets": ["Top 5 furnace failure codes explained","Filter check and reset procedures","When to call vs. wait it out","{{state}} rebates for high-efficiency replacements"],
+        "cta": "Get the Guide"
+      },
+      "survey": {
+        "title": "Furnace repair triage",
+        "subhead": "Describe what your heating system is doing.",
+        "steps": [
+          { "id": "symptom",      "label": "What's the symptom?",              "options": ["No heat","Blowing cold air","Short cycling","Loud noises","Pilot/ignition issue"] },
+          { "id": "unit_age",     "label": "How old is the furnace?",          "options": ["Under 10 years","10–15 years","15+ years","Not sure"] },
+          { "id": "fuel",         "label": "Fuel type?",                       "options": ["Natural gas","Electric","Oil","Propane","Not sure"] },
+          { "id": "address",      "label": "Street or area in {{neighborhood}}","placeholder": "123 Main St" }
+        ]
+      }
+    },
+    "duct-cleaning": {
+      "headline_templates": [
+        "Duct Cleaning in {{city}}: when it's worth it and how to avoid scams",
+        "{{city}} air quality and ductwork: what lives inside your {{neighborhood}} vents",
+        "{{county}} HVAC duct cleaning guide: mold, dust, and efficiency explained"
+      ],
+      "faqs": [
+        { "q": "How much does duct cleaning cost in {{city}}?",           "a": "Residential duct cleaning in {{city}} typically runs $300–$700 for a standard system. Add $150–$300 for UV light or antimicrobial treatment." },
+        { "q": "How often should I clean my ducts in {{county}}?",       "a": "NADCA recommends every 3–5 years. In {{city}}, pets, renovations, mold events, or musty smells are reasons to clean sooner." },
+        { "q": "Can duct cleaning lower my energy bills in {{state}}?",  "a": "Yes—clogged ducts force your system to work harder. Cleaning restores airflow and can reduce HVAC runtime in {{city}} by 15–25%." }
+      ],
+      "lead_magnet": {
+        "headline": "{{city}} Indoor Air Quality Report",
+        "subhead": "What's in your ducts—and what clean air is worth.",
+        "bullets": ["Signs your {{city}} ducts need cleaning now","How to spot a duct cleaning scam","UV light vs. air purifiers compared","Allergy relief for {{neighborhood}} homes"],
+        "cta": "Get the Report"
+      },
+      "survey": {
+        "title": "Duct cleaning intake",
+        "subhead": "Tell us about your home's air quality.",
+        "steps": [
+          { "id": "reason",       "label": "Why are you considering duct cleaning?", "options": ["Musty smell","Recent renovation","Allergies/asthma","Never been done","After mold event"] },
+          { "id": "last_clean",   "label": "Last time ducts were cleaned?",          "options": ["Never","1–3 years ago","3–5 years ago","5+ years ago","Not sure"] },
+          { "id": "pets",         "label": "Pets in the home?",                      "options": ["Yes, 1–2","Yes, 3+","No"] },
+          { "id": "address",      "label": "Street or area in {{neighborhood}}",      "placeholder": "123 Main St" }
+        ]
+      }
+    },
+    "smart-thermostat-setup": {
+      "headline_templates": [
+        "Smart Thermostat Installation in {{city}}: Nest, Ecobee, and Honeywell compared",
+        "{{city}} thermostat upgrade guide: save money and control comfort from your phone",
+        "{{neighborhood}} smart home comfort: how a new thermostat changes your {{city}} energy bill"
+      ],
+      "faqs": [
+        { "q": "What smart thermostat works best with my {{city}} HVAC system?", "a": "Ecobee is most compatible with variable-speed systems. Nest is ideal for standard {{county}} installs. Proprietary systems like Carrier/Trane require brand-specific communicating thermostats." },
+        { "q": "How much does smart thermostat installation cost in {{county}}?","a": "Professional thermostat installation in {{county}} runs $75–$200 for labor. The thermostat itself costs $100–$300 depending on the model." },
+        { "q": "Do I need a C-wire for a smart thermostat in {{city}}?",        "a": "Most smart thermostats need a C-wire for continuous power. Many {{city}} homes have one; we add an adapter when they don't." }
+      ],
+      "lead_magnet": {
+        "headline": "{{city}} Smart Thermostat Compatibility Guide",
+        "subhead": "Find out which smart thermostat pairs with your system.",
+        "bullets": ["Nest vs. Ecobee vs. Honeywell T9 compared","C-wire check instructions","{{state}} utility rebates for smart thermostats","Energy savings calculator for {{city}}"],
+        "cta": "Get the Guide"
+      },
+      "survey": {
+        "title": "Thermostat upgrade intake",
+        "subhead": "Let's find the right smart control for your {{city}} system.",
+        "steps": [
+          { "id": "current_stat", "label": "Current thermostat type?",          "options": ["Standard/manual","Basic digital","Smart (old)","Don't know"] },
+          { "id": "hvac_type",    "label": "HVAC system type?",                 "options": ["Standard single-stage","Variable speed","Heat pump","Mini split","Not sure"] },
+          { "id": "goal",         "label": "Primary goal?",                     "options": ["Save energy","Remote control","Schedule automation","Voice control","All of the above"] },
+          { "id": "address",      "label": "Street or area in {{neighborhood}}","placeholder": "123 Main St" }
+        ]
+      }
+    },
+    "energy-audits": {
+      "headline_templates": [
+        "Home Energy Audit in {{city}}: find where your {{neighborhood}} home is losing money",
+        "{{county}} energy audit guide (2026): rebates, blower door tests, and what to expect",
+        "Lower your {{city}} utility bills: the case for a professional energy audit"
+      ],
+      "faqs": [
+        { "q": "How much does a home energy audit cost in {{city}}?",    "a": "Professional energy audits in {{city}} run $200–$600. Many {{state}} utilities offer free or subsidized audits—we help identify your eligibility." },
+        { "q": "What does a home energy audit involve in {{county}}?",  "a": "Auditors use blower door tests, infrared cameras, and combustion safety analysis to identify air leaks, insulation gaps, and equipment inefficiencies in {{city}} homes." },
+        { "q": "What rebates are available after a {{city}} energy audit?","a": "{{state}} utilities and federal programs offer rebates for insulation, air sealing, and equipment upgrades. Post-audit rebates in {{county}} can total $500–$5,000+." }
+      ],
+      "lead_magnet": {
+        "headline": "{{city}} Energy Savings Breakdown",
+        "subhead": "What a home energy audit typically finds in {{county}}.",
+        "bullets": ["Top 5 sources of energy loss in {{state}} homes","Utility rebate programs available now","What a blower door test reveals","ROI timeline for common upgrades"],
+        "cta": "Get the Breakdown"
+      },
+      "survey": {
+        "title": "Energy audit intake",
+        "subhead": "Tell us about your {{city}} home.",
+        "steps": [
+          { "id": "home_age",     "label": "Year home was built?",              "options": ["Before 1980","1980–2000","2000–2015","2015 or newer","Not sure"] },
+          { "id": "high_bill",    "label": "Monthly utility bill (approx)?",   "options": ["Under $100","$100–$200","$200–$300","$300+","Varies a lot"] },
+          { "id": "concern",      "label": "Primary concern?",                  "options": ["High bills","Comfort issues","Preparing for solar","Home sale/purchase","Just curious"] },
+          { "id": "address",      "label": "Street or area in {{neighborhood}}","placeholder": "123 Main St" }
+        ]
+      }
+    }
+  },
+
+  "regional_nuance": {
+    "TX": {
+      "focus": "Extreme Heat & Hail Risk",
+      "top_brand": "Trane XV21",
+      "tech": "Variable-Speed TXV Control",
+      "logic": "{{city}} summers push AC systems to 100% capacity for months. Trane's two-stage and variable-speed compressors maintain comfort without short-cycling through intense {{county}} heat."
+    },
+    "FL": {
+      "focus": "Humidity & Salt Corrosion",
+      "top_brand": "Carrier Infinity 24",
+      "tech": "Coastal-Rated Condenser",
+      "logic": "Near {{neighborhood}}, salt air degrades standard condenser fins rapidly. Carrier's coastal-rated Infinity units have treated coils and last significantly longer in {{city}}'s marine environment."
+    },
+    "NC": {
+      "focus": "Mixed Climate Efficiency",
+      "top_brand": "Lennox SL28XCV",
+      "tech": "Dual-Fuel Heat Pump",
+      "logic": "{{county}} gets hot summers and cold winters. A dual-fuel heat pump (electric heat pump + gas backup) delivers efficient cooling in summer and cost-effective heat when {{city}} temps drop below 35°F."
+    },
+    "CO": {
+      "focus": "Altitude & Dry Cold",
+      "top_brand": "Rheem Prestige",
+      "tech": "High-Altitude Gas Valve",
+      "logic": "High altitude in {{city}} reduces gas combustion efficiency by up to 4% per 1,000 feet. Systems must be de-rated and equipped with altitude-specific gas valves to maintain safety and performance."
+    }
+  },
+
+  "conversion": {
+    "closing_trust": "We connect {{city}} homeowners with NATE-certified HVAC pros who provide written load calculations and upfront pricing—no bait-and-switch in {{county}}."
+  }
+}

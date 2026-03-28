@@ -1,0 +1,112 @@
+[
+  {
+    "city": "Nashville",
+    "state": "TN",
+    "neighborhood": "Downtown / The Gulch",
+    "zip": "37201",
+    "landmarks": ["The Parthenon", "Ryman Auditorium", "Charlotte Ave near Home Depot Sylvan Park"],
+    "motto": "Music City",
+    "county": "Davidson County",
+    "parks": ["Centennial Park", "Shelby Park", "Bicentennial Capitol Mall State Park"],
+    "slug": "nashville-tn"
+  },
+  {
+    "city": "El Paso",
+    "state": "TX",
+    "neighborhood": "Downtown / Mission Valley",
+    "zip": "79901",
+    "landmarks": ["Franklin Mountains", "Mission Trail", "I-10 near Home Depot West El Paso"],
+    "motto": "The Sun City",
+    "county": "El Paso County",
+    "parks": ["Chamizal National Memorial", "Ascarate Park", "Keystone Heritage Park"],
+    "slug": "el-paso-tx"
+  },
+  {
+    "city": "Washington",
+    "state": "DC",
+    "neighborhood": "Capitol Hill / DuPont Circle",
+    "zip": "20001",
+    "landmarks": ["The White House", "National Mall", "Rhode Island Ave near Home Depot Brentwood"],
+    "motto": "Justitia Omnibus",
+    "county": "District of Columbia",
+    "parks": ["Rock Creek Park", "National Mall", "Lincoln Park"],
+    "slug": "washington-dc"
+  },
+  {
+    "city": "Las Vegas",
+    "state": "NV",
+    "neighborhood": "The Strip / Downtown",
+    "zip": "89101",
+    "landmarks": ["Fountains of Bellagio", "Welcome to Vegas Sign", "S Rainbow Blvd near Home Depot Spring Valley"],
+    "motto": "What Happens in Vegas...",
+    "county": "Clark County",
+    "parks": ["Red Rock Canyon", "Sunset Park", "Floyd Lamb Park"],
+    "slug": "las-vegas-nv"
+  },
+  {
+    "city": "Boston",
+    "state": "MA",
+    "neighborhood": "Back Bay / North End",
+    "zip": "02108",
+    "landmarks": ["Faneuil Hall", "Boston Common", "Massachusetts Ave near Home Depot South Bay"],
+    "motto": "Sicut Patribus Sit Deus Nobis",
+    "county": "Suffolk County",
+    "parks": ["Boston Public Garden", "Charles River Esplanade", "The Fens"],
+    "slug": "boston-ma"
+  },
+  {
+    "city": "Portland",
+    "state": "OR",
+    "neighborhood": "Pearl District / SE Portland",
+    "zip": "97201",
+    "landmarks": ["Pittock Mansion", "Powell's Books", "Mall 205 near Home Depot SE Portland"],
+    "motto": "The City of Roses",
+    "county": "Multnomah County",
+    "parks": ["Forest Park", "Washington Park", "Mt. Tabor Park"],
+    "slug": "portland-or"
+  },
+  {
+    "city": "Louisville",
+    "state": "KY",
+    "neighborhood": "Downtown / Highlands",
+    "zip": "40202",
+    "landmarks": ["Churchill Downs", "Slugger Museum", "Breckinridge Ln near Home Depot St. Matthews"],
+    "motto": "Progress Continuity",
+    "county": "Jefferson County",
+    "parks": ["Cherokee Park", "Iroquois Park", "Waterfront Park"],
+    "slug": "louisville-ky"
+  },
+  {
+    "city": "Memphis",
+    "state": "TN",
+    "neighborhood": "Downtown / Midtown",
+    "zip": "38103",
+    "landmarks": ["Graceland", "Beale Street", "Poplar Ave near Home Depot Midtown"],
+    "motto": "The Blues City",
+    "county": "Shelby County",
+    "parks": ["Shelby Farms Park", "Overton Park", "Tom Lee Park"],
+    "slug": "memphis-tn"
+  },
+  {
+    "city": "Detroit",
+    "state": "MI",
+    "neighborhood": "Midtown / Corktown",
+    "zip": "48201",
+    "landmarks": ["Motown Museum", "Renaissance Center", "Woodward Ave near Home Depot Midtown"],
+    "motto": "Speramus Meliora; Resurget Cineribus",
+    "county": "Wayne County",
+    "parks": ["Belle Isle Park", "Campus Martius Park", "Grand Circus Park"],
+    "slug": "detroit-mi"
+  },
+  {
+    "city": "Baltimore",
+    "state": "MD",
+    "neighborhood": "Inner Harbor / Fells Point",
+    "zip": "21201",
+    "landmarks": ["National Aquarium", "Fort McHenry", "Joppa Rd near Home Depot Towson"],
+    "motto": "Heavenly City",
+    "county": "Baltimore City",
+    "parks": ["Patterson Park", "Druid Hill Park", "Federal Hill Park"],
+    "slug": "baltimore-md"
+  }
+]

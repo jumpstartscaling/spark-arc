@@ -1,0 +1,89 @@
+{
+  "service_config": {
+    "niche": "Kitchen & Bath",
+    "niche_slug": "kitchen-bath",
+    "category": "Home Services",
+    "category_slug": "home-services",
+    "icon": "🛁",
+    "sub_niches": [
+      { "label": "Cabinet Refacing", "slug": "cabinet-refacing" },
+      { "label": "Countertop Install", "slug": "countertop-install" },
+      { "label": "Shower Remodel", "slug": "shower-remodel" },
+      { "label": "Backsplash Tile", "slug": "backsplash-tile" },
+      { "label": "Full Kitchen Reno", "slug": "full-kitchen-reno" }
+    ]
+  },
+  "spintax": {
+    "synonyms": [
+      { "category": "urgency", "terms": "[\"before your kitchen demo deadline\", \"emergency plumbing refresh\", \"seasonal room update\", \"immediate countertop quote\"]" },
+      { "category": "contractor_vibe", "terms": "[\"certified kitchen designers\", \"bath pros near {{neighborhood}}\", \"cabinet refacing specialists\", \"countertop fabrication teams\"]" }
+    ]
+  },
+  "show_tell": {
+    "weather_anchor": {
+      "headline": "{{city}} kitchen trends: Modern and moisture-resistant",
+      "body": "Humid zones near {{landmark}} can warp old mdf cabinets in {{neighborhood}}. We prioritize moisture-stable plywood and quartz in {{county}} for long-term durability."
+    },
+    "process_guide": {
+      "headline": "The {{city}} Kitchen & Bath Remodel Flow",
+      "steps": [
+        { "title": "Design & Templating", "text": "Our crews in {{county}} use laser templating for your {{neighborhood}} countertops to ensure a perfect fit around walls." },
+        { "title": "Demo & Plumbing Prep", "text": "We handle the removal and old-pipe replacement frequent in {{city}} older builds near {{landmark}}." },
+        { "title": "Finishing & Cabinetry", "text": "We install custom or refaced boxes to match your {{neighborhood}} home's modern or traditional style." },
+        { "title": "Final Detail & Sealing", "text": "A {{county}} inspector verifies the new waste lines and we apply stone sealant for your {{city}} family kitchen." }
+      ]
+    },
+    "seasonal_maintenance": {
+      "headline": "Year-Round Maintenance for High-Use Spaces",
+      "fall_tips": "Check your cabinet hinges near {{parks}} for salt air corrosion before winter. A quick oiling prevents squeaks.",
+      "summer_tips": "Verify your backsplash grout near {{neighborhood}}. Humidity in {{state}} can cause minor grout cracking—seal once a year."
+    },
+    "comparison_guide": {
+      "title": "Quartz vs. Granite for {{city}} Countertops",
+      "comparison": {
+        "option_a": "Natural Granite (Unique / Durable)",
+        "option_b": "Engineered Quartz (Modern / Low-Maint)",
+        "details": "Granite needs annual sealing in {{city}} but handles heat. Quartz in {{neighborhood}} is stain-proof and never needs sealing."
+      }
+    }
+  },
+  "encyclopedia": {
+    "brands": {
+      "Cambria": { "tier": "Premium Quartz", "flagship": "Signature Series", "value_prop": "Best-in-class stone designs for {{county}} high-end homes.", "price_point": "$$$" },
+      "Kohler":  { "tier": "Fixture Leader", "flagship": "Artifacts", "value_prop": "Timeless bath and kitchen fixtures for {{city}} residential use.", "price_point": "$$" },
+      "KraftMaid": { "tier": "Cabinet Standard", "flagship": "Vantage", "value_prop": "The industry favorite for custom storage in {{neighborhood}} kitchens.", "price_point": "$$" }
+    },
+    "styles": {
+      "Farmhouse": { "human_name": "Modern Traditional", "benefit": "Classic apron-front sinks and shiplap for {{parks}} properties.", "aoe_hint": "Needs durable countertops in {{county}}." },
+      "Minimalist": { "human_name": "Handleless Modern", "benefit": "Sleek, easy-to-clean lines for {{neighborhood}} urban lofts.", "aoe_hint": "Focus on high-quality hardware in {{state}}." }
+    },
+    "costs_2026": {
+      "Countertop_Install": { "per_sqft": "$45 - $125 / sqft", "notes": "Includes template and install in {{city}}." },
+      "Shower_Remodel":    { "per_sqft": "$6,000 - $15,000", "notes": "Full wet-area renovation near {{neighborhood}}." }
+    }
+  },
+  "sub_niche_templates": {
+    "cabinet-refacing": {
+      "headline_templates": ["{{city}} Cabinet Refacing: A new look without the demo mess", "Kitchen upgrade costs in {{county}}: Refacing vs. New cabinets"],
+      "faqs": [
+        { "q": "How long does refacing take in {{city}}?", "a": "Typically 3–5 days to swap all doors and apply new skins in {{state}}." },
+        { "q": "What is the cost saving vs new in {{county}}?", "a": "Typically 30–50% cheaper than full cabinet replacement in {{city}}." }
+      ],
+      "survey": {
+        "title": "Remodel Triage Form",
+        "subhead": "Quick questions to size the project.",
+        "steps": [
+          { "id": "renovation_goal", "label": "Project type?", "options": ["Kitchen Update", "Bath Remodel", "Both", "Countertops Only"] },
+          { "id": "budget", "label": "Estimated budget?", "options": ["Under $10k", "$10k–$30k", "$30k+"] }
+        ]
+      }
+    }
+  },
+  "regional_nuance": {
+    "TX": { "focus": "Hard Water Fixture Care", "top_brand": "Kohler", "tech": "Water Softener Integration", "logic": "Hard water in {{city}} ruins matte finishes; we prioritize chrome and high-durability fixtures in {{county}}." },
+    "NY": { "focus": "Space Optimization", "top_brand": "KraftMaid", "tech": "Custom Storage", "logic": "Smaller kitchens near {{landmark}} need smart storage solutions for {{city}} apartment dwellers." }
+  },
+  "conversion": {
+    "closing_trust": "We connect {{city}} homeowners with licensed kitchen and bath pros who provide 3D designs before any demolition."
+  }
+}

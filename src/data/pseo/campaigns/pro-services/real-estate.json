@@ -1,0 +1,89 @@
+{
+  "service_config": {
+    "niche": "Real Estate",
+    "niche_slug": "real-estate",
+    "category": "Professional Services",
+    "category_slug": "pro-services",
+    "icon": "🏡",
+    "sub_niches": [
+      { "label": "Residential Sales", "slug": "residential-sales" },
+      { "label": "Commercial Leasing", "slug": "commercial-leasing" },
+      { "label": "Property Management", "slug": "property-management" },
+      { "label": "Luxury Estates", "slug": "luxury-estates" },
+      { "label": "Investment Advisory", "slug": "investment-advisory" }
+    ]
+  },
+  "spintax": {
+    "synonyms": [
+      { "category": "urgency", "terms": "[\"before your mortgage rate lock expires\", \"emergency listing refresh\", \"seasonal market update\", \"immediate valuation check\"]" },
+      { "category": "contractor_vibe", "terms": "[\"top-rated Realtors\", \"listing agents near {{neighborhood}}\", \"commercial brokers\", \"investment specialists in {{county}}\"]" }
+    ]
+  },
+  "show_tell": {
+    "weather_anchor": {
+      "headline": "{{city}} Housing Market: Why {{neighborhood}} inventory is tight",
+      "body": "Current absorption rates near {{landmark}} favor sellers in {{county}}. Moving quickly in {{state}} with a pre-approved {{city}} team is the only way to win a multi-offer scenario."
+    },
+    "process_guide": {
+      "headline": "The {{city}} Property Transaction Cycle",
+      "steps": [
+        { "title": "Valuation & CMA", "text": "Our teams in {{county}} audit recent comps near {{neighborhood}} to set the most aggressive listing price." },
+        { "title": "Staging & Media", "text": "We verify your curb appeal near {{landmark}} with drone photography and virtual tours frequent for {{state}} luxury listings." },
+        { "title": "Negotiation & Escrow", "text": "We handle the multi-offer triage and appraisal gap strategy to protect your {{city}} equity." },
+        { "title": "Closing & Referral", "text": "A final {{county}} title check ensures your {{neighborhood}} home is clear for owner-switch." }
+      ]
+    },
+    "seasonal_maintenance": {
+      "headline": "Year-Round Value for {{state}} Homeowners",
+      "fall_tips": "Update your landscaping near {{parks}} before the autumn market freeze. Seasonal curb appeal in {{city}} can add $10k+ to sale price.",
+      "summer_tips": "Check your AC efficiency near {{neighborhood}} before inspections. Maintenance records in {{state}} are the #1 thing buyers check in high-heat {{county}} months."
+    },
+    "comparison_guide": {
+      "title": "Buy vs. Sell in the current {{city}} Market",
+      "comparison": {
+        "option_a": "First-Time Buyer (Tax Advantage)",
+        "option_b": "Second-Home Investor (Equity Burn)",
+        "details": "Buying in {{city}} currently requires 5% down; being a landlord near {{neighborhood}} offers high rental yield but requires {{state}} specific management expertise in {{county}}."
+      }
+    }
+  },
+  "encyclopedia": {
+    "brands": {
+      "RE/MAX":   { "tier": "National Giant", "flagship": "Collection Luxury", "value_prop": "The industry leader for global referral exposure in {{county}}.", "price_point": "$$$" },
+      "Zillow":   { "tier": "Data Hub",      "flagship": "Zestimate Pro",     "value_prop": "Best-in-class identification of the most active {{city}} buyers.", "price_point": "$" },
+      "Compass":  { "tier": "Tech-Enabled",  "flagship": "Concierge",         "value_prop": "Modern staging and data-driven marketing for {{neighborhood}} high-end listings.", "price_point": "$$$" }
+    },
+    "styles": {
+      "Modern":    { "human_name": "Open Concept", "benefit": "Highest demand near {{parks}} urban fringes.", "aoe_hint": "Check state solar solar rules in {{state}}." },
+      "Colonial": { "human_name": "Traditional Layout", "benefit": "Timed-tested appeal near {{landmark}} subdivisions.", "aoe_hint": "Standard for {{city}} single-family homes." }
+    },
+    "costs_2026": {
+      "Commission":  { "per_sqft": "4% - 6%", "notes": "Split between buy/sell side in {{city}}." },
+      "Professional_Staging": { "per_sqft": "$2,500 - $8,000", "notes": "Typical for {{neighborhood}} luxury homes." }
+    }
+  },
+  "sub_niche_templates": {
+    "residential-sales": {
+      "headline_templates": ["{{city}} Real Estate: Why {{neighborhood}} is the next growth zone", "Home sale guide for {{county}}: Valuation vs. Staging tips"],
+      "faqs": [
+        { "q": "How long does it take to sell in {{city}}?", "a": "Average days-on-market in {{county}} is currently 22–35 days for well-priced homes." },
+        { "q": "What is my home worth in {{state}}?", "a": "Valuation in {{city}} depends on micro-neighborhood comps AND current interest rate profiles in {{county}}." }
+      ],
+      "survey": {
+        "title": "Property Interest Form",
+        "subhead": "Quick questions to determine buying power.",
+        "steps": [
+          { "id": "sqft_needed", "label": "Desired square footage?", "options": ["Under 2000", "2000–3500", "3500+"] },
+          { "id": "budget_range", "label": "Budget range?", "options": ["Under $500k", "$500k–$1M", "$1M+"] }
+        ]
+      }
+    }
+  },
+  "regional_nuance": {
+    "TX": { "focus": "Property Tax Nuance", "top_brand": "Compass", "tech": "Homestead Exemption", "logic": "No state income tax in {{city}} near {{parks}} means higher property taxes; we focus on tax-relief strategies for {{county}} buyers." },
+    "NJ": { "focus": "Oil Tank & Septic Inspections", "top_brand": "RE/MAX", "tech": "Soil Boring Check", "logic": "Aging infrastructure near {{landmark}} makes underground tanks a major risk for {{city}} buyers; we prioritize sweep inspections for {{county}}." }
+  },
+  "conversion": {
+    "closing_trust": "We connect {{city}} sellers with top 1% Realtors who offer professional deep-cleaning and photography as a standard service."
+  }
+}

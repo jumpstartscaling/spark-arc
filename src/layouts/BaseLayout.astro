@@ -1,13 +1,27 @@
 ---
 import '../styles/global.css';
+import TrackingHead from '../components/TrackingHead.astro';
 
 interface Props {
   title: string;
   description?: string;
   schemaJsonLd?: string;
+  niche?: string;
+  city?: string;
+  state?: string;
 }
 
-const { title, description = 'Local roofing guidance and certified contractor matching.', schemaJsonLd } = Astro.props;
+const {
+  title,
+  description = 'Local home service guidance and certified contractor matching.',
+  schemaJsonLd,
+  niche,
+  city,
+  state,
+} = Astro.props;
+
+const siteUrl = import.meta.env.PUBLIC_SITE_URL ?? '';
+const canonicalUrl = siteUrl ? `${siteUrl}${Astro.url.pathname}` : undefined;
 ---
 
 <!DOCTYPE html>
@@ -17,29 +31,72 @@ const { title, description = 'Local roofing guidance and certified contractor ma
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content={description} />
     <title>{title}</title>
+    {canonicalUrl && <link rel="canonical" href={canonicalUrl} />}
     {schemaJsonLd && (
       <script type="application/ld+json" set:html={schemaJsonLd} />
     )}
+    <!-- ── Analytics & Tracking ── -->
+    <TrackingHead />
   </head>
-  <body class="min-h-screen bg-slate-50 text-slate-900 antialiased">
-    <header class="border-b border-slate-200 bg-white/90 backdrop-blur supports-[backdrop-filter]:bg-white/70">
-      <div class="mx-auto flex max-w-6xl items-center justify-between gap-4 px-4 py-4">
-        <a href="/" class="text-lg font-black tracking-tight text-slate-900">
-          Spark Arc
+  <body class="min-h-screen bg-slate-50 text-slate-900 antialiased" data-niche={niche}>
+    <header class="sticky top-0 z-50 border-b border-slate-200 bg-white/80 backdrop-blur-md">
+      <div class="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-4 md:px-8">
+        <a href="/" class="flex items-center gap-2 text-xl font-black tracking-tighter text-slate-900 group">
+          <div class="h-8 w-8 rounded-lg bg-blue-600 flex items-center justify-center transition-transform group-hover:rotate-12">
+            <span class="text-white text-xs font-bold leading-none">IA</span>
+          </div>
+          Ion Arc Online
         </a>
-        <nav class="flex items-center gap-6 text-sm font-semibold text-slate-600">
-          <a href="/" class="hover:text-blue-600">Home</a>
-          <a href="/insights" class="hover:text-blue-600">Local guides</a>
+        
+        <nav class="hidden md:flex items-center gap-8 text-sm font-bold text-slate-600">
+          <a href="/" class="transition hover:text-blue-600">Home</a>
+          <a href="/insights" class="transition hover:text-blue-600">Local Guides</a>
         </nav>
+
+        <div class="flex items-center gap-3">
+          <a 
+            href="/kb-survey" 
+            class="inline-flex items-center justify-center rounded-full bg-slate-900 px-5 py-2.5 text-xs font-black uppercase tracking-widest text-white shadow-xl shadow-slate-200 transition hover:bg-blue-600 hover:-translate-y-0.5"
+          >
+            Find Your Guide
+          </a>
+          <button class="md:hidden p-2 text-slate-600" aria-label="Menu">
+            <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+          </button>
+        </div>
       </div>
     </header>
     <main>
       <slot />
     </main>
-    <footer class="mt-20 border-t border-slate-200 bg-white py-10 text-center text-sm text-slate-500">
-      <p class="px-4">
-        Informational content only. Verify licenses and insurance with any contractor you hire.
-      </p>
+    <footer class="mt-20 border-t border-slate-200 bg-white py-16 text-center text-sm text-slate-900">
+      <div class="mx-auto max-w-2xl px-4 space-y-6">
+        {city && state && (
+          <div class="mb-8 border-b border-slate-100 pb-8">
+            <p class="text-xs font-black uppercase tracking-widest text-slate-400 mb-2">Local Verified Support</p>
+            <p class="text-xl font-black text-slate-900">Ion Arc Online {city} {niche ? (niche.charAt(0).toUpperCase() + niche.slice(1).replace(/-/g, ' ')) : 'Support'}</p>
+            <p class="mt-2 font-bold text-slate-900 italic">Serving Downtown {city} and surrounding {state} Municipality zones.</p>
+            <div class="mt-4 flex flex-wrap justify-center gap-4 text-[10px] font-black text-blue-600 uppercase tracking-tighter">
+              <span>✓ 24/7 Digital Intake Active</span>
+              <span>✓ Local Compliance Verified</span>
+              <span>✓ {state} Licensed Network</span>
+            </div>
+          </div>
+        )}
+        <div class="space-y-4 font-bold">
+          <p>
+            Informational content only. Verify licenses and insurance with any contractor you hire. 
+            Ion Arc Online is a research platform and does not provide direct contracting services.
+          </p>
+          <div class="pt-4 border-t border-slate-50 text-[11px] uppercase tracking-widest text-slate-900">
+            <p>© 2026 Ion Arc Online Media. All rights reserved locally within USA.</p>
+            <p class="mt-2 text-[9px] opacity-80">
+              A <a href="https://jumpstartscaling.com" class="underline hover:text-blue-600">jumpstartscaling.com</a> asset. 
+              Tech architecture by <a href="https://chrisamaya.work" class="underline hover:text-blue-600">chrisamaya.work</a>.
+            </p>
+          </div>
+        </div>
+      </div>
     </footer>
   </body>
 </html>

@@ -1,0 +1,89 @@
+{
+  "service_config": {
+    "niche": "Pest Control",
+    "niche_slug": "pest-control",
+    "category": "Home Services",
+    "category_slug": "home-services",
+    "icon": "🐜",
+    "sub_niches": [
+      { "label": "Termite Treatment", "slug": "termite-treatment" },
+      { "label": "Rodent Removal", "slug": "rodent-removal" },
+      { "label": "Bed Bug Extermination", "slug": "bed-bug-extermination" },
+      { "label": "Mosquito Control", "slug": "mosquito-control" },
+      { "label": "Tick Control", "slug": "tick-control" }
+    ]
+  },
+  "spintax": {
+    "synonyms": [
+      { "category": "urgency", "terms": "[\"before the colony spreads\", \"emergency pest dispatch\", \"same-day critter assessment\", \"immediate pest removal\"]" },
+      { "category": "contractor_vibe", "terms": "[\"licensed exterminators\", \"pest control pros near {{neighborhood}}\", \"eco-friendly removal teams\", \"rodent specialist crews\"]" }
+    ]
+  },
+  "show_tell": {
+    "weather_anchor": {
+      "headline": "{{city}} Pest Alert: Spring spawns and heat spikes",
+      "body": "After heavy rain or humidity near {{landmark}}, ants and termites in {{neighborhood}} seek higher ground (like your kitchen). Stop the invasion early and compare quotes from local exterminators."
+    },
+    "process_guide": {
+      "headline": "The {{city}} Integrated Pest Management Cycle",
+      "steps": [
+        { "title": "Intrusion Audit", "text": "Our crews in {{county}} find entry points near foundation vents and utility penetrations frequent in {{neighborhood}} homes." },
+        { "title": "Baiting & Exclusion", "text": "We use proactive baiting stations and hardware cloth barriers to block access near {{landmark}} corridors." },
+        { "title": "Eco-Forward Treatment", "text": "We apply targeted, family-safe sprays to the perimeter to create a long-term barrier against {{state}} specific pests." },
+        { "title": "Monitoring Finish", "text": "We return to your {{city}} property to verify bait activity and adjust the barrier for the current season." }
+      ]
+    },
+    "seasonal_maintenance": {
+      "headline": "Year-Round Pest Protection for {{state}} Climates",
+      "fall_tips": "Mice and rats seek warmth near {{parks}} as temps drop. Check your attic insulation for signs of nesting early.",
+      "summer_tips": "Mosquito larvae thrive in standing water near {{landmark}}. Tip and toss after {{state}} summer storms to keep the yard usable."
+    },
+    "comparison_guide": {
+      "title": "Eco-Friendly vs. Traditional Treatment for {{city}}",
+      "comparison": {
+        "option_a": "Traditional Barrier (High Knockdown)",
+        "option_b": "Integrated Eco-Management (Pet-Safe)",
+        "details": "Traditional treatments offer immediate visual results for {{city}} homes. Integrated approaches focus on long-term exclusion and use oils/baits safer for {{neighborhood}} yards with kids and pets."
+      }
+    }
+  },
+  "encyclopedia": {
+    "brands": {
+      "Sentricon": { "tier": "Premium Termite", "flagship": "Always Active", "value_prop": "The industry leader for termite baiting—highly effective in {{county}} moist soil.", "price_point": "$$$" },
+      "Termidor":  { "tier": "Liquid Barrier", "flagship": "HE High-Efficiency", "value_prop": "Transfer-effect chemical that eliminates entire colonies in {{city}} infestations.", "price_point": "$$" },
+      "Orkin":     { "tier": "National Standard", "flagship": "Precision Service", "value_prop": "Robust tracking and science-backed protocols for {{state}} residential areas.", "price_point": "$$" }
+    },
+    "styles": {
+      "Tenting": { "human_name": "Full Fumigation", "benefit": "Eliminates 100% of drywood termites—standard for older {{neighborhood}} wood frames.", "aoe_hint": "Check state regulations for property vacating in {{state}}." },
+      "Baiting": { "human_name": "Proactive Monitoring", "benefit": "Less invasive; great for preventive maintenance near {{parks}}.", "aoe_hint": "Modern smart stations notify tech of hits in {{city}} instantly." }
+    },
+    "costs_2026": {
+      "Quarterly_Service": { "per_sqft": "$125 - $250 / qtr", "notes": "Typical residential perimeter plan in {{city}}." },
+      "Termite_Treatment": { "per_sqft": "$1,200 - $3,500", "notes": "Depends on linear footage and brand (Sentricon vs. Liquid)." }
+    }
+  },
+  "sub_niche_templates": {
+    "termite-treatment": {
+      "headline_templates": ["{{city}} Termite Control: Protect your home foundation near {{landmark}}", "Termite treatment costs in {{county}}: Sentricon vs. Liquid guide"],
+      "faqs": [
+        { "q": "Are termites common in {{city}}?", "a": "Yes, especially subterranean termites in {{county}} homes with wood-to-soil contact." },
+        { "q": "How long does a termite treatment last in {{state}}?", "a": "Liquid barriers typically last 5–8 years, while baiting systems like Sentricon are monitored annually in {{city}}." }
+      ],
+      "survey": {
+        "title": "Pest Intake Form",
+        "subhead": "Quick questions to identify your pest pressure.",
+        "steps": [
+          { "id": "pest_type", "label": "What are you seeing?", "options": ["Termite mud tubes", "Ants/Roaches", "Rodents in attic", "Mosquitoes in yard"] },
+          { "id": "sqft", "label": "Approximate home size?", "options": ["Under 2000", "2000–4000", "4000+"] }
+        ]
+      }
+    }
+  },
+  "regional_nuance": {
+    "FL": { "focus": "Subterranean Termites", "top_brand": "Sentricon", "tech": "Baiting Stations", "logic": "High humidity and year-round warmth in {{city}} make Termites a 'when, not if' scenario for {{neighborhood}}." },
+    "NY": { "focus": "Urban Rodent Control", "top_brand": "Orkin", "tech": "Exclusion Sealing", "logic": "Aging infrastructure near {{landmark}} means rodents are the #1 concern for {{city}} homeowners." }
+  },
+  "conversion": {
+    "closing_trust": "We connect {{city}} homeowners with licensed exterminators who provide free inspections for majority of active {{county}} infestations."
+  }
+}

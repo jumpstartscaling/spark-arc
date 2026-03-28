@@ -1,0 +1,57 @@
+---
+import type { SeasonalTipsData } from '../../types/pseo';
+
+interface Props {
+  data: SeasonalTipsData;
+}
+
+const { data } = Astro.props;
+---
+
+<section class="my-20 px-4 bg-slate-900 border-y border-slate-800 py-16 text-white overflow-hidden relative">
+  <!-- Decorative background element -->
+  <div class="absolute -right-20 -top-20 h-64 w-64 rounded-full bg-blue-600 opacity-20 blur-3xl"></div>
+  <div class="absolute -left-20 -bottom-20 h-64 w-64 rounded-full bg-emerald-600 opacity-10 blur-3xl"></div>
+
+  <div class="mx-auto max-w-4xl relative z-10">
+    <div class="text-center">
+      <span class="inline-block rounded-full bg-blue-500/20 px-4 py-1.5 text-xs font-bold uppercase tracking-widest text-blue-400">
+        Climate-Specific Guidance
+      </span>
+      <h2 class="mt-6 text-3xl font-black md:text-5xl leading-tight">
+        {data.headline}
+      </h2>
+    </div>
+
+    <div class="mt-16 grid gap-12 md:grid-cols-2">
+      <div class="space-y-6">
+        <div class="flex h-16 w-16 items-center justify-center rounded-2xl bg-blue-500 text-3xl">
+          ❄️
+        </div>
+        <h3 class="text-2xl font-bold">Cold Season Prep</h3>
+        <p class="text-lg leading-relaxed text-slate-300">
+          {data.fall_tips}
+        </p>
+      </div>
+
+      <div class="space-y-6">
+        <div class="flex h-16 w-16 items-center justify-center rounded-2xl bg-orange-500 text-3xl">
+          ☀️
+        </div>
+        <h3 class="text-2xl font-bold">Warm Season Prep</h3>
+        <p class="text-lg leading-relaxed text-slate-300">
+          {data.summer_tips}
+        </p>
+      </div>
+    </div>
+
+    <div class="mt-16 rounded-3xl border border-slate-700 bg-white/5 p-8 md:p-10 backdrop-blur-sm">
+      <p class="text-sm italic text-slate-400">
+        Expert Tip: In {city}, local conditions can shift dramatically month-by-month. 
+        Always verify your maintenance schedule with a licensed tech who understands the specific humidity and 
+        temperature profiles of your neighborhood. 
+        Proactive inspections reduce emergency service costs by up to 40% on average over a 5-year period.
+      </p>
+    </div>
+  </div>
+</section>

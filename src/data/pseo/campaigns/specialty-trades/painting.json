@@ -1,0 +1,102 @@
+{
+  "service_config": {
+    "niche": "Painting",
+    "niche_slug": "painting",
+    "category": "Specialty Trades",
+    "category_slug": "specialty-trades",
+    "icon": "🎨",
+    "sub_niches": [
+      { "label": "Interior Painting", "slug": "interior-painting" },
+      { "label": "Exterior Revitalization", "slug": "exterior-painting" },
+      { "label": "Cabinet Refinishing", "slug": "cabinet-refinishing" },
+      { "label": "Staining & Sealing", "slug": "staining" },
+      { "label": "Commercial Painting", "slug": "commercial-painting" }
+    ]
+  },
+  "branding": {
+    "business_name_suffix": "Painting Specialists"
+  },
+  "spintax": {
+    "synonyms": [
+      { "category": "urgency", "terms": "[\"before your next real estate listing\", \"emergency paint refresh\", \"seasonal color update\", \"immediate estimate for {{city}}\"]" },
+      { "category": "contractor_vibe", "terms": "[\"fully insured painting crews\", \"pro painters near {{neighborhood}}\", \"residential coating specialists\", \"commercial paint teams in {{county}}\"]" }
+    ]
+  },
+  "show_tell": {
+    "weather_anchor": {
+      "headline": "{{city}} humidity and your exterior paint",
+      "body": "Moisture levels near {{landmark}} can cause exterior paint in {{neighborhood}} to bubble or peel prematurely. Proper surface preparation and premium {{reg_top_brand}} coatings in {{county}} are key to a 10-year finish."
+    },
+    "process_guide": {
+      "headline": "The {{city}} Professional Painting Process",
+      "steps": [
+        { "title": "Surface Cleaning & Prep", "text": "Our crews in {{county}} pressure wash and scrape old coatings frequent in {{neighborhood}} older homes." },
+        { "title": "Patching & Sanding", "text": "We fill wood rot near {{landmark}} and sand surfaces to a smooth profile for an even finish." },
+        { "title": "Priming & Coating", "text": "We apply high-adhesion primers and two coats of {{reg_top_brand}} to maximize lifespan in {{state}} weather." },
+        { "title": "Detailed Cleanup", "text": "A full vacuum and property sweep ensures your {{city}} home is pristine when we finish." }
+      ]
+    },
+    "seasonal_maintenance": {
+      "headline": "Maintaining your {{state}} curb appeal",
+      "fall_tips": "Check your windowsills near {{parks}} for failing caulk before winter. Water intrusion can blow out your paint by spring.",
+      "summer_tips": "Wash your exterior siding near {{neighborhood}} with a soft-wash solution. Humidity in {{state}} causes mildew that eats through paint films."
+    },
+    "comparison_guide": {
+      "title": "Standard Latex vs. Premium Elastomeric for {{city}}",
+      "comparison": {
+        "option_a": "Standard Acrylic Latex (Economy)",
+        "option_b": "High-Build Elastomeric (Performance)",
+        "details": "Latex is breathable and cost-effective for {{city}} interiors. Elastomeric provides a waterproof, flexible shell for stucco and wood exteriors in {{neighborhood}}."
+      }
+    }
+  },
+  "encyclopedia": {
+    "brands": {
+      "Sherwin_Williams": { "tier": "Professional", "flagship": "Emerald", "value_prop": "Exceptional hide and scrub resistance for high-traffic {{city}} hallways.", "price_point": "$$$" },
+      "Benjamin_Moore": { "tier": "Designer", "flagship": "Aura", "value_prop": "Color Lock technology ensures depth and durability in {{state}} sunlight.", "price_point": "$$$$" },
+      "PPG":            { "tier": "Commercial",  "flagship": "Manor Hall",   "value_prop": "High-durability coatings for {{neighborhood}} multi-family projects.", "price_point": "$$" },
+      "Behr": { "tier": "Consumer Value", "flagship": "Marquee", "value_prop": "One-coat coverage for quick flips in {{neighborhood}} rental properties.", "price_point": "$$" }
+    },
+    "pricing_benchmarks": [
+      { "item": "Standard Interior (per sq ft)", "price": "$3.50 - $5.50", "note": "Includes basic prep, masking, and 2 coats." },
+      { "item": "Exterior Siding Paint", "price": "$2.50 - $4.00", "note": "Varies by surface texture in {{county}}." },
+      { "item": "Cabinet Refinishing (Full)", "price": "$2,500 - $5,000", "note": "Depends on door count and finish style." },
+      { "item": "Deck / Fence Staining", "price": "$0.75 - $1.25", "note": "Highly recommended for {{state}} winters." }
+    ],
+    "styles": {
+      "Limewash": { "human_name": "Mineral Paint", "benefit": "Breathable, antique aesthetic for brick in {{parks}} properties.", "aoe_hint": "Check historic board rules in {{state}}." },
+      "Stain":    { "human_name": "Wood Preservation", "benefit": "Protects decks and fences near {{landmark}} from UV damage.", "aoe_hint": "Needs re-application every 2–3 years in {{city}}." }
+    },
+    "costs_2026": {
+      "Interior_Room": { "per_sqft": "$400 - $800 / room", "notes": "Standard 12x12 room in {{city}}." },
+      "Exterior_Full": { "per_sqft": "$3,500 - $8,500", "notes": "Typical 2-story home near {{neighborhood}}." }
+    },
+    "aoe_hints": [
+      "Wait for humidity to drop below 50% in {{city}} before starting exterior projects."
+    ]
+  },
+  "sub_niche_templates": {
+    "interior-painting": {
+      "headline_templates": ["{{city}} Interior Painting: Transform your home this season", "Paint costs in {{county}}: Materials vs. Labor guide"],
+      "faqs": [
+        { "q": "How long does a full interior take in {{city}}?", "a": "Typically 3–5 days for a 3-bedroom home in {{county}}." },
+        { "q": "What paint brand do you use in {{state}}?", "a": "We prioritize Sherwin Williams Emerald or Benjamin Moore Regal for a lasting finish in {{city}}." }
+      ],
+      "survey": {
+        "title": "Painting Inquiry",
+        "subhead": "Quick questions to size the project.",
+        "steps": [
+          { "id": "project_type", "label": "Painting type?", "options": ["Interior", "Exterior", "Cabinet Refinishing", "Deck/Fence"] },
+          { "id": "sqft", "label": "Approximate square footage?", "options": ["Under 2000", "2000–4000", "4000+"] }
+        ]
+      }
+    }
+  },
+  "regional_nuance": {
+    "FL": { "focus": "UV Fade Resistance", "top_brand": "Sherwin Williams", "tech": "Elastomeric Coating", "logic": "Intense summer sun near {{landmark}} destroys low-grade paints; we focus on high-reflectivity coatings for {{city}}." },
+    "NJ": { "focus": "Lead Prep & Historic Colors", "top_brand": "Benjamin Moore", "tech": "EPA RRP Compliance", "logic": "Historic neighborhoods near {{parks}} have older coats; we focus on safe lead scraping and period colors." }
+  },
+  "conversion": {
+    "closing_trust": "We connect {{city}} homeowners with insured painting crews who provide free color consultations and line-item estimates."
+  }
+}

@@ -1,0 +1,89 @@
+{
+  "service_config": {
+    "niche": "Landscaping",
+    "niche_slug": "landscaping",
+    "category": "Home Services",
+    "category_slug": "home-services",
+    "icon": "🌿",
+    "sub_niches": [
+      { "label": "Lawn Mowing", "slug": "lawn-mowing" },
+      { "label": "Sprinkler Repair", "slug": "sprinkler-repair" },
+      { "label": "Tree Trimming", "slug": "tree-trimming" },
+      { "label": "Hardscaping", "slug": "hardscaping" },
+      { "label": "Sod Installation", "slug": "sod-installation" }
+    ]
+  },
+  "spintax": {
+    "synonyms": [
+      { "category": "urgency", "terms": "[\"before the growing season peak\", \"emergency sprinkler repair\", \"seasonal lawn refresh\", \"immediate tree hazard check\"]" },
+      { "category": "contractor_vibe", "terms": "[\"professional landscape crews\", \"grounds maintenance teams near {{neighborhood}}\", \"sod installation specialists\", \"tree doctors in {{county}}\"]" }
+    ]
+  },
+  "show_tell": {
+    "weather_anchor": {
+      "headline": "{{city}} outdoor readiness: Heat stress and hydration",
+      "body": "After heat spikes or drought near {{landmark}}, turf in {{neighborhood}} can go dormant or die. Proper irrigation in {{county}} is essential to maintain value."
+    },
+    "process_guide": {
+      "headline": "The {{city}} Landscape Transformation Process",
+      "steps": [
+        { "title": "Site Survey & Soil Test", "text": "Our crews in {{county}} analyze drainage patterns and clay/sand ratios near {{landmark}} to select the right turf and flora." },
+        { "title": "Design & Hardscape Prep", "text": "We map pavers and retaining walls to ensure structural stability in {{state}}'s unique frost/thaw cycles." },
+        { "title": "Planting & Irrigation", "text": "We install zone-specific drip lines and native plants that thrive in {{city}} humidity." },
+        { "title": "Growth Finish", "text": "We return to your {{neighborhood}} property to adjust sprinkler timing for the established root systems." }
+      ]
+    },
+    "seasonal_maintenance": {
+      "headline": "Year-Round Curb Appeal for {{state}} Properties",
+      "fall_tips": "Aerate and overseed near {{parks}} before the first frost. This ensures a thick, green spring lawn.",
+      "summer_tips": "Adjust mower heights to 3-4 inches near {{neighborhood}} to shade the roots from intense {{state}} afternoon sun."
+    },
+    "comparison_guide": {
+      "title": "Natural Sod vs. Seed & Straw in {{city}}",
+      "comparison": {
+        "option_a": "Seed & Straw (Economy)",
+        "option_b": "Certified Sod (Premium / Instant)",
+        "details": "Seed is cheaper but takes 6-12 months to mature in {{city}}. Sod provides an instant erosion-resistant barrier for {{neighborhood}} slopes."
+      }
+    }
+  },
+  "encyclopedia": {
+    "brands": {
+      "RainBird": { "tier": "Irrigation Standard", "flagship": "ESP-Me3", "value_prop": "The gold standard for smart irrigation in {{county}}.", "price_point": "$$" },
+      "Stihl":    { "tier": "Trade-Grade", "flagship": "Pro Series", "value_prop": "Precision tree work tools—common for {{city}} arborists.", "price_point": "$$$" },
+      "Belgard":  { "tier": "Hardscape Leader", "flagship": "Paver Systems", "value_prop": "Modern aesthetics for {{neighborhood}} patio renovations.", "price_point": "$$$" }
+    },
+    "styles": {
+      "Native Garden": { "human_name": "Xeriscaping (Drought-Ready)", "benefit": "Low water use; saves money on {{city}} utility bills.", "aoe_hint": "Check state incentives for xeriscaping in {{state}}." },
+      "Manicured Estate": { "human_name": "Traditional Lawn", "benefit": "Classic curb appeal near {{parks}} properties.", "aoe_hint": "Needs regular {{county}} lawn maintenance." }
+    },
+    "costs_2026": {
+      "Monthly_Maint":   { "per_sqft": "$150 - $450 / mo", "notes": "Typical full-service plan in {{city}}." },
+      "Hardscape_Patio": { "per_sqft": "$15 - $45 / sqft", "notes": "Paver installs near {{neighborhood}}." }
+    }
+  },
+  "sub_niche_templates": {
+    "lawn-mowing": {
+      "headline_templates": ["{{city}} Lawn Mowing: Weekly maintenance you can trust", "Lawn care costs in {{county}}: professional vs. DIY"],
+      "faqs": [
+        { "q": "How often should I mow in {{city}}?", "a": "Weekly during the growing season (March–October) in {{state}}." },
+        { "q": "What's the cost for 1/4 acre in {{county}}?", "a": "Typically $45–$75 per visit depending on edging and blow-off needs." }
+      ],
+      "survey": {
+        "title": "Landscape Inquiry",
+        "subhead": "Quick questions to size the project.",
+        "steps": [
+          { "id": "property_size", "label": "Property size?", "options": ["Small (Townhome)", "Standard (Suburban)", "Estate (1+ Acre)"] },
+          { "id": "issue", "label": "Primary goal?", "options": ["Mowing", "Hardscaping", "Sod Installation", "Tree Removal"] }
+        ]
+      }
+    }
+  },
+  "regional_nuance": {
+    "AZ": { "focus": "Xeriscaping", "top_brand": "Belgard", "tech": "Drip Irrigation", "logic": "Heat near {{landmark}} makes natural grass a high-cost luxury; we prioritize native plants and gravel." },
+    "GA": { "focus": "Red Clay Management", "top_brand": "RainBird", "tech": "Drainage Correction", "logic": "Heavy rains near {{parks}} cause runoff; we focus on French drains and erosion control." }
+  },
+  "conversion": {
+    "closing_trust": "We connect {{city}} homeowners with insured landscape crews who bring their own professional-grade equipment."
+  }
+}

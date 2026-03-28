@@ -1,0 +1,53 @@
+---
+interface Props {
+  city: string;
+  neighborhood: string;
+}
+
+const { city, neighborhood } = Astro.props;
+---
+
+<section class="relative overflow-hidden bg-white py-24 sm:py-32">
+  <div class="mx-auto max-w-7xl px-6 lg:px-8">
+    <div class="mx-auto max-w-2xl text-center">
+      <div class="mb-8 flex justify-center">
+        <div class="rounded-full bg-green-50 px-3 py-1 text-sm font-semibold leading-6 text-green-600 ring-1 ring-inset ring-green-600/20">
+          Request Received
+        </div>
+      </div>
+      <h1 class="text-4xl font-bold tracking-tight text-slate-900 sm:text-6xl">
+        Thank you for choosing Ion Arc Online
+      </h1>
+      <p class="mt-6 text-lg leading-8 text-slate-600">
+        We've received your request for services in <strong>{neighborhood}</strong>. One of our verified local professionals in the {city} area will be in touch shortly to provide your custom assessment.
+      </p>
+      
+      <div class="mt-10 flex flex-col items-center gap-6 sm:flex-row sm:justify-center">
+        <a
+          href="/"
+          class="rounded-full bg-slate-900 px-8 py-4 text-sm font-semibold text-white shadow-sm hover:bg-slate-800 transition-all focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-slate-900"
+        >
+          Return to Hub
+        </a>
+        <a href="/insights" class="text-sm font-semibold leading-6 text-slate-900">
+          Browse More Local Guides <span aria-hidden="true">→</span>
+        </a>
+      </div>
+
+      <div class="mt-16 grid grid-cols-1 gap-8 border-t border-slate-100 pt-16 sm:grid-cols-3">
+        <div>
+          <h3 class="text-sm font-semibold text-slate-900">Verified Pros</h3>
+          <p class="mt-2 text-sm text-slate-500">Only licensed and insured contractors in {city}.</p>
+        </div>
+        <div>
+          <h3 class="text-sm font-semibold text-slate-900">Fast Response</h3>
+          <p class="mt-2 text-sm text-slate-500">Typically connected within 24 hours.</p>
+        </div>
+        <div>
+          <h3 class="text-sm font-semibold text-slate-900">Zero Pressure</h3>
+          <p class="mt-2 text-sm text-slate-500">Free assessments with no obligation to buy.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

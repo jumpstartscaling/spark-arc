@@ -1,0 +1,89 @@
+{
+  "service_config": {
+    "niche": "Legal",
+    "niche_slug": "legal-pi",
+    "category": "Professional Services",
+    "category_slug": "pro-services",
+    "icon": "⚖️",
+    "sub_niches": [
+      { "label": "Car Accidents", "slug": "car-accidents" },
+      { "label": "Slip & Fall", "slug": "slip-fall" },
+      { "label": "Medical Malpractice", "slug": "medical-malpractice" },
+      { "label": "Workplace Injury", "slug": "workplace-injury" },
+      { "label": "Wrongful Death", "slug": "wrongful-death" }
+    ]
+  },
+  "spintax": {
+    "synonyms": [
+      { "category": "urgency", "terms": "[\"before your statute of limitations expires\", \"emergency legal consultation\", \"24/7 accident intake\", \"immediate case assessment\"]" },
+      { "category": "contractor_vibe", "terms": "[\"certified trial attorneys\", \"injury lawyers near {{neighborhood}}\", \"accident specialists\", \"personal injury teams in {{county}}\"]" }
+    ]
+  },
+  "show_tell": {
+    "weather_anchor": {
+      "headline": "{{city}} road safety: High-risk corridors",
+      "body": "After heavy rain or ice near {{landmark}}, accidents in {{neighborhood}} spike by 30%. In {{state}}, insurance companies often push for low-ball settlements before you've seen a {{county}} doctor."
+    },
+    "process_guide": {
+      "headline": "The {{city}} Personal Injury Lifecycle",
+      "steps": [
+        { "title": "Accident Documentation", "text": "Our teams in {{county}} audit police reports and dashcam footage frequent for {{neighborhood}} intersections." },
+        { "title": "Medical Coordination", "text": "We verify your treatment plan with specialists near {{landmark}} to ensure your injuries are documented for {{state}} court." },
+        { "title": "Demand & Negotiation", "text": "We file the formal demand to the carrier with a full loss-of-income calculation for {{city}} residents." },
+        { "title": "Settlement Finish", "text": "We return the maximum possible recovery to you, handling all liens and paperwork for your {{neighborhood}} family." }
+      ]
+    },
+    "seasonal_maintenance": {
+      "headline": "Protecting your rights in {{state}}",
+      "fall_tips": "Check your dashcam and insurance policy near {{parks}} before winter weather hits. Low-visibility crashes are the #1 source of {{city}} PI claims.",
+      "summer_tips": "Consult with a lawyer before signing any waivers near {{neighborhood}}. High-traffic {{state}} summer events often have complex liability rules."
+    },
+    "comparison_guide": {
+      "title": "Settlement vs. Trial in {{city}}",
+      "comparison": {
+        "option_a": "Pre-Trial Settlement (Fast / Guaranteed)",
+        "option_b": "Jury Trial (High Max / Potential Risk)",
+        "details": "Settlements offer closure in 6–12 months for {{city}} cases. Trials near {{neighborhood}} can take 2+ years but often result in significantly higher punitive damages in {{county}}."
+      }
+    }
+  },
+  "encyclopedia": {
+    "brands": {
+      "Martindale-Hubbell": { "tier": "Industry Peer", "flagship": "AV Preeminent", "value_prop": "The industry gold standard for ethical and legal ability in {{county}}.", "price_point": "$$$" },
+      "Super_Lawyers":      { "tier": "Recognition",  "flagship": "Rising Star",   "value_prop": "Best-in-class identification of the top 5% of attorneys in {{city}}.", "price_point": "$$" },
+      "Avvo":              { "tier": "Client Feed",  "flagship": "Pro Ratings",     "value_prop": "The standard for user-generated lawyer reviews for {{neighborhood}} consumers.", "price_point": "$" }
+    },
+    "styles": {
+      "Contingency": { "human_name": "No-Win No-Fee", "benefit": "Ensures equal access to justice—no upfront legal costs for {{city}} families.", "aoe_hint": "Standard for injury cases in {{state}}." },
+      "Litigation":   { "human_name": "Active Courtroom", "benefit": "Aggressive pursuit of {{city}} insurance companies near {{landmark}}.", "aoe_hint": "Check state trial rules in {{state}}." }
+    },
+    "costs_2026": {
+      "Attorney_Fee": { "per_sqft": "33% - 40%", "notes": "Typical contingency fee of gross recovery in {{city}}." },
+      "Consultation": { "per_sqft": "$0 (Free)", "notes": "Standard for personal injury cases near {{neighborhood}}." }
+    }
+  },
+  "sub_niche_templates": {
+    "car-accidents": {
+      "headline_templates": ["{{city}} Car Accident Lawyer: Don't settle for less than your recovery", "Accident costs in {{county}}: Medical bills vs. Settlement guide"],
+      "faqs": [
+        { "q": "How long do I have to file in {{city}}?", "a": "Typically 2–3 years in {{state}}—consult a {{county}} lawyer now to avoid missing deadlines." },
+        { "q": "What is my case worth in {{state}}?", "a": "Case value in {{city}} depends on medical severity, lost wages, and available policy limits." }
+      ],
+      "survey": {
+        "title": "Acident Intake Form",
+        "subhead": "Quick questions to determine case viability.",
+        "steps": [
+          { "id": "injury_severity", "label": "Did you seek medical care?", "options": ["Yes, Hospital/ER", "Yes, Clinic later", "Not yet"] },
+          { "id": "insurance_carrier", "label": "Insurance carrier?", "options": ["At-fault party", "My own", "Under-insured"] }
+        ]
+      }
+    }
+  },
+  "regional_nuance": {
+    "CA": { "focus": "No-Fault & Comparative Negligence", "top_brand": "Super Lawyers", "tech": "Jury Trial Tech", "logic": "California law allows you to recover even if partially at fault near {{landmark}}; we focus on maximizing your {{city}} recovery." },
+    "NJ": { "focus": "Limited Tort Options", "top_brand": "Martindale-Hubbell", "tech": "Policy Limit Chase", "logic": "NJ insurance near {{parks}} has complex verbal threshold rules; we specialize in overcoming these for {{county}} residents." }
+  },
+  "conversion": {
+    "closing_trust": "We connect {{city}} residents with board-certified trial lawyers who offer free home and hospital visits."
+  }
+}

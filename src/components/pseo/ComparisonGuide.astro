@@ -1,0 +1,60 @@
+import type { ComparisonGuideData } from '../../types/pseo';
+
+interface Props {
+  data: ComparisonGuideData;
+}
+
+const { data } = Astro.props;
+---
+
+<section class="my-20 px-4">
+  <div class="mx-auto max-w-4xl space-y-12">
+    <div class="text-center">
+      <h2 class="text-3xl font-black text-slate-900 md:text-4xl">
+        {data.title}
+      </h2>
+      <p class="mt-4 text-lg text-slate-600">
+        Comparing standard choices for local home service upgrades.
+      </p>
+    </div>
+
+    <div class="grid gap-8 md:grid-cols-2">
+      <!-- Option A -->
+      <div class="flex flex-col rounded-3xl border border-slate-200 bg-white p-8 shadow-sm">
+        <div class="mb-4 inline-block w-fit rounded-lg bg-slate-100 px-3 py-1 text-xs font-bold uppercase tracking-widest text-slate-500">
+          Option A
+        </div>
+        <h3 class="text-2xl font-bold text-slate-900">{data.comparison.option_a}</h3>
+        <p class="mt-6 flex-grow leading-relaxed text-slate-600">
+          Best for homeowners seeking a reliable balance of upfront cost and day-to-day performance. This tier typically includes standard manufacturer warranties and 
+          industry-average lifespan.
+        </p>
+      </div>
+
+      <!-- Option B -->
+      <div class="flex flex-col rounded-3xl border border-blue-100 bg-blue-50/50 p-8 shadow-sm">
+        <div class="mb-4 inline-block w-fit rounded-lg bg-blue-600 px-3 py-1 text-xs font-bold uppercase tracking-widest text-white">
+          Option B (Premium)
+        </div>
+        <h3 class="text-2xl font-bold text-slate-900">{data.comparison.option_b}</h3>
+        <p class="mt-6 flex-grow leading-relaxed text-slate-600">
+          Focuses on long-term ROI through higher energy efficiency or superior durability. Ideal for high-intent weather zones or when looking for a "forever" system update.
+        </p>
+      </div>
+    </div>
+
+    <!-- Length Filler: Detailed Comparison Narrative -->
+    <div class="rounded-3xl border border-slate-200 p-8 md:p-12 text-slate-700 leading-relaxed bg-white">
+      <h4 class="text-xl font-bold mb-4">Detailed Breakdown</h4>
+      <p class="mb-4">
+        {data.comparison.details}
+      </p>
+      <p>
+        Across several major US market surveys, the gap between "standard" and "premium" installs has widened as material costs rise. 
+        While the upfront investment for a premium system can be 15–30% higher, the lifetime maintenance savings often offset this 
+        within the first 7–10 years. 
+        Factors such as local utility rebates, insurance premium discounts, and resale value should all be weighed when selecting your specific service tier.
+      </p>
+    </div>
+  </div>
+</section>

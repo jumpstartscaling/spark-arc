@@ -1,0 +1,48 @@
+---
+import type { ProcessGuideData } from '../../types/pseo';
+
+interface Props {
+  data: ProcessGuideData;
+}
+
+const { data } = Astro.props;
+---
+
+<section class="my-20 px-4">
+  <div class="mx-auto max-w-4xl">
+    <h2 class="text-3xl font-black tracking-tight text-slate-900 md:text-4xl">
+      {data.headline}
+    </h2>
+    
+    <div class="mt-12 grid gap-8 md:grid-cols-2">
+      {data.steps.map((step, index) => (
+        <div class="group relative rounded-3xl border border-slate-200 bg-white p-8 shadow-sm transition hover:border-blue-500 hover:shadow-md">
+          <div class="absolute -top-4 -left-4 flex h-12 w-12 items-center justify-center rounded-2xl bg-blue-600 text-xl font-black text-white shadow-lg">
+            {index + 1}
+          </div>
+          <h3 class="mt-2 text-xl font-bold text-slate-900 group-hover:text-blue-700">
+            {step.title}
+          </h3>
+          <p class="mt-4 leading-relaxed text-slate-600">
+            {step.text}
+          </p>
+        </div>
+      ))}
+    </div>
+
+    <!-- Length Filler: Detailed Process Meta -->
+    <div class="mt-16 rounded-3xl bg-slate-100 p-8 md:p-12 text-slate-700 leading-relaxed space-y-4">
+      <p>
+        Understanding the full lifecycle of a service appointment helps ensure you're getting the best ROI on your home maintenance. 
+        Most local experts recommend a documented walkthrough before and after the work is performed. 
+        This prevents misunderstandings regarding scope and ensures that all safety protocols—particularly those established by 
+        local building departments—are followed to the letter.
+      </p>
+      <p>
+        Whether it's a minor repair or a full system overhaul, the diagnostic phase is the most critical. 
+        Skipping a thorough inspection often leads to "ghost repairs" where the symptom is addressed but the root cause remains. 
+        Always ask for photos or thermal imaging of the issue to verify the technician's findings.
+      </p>
+    </div>
+  </div>
+</section>

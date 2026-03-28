@@ -1,0 +1,298 @@
+{
+  "service_config": {
+    "niche": "Plumbing",
+    "niche_slug": "plumbing",
+    "category": "Home Services",
+    "category_slug": "home-services",
+    "icon": "🔧",
+    "sub_niches": [
+      { "label": "Emergency Repair",  "slug": "emergency-repair"  },
+      { "label": "Drain Cleaning",    "slug": "drain-cleaning"    },
+      { "label": "Water Heaters",     "slug": "water-heaters"     },
+      { "label": "Leak Detection",    "slug": "leak-detection"    },
+      { "label": "Pipe Bursting",     "slug": "pipe-bursting"     }
+    ]
+  },
+
+  "branding": {
+    "business_name_suffix": "Plumbing Experts"
+  },
+
+  "spintax": {
+    "synonyms": [
+      {
+        "category": "service_damage",
+        "terms": "[\"burst pipe\",\"slow drain\",\"slab leak\",\"running toilet\",\"low water pressure\",\"leaking faucet\",\"backed-up sewer line\",\"water heater failure\",\"pinhole leak\",\"clogged main line\"]"
+      },
+      {
+        "category": "contractor_vibe",
+        "terms": "[\"licensed plumber near {{neighborhood}}\",\"drain pros in {{city}}\",\"local pipe specialists\",\"certified plumbing crew in {{county}}\",\"emergency plumbers near {{landmark}}\"]"
+      },
+      {
+        "category": "price_talk",
+        "terms": "[\"per linear foot\",\"flat-rate drain cleaning\",\"water heater install cost in {{city}}\",\"trenchless vs open-cut pricing\",\"service call fee in {{county}}\"]"
+      },
+      {
+        "category": "urgency",
+        "terms": "[\"before the leak gets worse\",\"stop water damage now\",\"emergency shutoff first\",\"before mold sets in\",\"same-day service in {{city}}\"]"
+      }
+    ]
+  },
+
+  "show_tell": {
+    "weather_anchor": {
+      "headline": "{{city}} freeze warnings and slab leak season",
+      "body": "Temperature swings in {{county}} put stress on supply lines and water heaters. A burst pipe near {{landmark}} can flood a home in minutes—early detection in {{neighborhood}} is the key."
+    },
+    "material_comparison": {
+      "title": "Pipe materials at a glance: what's under {{city}} homes",
+      "table_rows": [
+        { "category": "Copper",    "cheap": "Older stock; prone to pinhole leaks in acidic {{state}} water",   "premium": "Long service life when water chemistry is managed" },
+        { "category": "PEX",       "cheap": "Flexible, freeze-resistant—common in new {{city}} builds",        "premium": "Lower install cost, fewer fittings, color-coded runs" },
+        { "category": "Cast Iron", "cheap": "Legacy drain lines; roots enter at joints over time",             "premium": "Quieter than PVC; still found in {{county}} older homes" },
+        { "category": "PVC/ABS",  "cheap": "Standard modern drain material",                                  "premium": "Easy repair, code-approved in most {{state}} jurisdictions" }
+      ]
+    },
+    "landmark_proximity": {
+      "trust_badge": "{{city}}-licensed & insured",
+      "text": "A plumber who knows {{county}} soil conditions, water chemistry, and local code will spot issues that out-of-area crews miss near {{landmark}}."
+    },
+    "interactive_cost_logic": {
+      "base_sqft_price": null,
+      "markup": "<div class='rounded-xl border border-blue-200 bg-blue-50/80 p-4'><p class='text-xs font-bold uppercase tracking-wider text-blue-700'>Cost snapshot</p><p class='mt-2 text-sm text-slate-700'>Emergency plumbing in {{city}} typically starts at <strong>$150–$400</strong> for dispatch. Water heater replacements run <strong>$800–$2,200</strong> installed. Always get a written scope before authorizing work.</p></div>"
+    },
+    "process_guide": {
+      "headline": "The {{city}} Professional Plumbing Process",
+      "steps": [
+        { "title": "Diagnostic & Triage", "text": "Our teams arrive near {{landmark}} to locate the source of the leak or backup using non-invasive acoustic or thermal equipment." },
+        { "title": "Permit Verification", "text": "For water heaters and repipes in {{county}}, we handle all {{state}} and local building department permit filings for you." },
+        { "title": "Precision Repair", "text": "Whether it's PEX rerouting in {{neighborhood}} or trenchless sewer lining, we use code-compliant materials and tested methods." },
+        { "title": "System Testing", "text": "We perform pressure tests on all new joints to ensure your {{city}} home is protected before we leave the site." }
+      ]
+    },
+    "seasonal_maintenance": {
+      "headline": "Year-round plumbing protection for {{state}} homes",
+      "fall_tips": "Flush your water heater to remove sediment from {{county}} hard water. This prevents heating element burnout before winter spikes.",
+      "summer_tips": "Check outdoor spigots and irrigation valves near {{neighborhood}}. High {{state}} humidity can mask slow leaks in landscaping lines."
+    },
+    "comparison_guide": {
+      "title": "Tank vs. Tankless: Which is right for {{city}}?",
+      "comparison": {
+        "option_a": "Standard Tank Water Heater",
+        "option_b": "High-Efficiency Tankless (Navien/Rinnai)",
+        "details": "Traditional tanks are cheaper upfront but lose heat hourly. Tankless systems in {{city}} provide endless hot water and typically last 2x as long as standard tanks when maintained in {{county}} water conditions."
+      }
+    }
+  },
+
+  "trust": {
+    "hiring_local": {
+      "headline": "Why {{city}} homeowners vet plumbers carefully",
+      "body": "After a pipe emergency, high-pressure sales tactics can be common. {{city}}-based plumbers who pull permits in {{county}} give you recourse if work fails inspection."
+    },
+    "neighborhood_pride": {
+      "headline": "From {{neighborhood}} to {{parks}}: pipe age varies block by block",
+      "body": "Homes built in different eras have very different plumbing materials. A good {{city}} plumber identifies your pipe type before recommending a repair vs. repipe."
+    },
+    "permitting_logic": {
+      "headline": "Permits and inspections in {{county}}",
+      "body": "Water heater replacements and repipes require permits in most {{state}} jurisdictions. Permitted work protects your home's resale value and insurance claims in {{city}}."
+    }
+  },
+
+  "encyclopedia": {
+    "brands": {
+      "Rheem":         { "tier": "Market leader",     "flagship": "Performance Platinum",   "value_prop": "Wide parts availability across {{state}}—great for fast emergency repairs in {{city}}.",          "price_point": "$$"  },
+      "AO_Smith":      { "tier": "Reliability leader", "flagship": "Signature Select",       "value_prop": "Long anode rod life reduces corrosion in {{county}} hard water conditions.",                        "price_point": "$$"  },
+      "Rinnai":        { "tier": "Tankless specialist","flagship": "RU Series",              "value_prop": "High-efficiency tankless option for {{city}} homes wanting endless hot water and lower gas bills.",  "price_point": "$$$" },
+      "Navien":        { "tier": "Combi specialist",  "flagship": "NCB-E",                  "value_prop": "Combi boiler handles heat and hot water together—efficient in cold {{state}} climates.",             "price_point": "$$$" },
+      "Bradford_White":{ "tier": "Pro-grade",         "flagship": "AeroTherm",              "value_prop": "Contractor-preferred tank heater; solid warranty support for {{county}} installs.",                  "price_point": "$$"  }
+    },
+    "pricing_benchmarks": [
+      { "item": "Standard Service Call", "price": "$89 - $175", "note": "Covers diagnostic and travel to {{neighborhood}}." },
+      { "item": "Standard Drain Snake", "price": "$175 - $350", "note": "For residential main lines in {{county}}." },
+      { "item": "Water Heater (Tank)", "price": "$1,200 - $2,200", "note": "Includes labor and local {{city}} removal." },
+      { "item": "Sewer Line Scoping", "price": "$250 - $450", "note": "High-def camera inspection within {{state}} code." }
+    ],
+    "aoe_hints": [
+      "Slab leaks are detected with pressure testing and electronic listening devices—don't let a plumber guess in {{city}}.",
+      "Annual water heater flushes extend tank life by 3–5 years in {{county}} hard-water areas.",
+      "A slow drain that recurs after snaking usually needs camera inspection to find root intrusion or collapse.",
+      "Trenchless pipe bursting replaces old lines without destroying your {{neighborhood}} landscaping."
+    ]
+  },
+
+  "sub_niche_templates": {
+    "emergency-repair": {
+      "headline_templates": [
+        "24/7 Emergency Plumber in {{city}}: Stop the leak fast",
+        "{{city}} burst pipe repair: what to do before {{neighborhood}} flooding spreads",
+        "Emergency plumbing in {{county}}: same-day dispatch near {{landmark}}"
+      ],
+      "faqs": [
+        { "q": "How much does emergency plumbing cost in {{city}}?",         "a": "Emergency plumbing in {{city}} typically runs $150–$400 for same-day dispatch. After-hours rates add 20–50% on top of the base service call." },
+        { "q": "What should I do while waiting for an emergency plumber?", "a": "Shut off the main water valve immediately and document the damage with photos for your {{state}} insurance claim. Avoid electrical panels near the water." },
+        { "q": "Does homeowners insurance cover burst pipes in {{state}}?", "a": "Sudden pipe bursts are usually covered. Slow leaks from deferred maintenance often are not. Document the event clearly for your {{county}} adjuster." }
+      ],
+      "lead_magnet": {
+        "headline": "{{city}} Emergency Plumbing Checklist",
+        "subhead": "Know the shutoff steps before water damage spreads.",
+        "bullets": ["Locate your main shutoff valve","Document damage for insurance","Avoid DIY on slab leaks","When to call vs. wait"],
+        "cta": "Download the Checklist"
+      },
+      "survey": {
+        "title": "Emergency plumbing triage",
+        "subhead": "Tell us what's happening—we'll help prioritize.",
+        "steps": [
+          { "id": "issue_type",   "label": "What's happening?",                "options": ["Burst pipe","Sewage backup","No hot water","Major leak","Other"] },
+          { "id": "water_off",    "label": "Is the water shut off?",            "options": ["Yes","No","Don't know how"] },
+          { "id": "interior",     "label": "Is there water inside the home?",   "options": ["Yes, flooding","Minor puddle","Not yet","Not sure"] },
+          { "id": "location",     "label": "Street or area in {{neighborhood}}", "placeholder": "123 Main St" }
+        ]
+      }
+    },
+    "drain-cleaning": {
+      "headline_templates": [
+        "Drain Cleaning in {{city}}: roots, grease, and buildup cleared fast",
+        "{{county}} drain backup? Why {{neighborhood}} homes need annual hydro-jetting",
+        "{{city}} clogged drain guide: snake vs. hydro-jet vs. camera inspection"
+      ],
+      "faqs": [
+        { "q": "How long does drain cleaning take in {{city}}?",          "a": "Most standard drain cleans in {{city}} take 30–90 minutes. Hydro-jetting a main line can take 2–3 hours depending on footage." },
+        { "q": "Does drain cleaning damage old pipes in {{state}}?",     "a": "Modern hydro-jetting is safe for most pipes. We camera-inspect first in {{city}} to ensure your line can handle the pressure." },
+        { "q": "How much does hydro-jetting cost in {{county}}?",        "a": "Hydro-jetting in {{county}} typically runs $300–$600 for standard sewer lines. Main cleanouts with root cutting can reach $800–$1,200." }
+      ],
+      "lead_magnet": {
+        "headline": "{{city}} Drain Inspection Report",
+        "subhead": "See what's inside your pipes before it backs up.",
+        "bullets": ["Camera inspection snapshot","Grease buildup risk rating","Estimated clean timeline","Root intrusion check"],
+        "cta": "Get Your Free Report"
+      },
+      "survey": {
+        "title": "Drain backup assessment",
+        "subhead": "A few questions to size the job.",
+        "steps": [
+          { "id": "drain_type",   "label": "Which drain is backing up?",        "options": ["Kitchen","Bathroom","Main sewer line","Basement floor drain","Multiple"] },
+          { "id": "frequency",    "label": "How often does it happen?",         "options": ["Every time I use it","Weekly","Monthly","First time"] },
+          { "id": "smell",        "label": "Sewage smell present?",             "options": ["Yes","No","Sometimes"] },
+          { "id": "location",     "label": "Street or area in {{neighborhood}}", "placeholder": "123 Main St" }
+        ]
+      }
+    },
+    "water-heaters": {
+      "headline_templates": [
+        "Water Heater Replacement in {{city}}: tank vs. tankless compared",
+        "{{county}} water heater costs (2026): what to expect before you buy",
+        "{{city}} hot water problems: repair vs. replace decision guide"
+      ],
+      "faqs": [
+        { "q": "How much does water heater replacement cost in {{city}}?", "a": "Standard 40-50 gallon water heater installations in {{city}} typically range from $800 to $1,800 including parts and labor. Tankless upgrades run $2,000–$4,500." },
+        { "q": "Tank vs. tankless: which is better for {{county}} homes?","a": "Tankless units are more efficient long-term but cost more upfront. In {{city}}, they're ideal for homes with high hot water demand or gas line capacity." },
+        { "q": "What is the lifespan of a water heater in {{state}}?",    "a": "Tank water heaters last 8–12 years in {{city}}. Tankless units last 15–20 years with annual descaling—especially important in hard-water {{county}} areas." }
+      ],
+      "lead_magnet": {
+        "headline": "{{city}} Water Heater Buyer's Guide",
+        "subhead": "Tank vs. tankless: what works for {{county}} water conditions.",
+        "bullets": ["Cost breakdown by type and brand","Rebate programs available in {{state}}","Hard water impact on longevity","Signs you need immediate replacement"],
+        "cta": "Get the Guide"
+      },
+      "survey": {
+        "title": "Water heater assessment",
+        "subhead": "Help us recommend the right system.",
+        "steps": [
+          { "id": "current_type", "label": "Current water heater type?",       "options": ["Standard tank","Tankless","Heat pump","Not sure"] },
+          { "id": "issue",        "label": "Primary issue?",                   "options": ["No hot water","Running out quickly","Leaking","Rust/discoloration","Just planning ahead"] },
+          { "id": "age",          "label": "How old is the unit?",             "options": ["Under 5 years","5–10 years","10+ years","Not sure"] },
+          { "id": "fuel",         "label": "Fuel type?",                       "options": ["Natural gas","Electric","Propane","Not sure"] }
+        ]
+      }
+    },
+    "leak-detection": {
+      "headline_templates": [
+        "Leak Detection in {{city}}: slab leaks, pinhole leaks, and hidden line failures",
+        "{{city}} water bill too high? You may have a hidden leak in {{neighborhood}}",
+        "{{county}} slab leak detection: non-invasive methods that protect your floors"
+      ],
+      "faqs": [
+        { "q": "How much does leak detection cost in {{city}}?",           "a": "Professional electronic leak detection in {{city}} typically runs $150–$400. Slab leak detection with pressure testing and listening equipment is $300–$600." },
+        { "q": "How do I know if I have a slab leak in {{county}}?",      "a": "Signs include warm spots on your floor, a constantly running water meter, high water bills, and cracking near {{neighborhood}} foundations. Don't ignore these." },
+        { "q": "Can slab leaks be repaired without breaking concrete?",   "a": "Yes. Trenchless epoxy lining or pipe rerouting through walls can often avoid major concrete work—especially in {{city}} slab-on-grade homes." }
+      ],
+      "lead_magnet": {
+        "headline": "{{city}} Hidden Leak Detection Guide",
+        "subhead": "How to spot a leak before it destroys your {{neighborhood}} home.",
+        "bullets": ["5 signs of a hidden slab leak","How to read your water meter","When to call vs. DIY","Insurance documentation tips"],
+        "cta": "Download the Guide"
+      },
+      "survey": {
+        "title": "Leak detection intake",
+        "subhead": "Help us pinpoint the problem.",
+        "steps": [
+          { "id": "symptoms",     "label": "What are you noticing?",           "options": ["High water bill","Warm floor","Wet spots","Meter spinning","Multiple signs"] },
+          { "id": "location",     "label": "Where is the suspected leak?",     "options": ["Slab/foundation","Under sink","In wall","Yard/irrigation","Not sure"] },
+          { "id": "urgency",      "label": "How urgent is this?",              "options": ["Active water loss","Monitoring for now","Pre-purchase inspection","Not sure"] },
+          { "id": "address",      "label": "Street or area in {{neighborhood}}","placeholder": "123 Main St" }
+        ]
+      }
+    },
+    "pipe-bursting": {
+      "headline_templates": [
+        "Trenchless Pipe Bursting in {{city}}: replace old lines without digging up your yard",
+        "{{city}} sewer line replacement: open trench vs. trenchless pipe bursting compared",
+        "{{county}} pipe bursting cost guide (2026): is trenchless right for your property?"
+      ],
+      "faqs": [
+        { "q": "How much does pipe bursting cost in {{city}}?",           "a": "Trenchless pipe bursting in {{city}} typically costs $80–$250 per linear foot depending on pipe diameter and depth. Most residential jobs run $4,000–$15,000 total." },
+        { "q": "How long does trenchless pipe replacement take in {{county}}?","a": "A standard residential pipe bursting job in {{county}} takes 1–2 days. The existing pipe is fractured outward as the new HDPE pipe is pulled through." },
+        { "q": "Is pipe bursting better than traditional digging in {{city}}?","a": "Trenchless preserves your {{neighborhood}} landscaping and driveway. Open trench is cheaper in some cases but costs more to restore afterward." }
+      ],
+      "lead_magnet": {
+        "headline": "{{city}} Trenchless Pipe Replacement Guide",
+        "subhead": "Protect your {{neighborhood}} yard while fixing failing sewer lines.",
+        "bullets": ["Trenchless vs. open-cut cost comparison","HDPE lifespan vs. cast iron","Permit requirements in {{county}}","Financing options for sewer line work"],
+        "cta": "Get the Guide"
+      },
+      "survey": {
+        "title": "Sewer line assessment",
+        "subhead": "Tell us about your pipe situation.",
+        "steps": [
+          { "id": "issue",        "label": "What's the issue?",               "options": ["Sewage backup","Root intrusion","Collapsed line","Slow drains everywhere","Inspection only"] },
+          { "id": "pipe_age",     "label": "Age of the sewer line?",          "options": ["Under 20 years","20–40 years","40+ years","Not sure"] },
+          { "id": "access",       "label": "Cleanout accessible?",            "options": ["Yes","No","Not sure"] },
+          { "id": "address",      "label": "Street or area in {{neighborhood}}","placeholder": "123 Main St" }
+        ]
+      }
+    }
+  },
+
+  "regional_nuance": {
+    "TX": {
+      "focus": "Slab Leaks & Hard Water",
+      "top_brand": "Rinnai",
+      "tech": "Tankless Water Heater",
+      "logic": "{{city}} sits on expansive clay soil. Slab leaks here are common—infrared detection and rerouting are cost-effective alternatives to full concrete break."
+    },
+    "FL": {
+      "focus": "Corrosion & Humidity",
+      "top_brand": "A.O. Smith",
+      "tech": "Anode Rod Replacement",
+      "logic": "{{city}}'s humid air and coastal water accelerate pipe corrosion. Annual inspections near {{landmark}} catch pinholes before they become insurance claims."
+    },
+    "NC": {
+      "focus": "Freeze Protection",
+      "top_brand": "Bradford White",
+      "tech": "Pipe Insulation Systems",
+      "logic": "Winter snaps near {{parks}} can freeze exposed supply lines. We recommend foam insulation on all exterior walls in {{county}} homes."
+    },
+    "CO": {
+      "focus": "High Altitude & Hard Water",
+      "top_brand": "Navien",
+      "tech": "Condensing Combi Boiler",
+      "logic": "{{city}}'s altitude and mineral-heavy water require descaling every 18 months for tankless systems to maintain efficiency throughout {{county}}."
+    }
+  },
+
+  "conversion": {
+    "closing_trust": "We connect {{city}} homeowners with licensed plumbers who give written estimates before starting—no surprise charges in {{county}}."
+  }
+}

@@ -1,6 +1,6 @@
 export const siteConfig = {
-  siteName: 'Spark Arc',
+  siteName: 'Ion Arc Online',
   /** Used in JSON-LD and meta; override per deploy */
-  businessNameSuffix: 'Roofing',
-  baseUrl: 'https://example.com',
+  businessNameSuffix: 'Home Services',
+  baseUrl: 'https://ion-arc.online',
 } as const;

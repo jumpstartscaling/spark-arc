@@ -1,0 +1,89 @@
+{
+  "service_config": {
+    "niche": "Fencing",
+    "niche_slug": "fencing",
+    "category": "Specialty Trades",
+    "category_slug": "specialty-trades",
+    "icon": "🤺",
+    "sub_niches": [
+      { "label": "Vinyl Fencing", "slug": "vinyl-fencing" },
+      { "label": "Wood Fence Install", "slug": "wood-fence-install" },
+      { "label": "Aluminum / Wrought Iron", "slug": "aluminum-fence" },
+      { "label": "Chain Link", "slug": "chain-link" },
+      { "label": "Fence Repair", "slug": "fence-repair" }
+    ]
+  },
+  "spintax": {
+    "synonyms": [
+      { "category": "urgency", "terms": "[\"before your new pet arrives\", \"emergency fence repair\", \"seasonal lawn secure\", \"immediate fence estimate\"]" },
+      { "category": "contractor_vibe", "terms": "[\"licensed fence crews\", \"privacy pros near {{neighborhood}}\", \"gate installation specialists\", \"backyard security teams in {{county}}\"]" }
+    ]
+  },
+  "show_tell": {
+    "weather_anchor": {
+      "headline": "{{city}} wind gusts: Is your fence leaning?",
+      "body": "Post-rot near {{landmark}} causes panel failure in high {{state}} winds. Concrete-set posts in {{county}} must be deep enough to exceed the frost line and resist uplift in {{neighborhood}}."
+    },
+    "process_guide": {
+      "headline": "The {{city}} Professional Fence Lifecycle",
+      "steps": [
+        { "title": "Boundary & Post Digging", "text": "Our crews in {{county}} verify property lines and dig holes to code depth typical for {{neighborhood}} soil." },
+        { "title": "Concrete Setting", "text": "We plumb and level every post near {{landmark}} to ensure structural stability against {{state}} weather." },
+        { "title": "Panel & Gate Install", "text": "We hang the privacy or picket sections with heavy-duty galvanized hardware frequent in {{city}}." },
+        { "title": "Latch & Swing Check", "text": "We return to each gate at your {{neighborhood}} yard to ensure perfect latch alignment after settling." }
+      ]
+    },
+    "seasonal_maintenance": {
+      "headline": "Year-Round Privacy for {{state}} Yards",
+      "fall_tips": "Check your gate latches near {{parks}} for expansion/contraction before the first freeze. Lubricate hinges in {{city}}.",
+      "summer_tips": "Wash your vinyl or aluminum fence near {{neighborhood}}. Humidity in {{state}} causes green algae that can stain if left for 2+ years."
+    },
+    "comparison_guide": {
+      "title": "Cedar Wood vs. Vinyl Privacy in {{city}}",
+      "comparison": {
+        "option_a": "Pressure-Treated / Cedar (Classic)",
+        "option_b": "High-Density Vinyl (No-Maint)",
+        "details": "Wood offers the lowest upfront cost for {{city}} privacy. Vinyl near {{neighborhood}} never needs stain and can't rot, making it cheaper over a 10-year term in {{county}}."
+      }
+    }
+  },
+  "encyclopedia": {
+    "brands": {
+      "CertainTeed": { "tier": "Vinyl Standard", "flagship": "Bufftech", "value_prop": "Best-in-class texture and wind-rating for {{county}} households.", "price_point": "$$$" },
+      "ActiveYards": { "tier": "Ingenious Design", "flagship": "StayStraight", "value_prop": "Proprietary locking rails for maximum durability in {{city}} residential use.", "price_point": "$$$" },
+      "Master_Halco":{ "tier": "Trade-Grade",    "flagship": "Wood & Chain", "value_prop": "The industry standard for {{neighborhood}} security and dog runs.", "price_point": "$$" }
+    },
+    "styles": {
+      "Privacy": { "human_name": "Solid Tongue-Groove", "benefit": "100% seclusion; great for {{parks}} backyard pools.", "aoe_hint": "Check 6ft height rules in {{state}}." },
+      "Picket":  { "human_name": "Classic Scalloped", "benefit": "Classic curb appeal near {{landmark}} front yards.", "aoe_hint": "Ideal for decorative use in {{city}}." }
+    },
+    "costs_2026": {
+      "Vinyl_Privacy_Full": { "per_sqft": "$35 - $65 / linear ft", "notes": "Typical 150ft residential install in {{city}}." },
+      "Wood_Picket_Full":  { "per_sqft": "$18 - $35 / linear ft", "notes": "Depends on lumber market near {{neighborhood}}." }
+    }
+  },
+  "sub_niche_templates": {
+    "vinyl-fencing": {
+      "headline_templates": ["{{city}} Vinyl Fencing: The last fence your home will ever need", "Vinyl fence costs in {{county}}: Materials vs. Install guide"],
+      "faqs": [
+        { "q": "Does vinyl fence crack in {{city}} winters?", "a": "High-grade PVC in {{county}} is engineered for cold climates and won't crack under normal winter loads." },
+        { "q": "How long does professional install take in {{state}}?", "a": "A standard 100-150ft fence in {{city}} takes 2–3 days roughly." }
+      ],
+      "survey": {
+        "title": "Fence Inquiry",
+        "subhead": "Quick questions to size the project.",
+        "steps": [
+          { "id": "fence_footage", "label": "Linear footage?", "options": ["Under 50ft (Small)", "50–150ft (Standard)", "150ft+ (Estate)"] },
+          { "id": "material", "label": "Material preference?", "options": ["Vinyl", "Wood", "Aluminum", "Chain Link"] }
+        ]
+      }
+    }
+  },
+  "regional_nuance": {
+    "FL": { "focus": "Hurricane Wind Rating", "top_brand": "CertainTeed Bufftech", "tech": "Internal Post Reinforcement", "logic": "Wind uplift near {{landmark}} is the primary risk; we focus on 100mph+ rated panels for {{city}}." },
+    "NJ": { "focus": "Set-In Concrete Purity", "top_brand": "ActiveYards", "tech": "Ingeion Post Seal", "logic": "Rock and clay near {{parks}} make digging hard; we prioritize deep, clean concrete bores for {{county}}." }
+  },
+  "conversion": {
+    "closing_trust": "We connect {{city}} homeowners with insured fence crews who verify local ordinances and utility markouts."
+  }
+}

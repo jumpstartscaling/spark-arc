@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import { pseoContent, STATE_NAME_MAP } from '../../utils/pseo';
+import { STATE_NAME_MAP } from '../../utils/pseo';
+import { ALL_CAMPAIGNS } from '../../utils/generatePseoPages';
 import locationsData from '../../data/pseo/globals/locations.json';
 
 interface LocationRow {
@@ -27,20 +28,14 @@ for (const loc of [...locations].sort((a, b) =>
 
 const states = [...byStateCounty.keys()].sort();
 
-// Active niches index for linking each city to its pages
-const nicheIndex: Record<string, string[]> = {};
-for (const entry of pseoContent) {
-  const parts = entry.slug.split('/'); // insights / loc-slug / niche / sub-niche
-  const locSlug = parts[1] ?? '';
-  const niche = parts[2] ?? '';
-  if (!nicheIndex[locSlug]) nicheIndex[locSlug] = [];
-  if (!nicheIndex[locSlug]!.includes(niche)) nicheIndex[locSlug]!.push(niche);
-}
+// Metadata-driven niche indexing
+const activeNiches = ALL_CAMPAIGNS.map(c => ({
+  name: c.service_config.niche_slug,
+  label: c.service_config.niche,
+  firstSubNiche: c.service_config.sub_niches[0].slug
+}));
 
-// Find first generated page for a city+niche
-function firstPage(locSlug: string) {
-  return pseoContent.find(e => e.slug.startsWith(`insights/${locSlug}/`));
-}
+const totalPages = ALL_CAMPAIGNS.reduce((acc, c) => acc + (c.service_config.sub_niches.length * locations.length), 0);
 ---
 
 <BaseLayout 
@@ -80,7 +75,7 @@ function firstPage(locSlug: string) {
               <span class="relative flex h-2 w-2">
                 <span class="relative inline-flex h-2 w-2 rounded-full bg-blue-600"></span>
               </span>
-              {pseoContent.length.toLocaleString()} Active Guides
+              {totalPages.toLocaleString()} Active Guides
             </div>
             <div class="flex items-center gap-2 rounded-full bg-slate-100 px-4 py-2 text-xs font-bold text-slate-600">
               {states.length} US States Covered
@@ -92,7 +87,7 @@ function firstPage(locSlug: string) {
         <section class="mb-20">
           <h2 class="text-xs font-black uppercase tracking-widest text-slate-400 mb-6 font-mono">Trending Markets</h2>
           <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {['anchorage-ak', 'huntsville-al'].slice(0, 3).map((locSlug) => {
+            {['anchorage-ak', 'huntsville-al', 'scottsdale-az'].map((locSlug) => {
               const loc = locations.find(l => l.slug === locSlug);
               if (!loc) return null;
               return (
@@ -100,7 +95,7 @@ function firstPage(locSlug: string) {
                   <div class="absolute -right-4 -top-4 h-16 w-16 bg-blue-50 transition-colors group-hover:bg-blue-600 opacity-20"></div>
                   <span class="text-xs font-black text-blue-600 uppercase tracking-widest">{loc.state}</span>
                   <h3 class="mt-1 text-xl font-bold text-slate-900">{loc.city}</h3>
-                  <p class="mt-2 text-sm text-slate-500">Comprehensive guides for {nicheIndex[loc.slug]?.length || 0} services.</p>
+                  <p class="mt-2 text-sm text-slate-500">Comprehensive guides for all major home services.</p>
                 </a>
               );
             })}
@@ -128,21 +123,18 @@ function firstPage(locSlug: string) {
                       </h3>
                       <ul class="grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
                         {(countyMap.get(county) ?? []).map((loc) => {
-                          const niches = nicheIndex[loc.slug] ?? [];
                           return (
                             <li class="group rounded-2xl border border-slate-200 bg-white p-6 transition-all hover:border-blue-500 hover:shadow-lg">
                               <span class="block text-lg font-bold text-slate-900 mb-4">{loc.city}</span>
                               <div class="flex flex-wrap gap-1.5">
-                                {niches.map((niche) => {
-                                  const sample = pseoContent.find(e => e.slug.startsWith(`insights/${loc.slug}/${niche}/`));
-                                  const href = sample ? `/${sample.slug}` : null;
-                                  if (!href) return null;
+                                {activeNiches.map((niche) => {
+                                  const href = `/insights/${loc.slug}/${niche.name}/${niche.firstSubNiche}`;
                                   return (
                                     <a
                                       href={href}
                                       class="inline-flex rounded-lg bg-slate-50 px-2.5 py-1.5 text-[9px] font-bold uppercase tracking-tight text-slate-600 transition hover:bg-blue-600 hover:text-white"
                                     >
-                                      {niche.replace(/-/g, ' ')}
+                                      {niche.label}
                                     </a>
                                   );
                                 })}

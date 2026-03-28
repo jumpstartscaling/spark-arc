@@ -54,7 +54,7 @@ export interface PseoEntry {
  * Memory-efficient path collection for getStaticPaths
  */
 export function getPseoPaths() {
-  return getAllPseoSlugs().slice(0, 500);
+  return getAllPseoSlugs();
 }
 
 /**

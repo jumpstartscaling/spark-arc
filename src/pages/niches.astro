@@ -1,86 +1,21 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import { getPseoPaths } from '../utils/pseo';
-import locationsDataRaw from '../data/pseo/globals/locations.json';
-// Import campaigns to get niche list without generating 77k objects
-import roofingCampaign from '../data/pseo/campaigns/home-services/roofing.json';
-import plumbingCampaign from '../data/pseo/campaigns/home-services/plumbing.json';
-import hvacCampaign from '../data/pseo/campaigns/home-services/hvac.json';
-import electricalCampaign from '../data/pseo/campaigns/home-services/electrical.json';
-import pestControlCampaign from '../data/pseo/campaigns/home-services/pest-control.json';
-import landscapingCampaign from '../data/pseo/campaigns/home-services/landscaping.json';
-import cleaningCampaign from '../data/pseo/campaigns/home-services/cleaning.json';
-import restorationCampaign from '../data/pseo/campaigns/home-services/restoration.json';
-import flooringCampaign from '../data/pseo/campaigns/home-services/flooring.json';
-import kitchenBathCampaign from '../data/pseo/campaigns/home-services/kitchen-bath.json';
-import paintingCampaign from '../data/pseo/campaigns/specialty-trades/painting.json';
-import windowsDoorsCampaign from '../data/pseo/campaigns/specialty-trades/windows-doors.json';
-import sidingCampaign from '../data/pseo/campaigns/specialty-trades/siding.json';
-import guttersCampaign from '../data/pseo/campaigns/specialty-trades/gutters.json';
-import fencingCampaign from '../data/pseo/campaigns/specialty-trades/fencing.json';
-import solarCampaign from '../data/pseo/campaigns/specialty-trades/solar.json';
-import poolServiceCampaign from '../data/pseo/campaigns/specialty-trades/pool-service.json';
-import legalPiCampaign from '../data/pseo/campaigns/pro-services/legal-pi.json';
-import businessLawCampaign from '../data/pseo/campaigns/pro-services/business-law.json';
-import realEstateCampaign from '../data/pseo/campaigns/pro-services/real-estate.json';
-import accountingCampaign from '../data/pseo/campaigns/pro-services/accounting.json';
-import marketingCampaign from '../data/pseo/campaigns/pro-services/marketing.json';
+import { getPseoNicheCatalog, getPseoTotals } from '../utils/pseo';
 
-const ALL_CAMPAIGNS = [
-  roofingCampaign, plumbingCampaign, hvacCampaign, electricalCampaign, pestControlCampaign,
-  landscapingCampaign, cleaningCampaign, restorationCampaign, flooringCampaign, kitchenBathCampaign,
-  paintingCampaign, windowsDoorsCampaign, sidingCampaign, guttersCampaign, fencingCampaign,
-  solarCampaign, poolServiceCampaign, legalPiCampaign, businessLawCampaign, realEstateCampaign,
-  accountingCampaign, marketingCampaign
-];
-
-const locations = locationsDataRaw as any[];
-
-// Aggregate stats from campaign metadata (Memory-Efficient)
-const statsMap: Record<string, {
-  category: string;
-  niche: string;
-  subNiches: Set<string>;
-  citiesCount: number;
-  pageCount: number;
-  samplePath: string;
-}> = {};
-
-let totalPages = 0;
-for (const campaign of ALL_CAMPAIGNS) {
-  const config = (campaign as any).service_config;
-  const key = config.niche_slug;
-  if (!statsMap[key]) {
-    const pageCount = config.sub_niches.length * locations.length;
-    totalPages += pageCount;
-    statsMap[key] = {
-      category: config.category_slug,
-      niche: config.niche_slug,
-      subNiches: new Set(config.sub_niches.map((sn: any) => sn.slug)),
-      citiesCount: locations.length,
-      pageCount: pageCount,
-      samplePath: `${locations[0].slug}/${config.niche_slug}/${config.sub_niches[0].slug}`,
-    };
-  }
-}
-
-const niches = Object.values(statsMap).sort((a, b) =>
-  a.category.localeCompare(b.category) || a.niche.localeCompare(b.niche)
-);
-
-const totalCities = locations.length;
+const niches = getPseoNicheCatalog();
+const { totalPages, totalLocations: totalCities } = getPseoTotals();
 
 // Category colors
 const categoryColors: Record<string, string> = {
   'home-services':      'bg-blue-100 text-blue-800 border-blue-200',
-  'specialized-trades': 'bg-purple-100 text-purple-800 border-purple-200',
-  'professional-services': 'bg-emerald-100 text-emerald-800 border-emerald-200',
+  'specialty-trades': 'bg-purple-100 text-purple-800 border-purple-200',
+  'pro-services': 'bg-emerald-100 text-emerald-800 border-emerald-200',
 };
 
 const categoryLabels: Record<string, string> = {
   'home-services': 'Home Services',
-  'specialized-trades': 'Specialized Trades',
-  'professional-services': 'Professional & B2B',
+  'specialty-trades': 'Specialty Trades',
+  'pro-services': 'Professional & B2B',
 };
 
 // File path template for how to add a new niche
@@ -164,7 +99,7 @@ const exampleJson = `{
                   <span class={`inline-block rounded-full border px-3 py-0.5 text-xs font-bold uppercase tracking-wider ${categoryColors[n.category] ?? 'bg-slate-700 text-slate-300 border-slate-600'}`}>
                     {categoryLabels[n.category] ?? n.category}
                   </span>
-                  <h3 class="mt-3 text-xl font-black capitalize text-white">{n.niche}</h3>
+                  <h3 class="mt-3 text-xl font-black text-white">{n.nicheLabel}</h3>
                 </div>
                 <div class="text-right">
                   <p class="text-2xl font-black text-blue-400">{n.pageCount.toLocaleString()}</p>
@@ -173,17 +108,17 @@ const exampleJson = `{
               </div>
 
               <div class="mt-4 space-y-1">
-                {[...n.subNiches].sort().map((sn) => (
+                {n.subNiches.map((sn) => (
                   <div class="flex items-center gap-2">
                     <span class="h-1.5 w-1.5 rounded-full bg-blue-500 flex-shrink-0"></span>
-                    <span class="text-sm text-slate-300 capitalize">{sn.replace(/-/g, ' ')}</span>
+                    <span class="text-sm text-slate-300">{sn.label}</span>
                   </div>
                 ))}
               </div>
 
               <div class="mt-5 border-t border-slate-700 pt-4 flex items-center justify-between text-xs text-slate-500">
                 <span>{n.citiesCount} cities</span>
-                <span>{n.subNiches.size} sub-niches</span>
+                <span>{n.subNiches.length} sub-niches</span>
                 <a
                   href={`/insights/${n.samplePath}`}
                   class="text-blue-400 hover:text-blue-300 font-semibold"
@@ -206,7 +141,7 @@ const exampleJson = `{
         <div class="space-y-3">
           {niches.map((n) => (
             <div class="rounded-xl border border-slate-700 bg-slate-800 p-4">
-              <p class="mb-3 font-bold capitalize text-white">{n.niche}</p>
+              <p class="mb-3 font-bold text-white">{n.nicheLabel}</p>
               <div class="flex flex-wrap gap-2">
                 <a
                   href={`/insights/${n.samplePath}`}

@@ -1,17 +1,8 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import { STATE_NAME_MAP } from '../../utils/pseo';
-import { ALL_CAMPAIGNS } from '../../utils/generatePseoPages';
-import locationsData from '../../data/pseo/globals/locations.json';
+import { PSEO_LOCATIONS, STATE_NAME_MAP, getPseoNicheCatalog, getPseoTotals } from '../../utils/pseo';
 
-interface LocationRow {
-  city: string;
-  state: string;
-  slug: string;
-  county?: string;
-}
-
-const locations = locationsData as unknown as LocationRow[];
+const locations = PSEO_LOCATIONS;
 
 // Group by state → county
 const byStateCounty = new Map<string, Map<string, LocationRow[]>>();
@@ -29,13 +20,15 @@ for (const loc of [...locations].sort((a, b) =>
 const states = [...byStateCounty.keys()].sort();
 
 // Metadata-driven niche indexing
-const activeNiches = ALL_CAMPAIGNS.map(c => ({
-  name: c.service_config.niche_slug,
-  label: c.service_config.niche,
-  firstSubNiche: c.service_config.sub_niches[0].slug
+type LocationRow = (typeof locations)[number];
+
+const activeNiches = getPseoNicheCatalog().map((entry) => ({
+  name: entry.niche,
+  label: entry.nicheLabel,
+  firstSubNiche: entry.firstSubNiche,
 }));
 
-const totalPages = ALL_CAMPAIGNS.reduce((acc, c) => acc + (c.service_config.sub_niches.length * locations.length), 0);
+const { totalPages } = getPseoTotals();
 ---
 
 <BaseLayout 

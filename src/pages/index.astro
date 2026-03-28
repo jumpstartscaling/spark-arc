@@ -1,48 +1,10 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import { getPseoPaths, STATE_NAME_MAP } from '../utils/pseo';
-import { getAllPseoSlugs } from '../utils/generatePseoPages';
-import locationsData from '../data/pseo/globals/locations.json';
-// Import campaigns to get niche list without generating 77k objects
-import roofingCampaign from '../data/pseo/campaigns/home-services/roofing.json';
-import plumbingCampaign from '../data/pseo/campaigns/home-services/plumbing.json';
-import hvacCampaign from '../data/pseo/campaigns/home-services/hvac.json';
-import electricalCampaign from '../data/pseo/campaigns/home-services/electrical.json';
-import pestControlCampaign from '../data/pseo/campaigns/home-services/pest-control.json';
-import landscapingCampaign from '../data/pseo/campaigns/home-services/landscaping.json';
-import cleaningCampaign from '../data/pseo/campaigns/home-services/cleaning.json';
-import restorationCampaign from '../data/pseo/campaigns/home-services/restoration.json';
-import flooringCampaign from '../data/pseo/campaigns/home-services/flooring.json';
-import kitchenBathCampaign from '../data/pseo/campaigns/home-services/kitchen-bath.json';
-import paintingCampaign from '../data/pseo/campaigns/specialty-trades/painting.json';
-import windowsDoorsCampaign from '../data/pseo/campaigns/specialty-trades/windows-doors.json';
-import sidingCampaign from '../data/pseo/campaigns/specialty-trades/siding.json';
-import guttersCampaign from '../data/pseo/campaigns/specialty-trades/gutters.json';
-import fencingCampaign from '../data/pseo/campaigns/specialty-trades/fencing.json';
-import solarCampaign from '../data/pseo/campaigns/specialty-trades/solar.json';
-import poolServiceCampaign from '../data/pseo/campaigns/specialty-trades/pool-service.json';
-import legalPiCampaign from '../data/pseo/campaigns/pro-services/legal-pi.json';
-import businessLawCampaign from '../data/pseo/campaigns/pro-services/business-law.json';
-import realEstateCampaign from '../data/pseo/campaigns/pro-services/real-estate.json';
-import accountingCampaign from '../data/pseo/campaigns/pro-services/accounting.json';
-import marketingCampaign from '../data/pseo/campaigns/pro-services/marketing.json';
+import { PSEO_LOCATIONS, STATE_NAME_MAP, findFirstPseoSlugForLocationNiche, getPseoNicheCatalog, getPseoTotals } from '../utils/pseo';
 
-const ALL_CAMPAIGNS = [
-  roofingCampaign, plumbingCampaign, hvacCampaign, electricalCampaign, pestControlCampaign,
-  landscapingCampaign, cleaningCampaign, restorationCampaign, flooringCampaign, kitchenBathCampaign,
-  paintingCampaign, windowsDoorsCampaign, sidingCampaign, guttersCampaign, fencingCampaign,
-  solarCampaign, poolServiceCampaign, legalPiCampaign, businessLawCampaign, realEstateCampaign,
-  accountingCampaign, marketingCampaign
-];
-
-interface LocationRow {
-  city: string;
-  state: string;
-  slug: string;
-  county?: string;
-}
-
-const locations = locationsData as unknown as LocationRow[];
+const locations = PSEO_LOCATIONS;
+const nicheCatalog = getPseoNicheCatalog();
+const { totalPages, totalStates: stateCount } = getPseoTotals();
 
 // Group cities by state
 const byState = new Map<string, LocationRow[]>();
@@ -53,18 +15,8 @@ for (const loc of locations) {
 }
 const states = [...byState.keys()].sort();
 
-// Niche summary from campaign metadata (No 77k loop!)
-const nicheMap: Record<string, { count: number; subNiches: Set<string> }> = {};
-for (const campaign of ALL_CAMPAIGNS) {
-  const config = campaign.service_config;
-  if (!nicheMap[config.niche_slug]) {
-    nicheMap[config.niche_slug] = { count: 0, subNiches: new Set() };
-  }
-  const count = config.sub_niches.length * locations.length;
-  nicheMap[config.niche_slug]!.count = count;
-  config.sub_niches.forEach(sn => nicheMap[config.niche_slug]!.subNiches.add(sn.slug));
-}
-const niches = Object.entries(nicheMap).sort(([a], [b]) => a.localeCompare(b));
+type LocationRow = (typeof locations)[number];
+const niches = nicheCatalog;
 
 const NICHE_DESCRIPTIONS: Record<string, string> = {
   'roofing': 'Detailed cost guides, storm damage protocols, and shingle performance data for your local climate.',
@@ -88,21 +40,14 @@ const NICHE_DESCRIPTIONS: Record<string, string> = {
   'business-law': 'Local entity formation guides, compliance checklists, and regional small business legal data.',
   'accounting': 'State-specific tax schedules, business audit protocols, and localized financial planning data.',
   'marketing': 'Regional SEO performance benchmarks, local lead-gen strategies, and brand growth analytics.',
-  'legal-pi': 'Local injury claim protocols, documentation checklists, and regional case duration data.'
+  'legal-pi': 'Local injury claim protocols, documentation checklists, and regional case duration data.',
+  'real-estate': 'Local property market positioning, lead funnels, and region-specific buyer and seller strategy benchmarks.'
 };
-
-const totalPages = pseoContent.length;
-const stateCount = states.length;
-
-// Helper: find the first page for a given city + niche
-function firstPageForCity(locSlug: string, niche: string) {
-  return pseoContent.find(e => e.slug.includes(`/${locSlug}/${niche}/`));
-}
 ---
 
 <BaseLayout
   title="Find Your Local Guide | Ion Arc Online"
-  description="Localized home service education and contractor intake for every major US market—roofing, plumbing, HVAC, and more."
+  description="Localized service education and contractor intake for every major US market—home services, specialty trades, and business niches."
 >
   <!-- Hero -->
   <section class="relative overflow-hidden bg-white pb-20 pt-28 lg:pt-32">
@@ -117,7 +62,7 @@ function firstPageForCity(locSlug: string, niche: string) {
           Direct Local Access
         </span>
         <h1 class="mt-8 text-4xl font-black tracking-tighter text-slate-900 sm:text-6xl">
-          Expert home service guides for <span class="text-blue-600">every US market</span>
+          Expert local service guides for <span class="text-blue-600">every US market</span>
         </h1>
         <p class="mt-6 text-xl leading-relaxed text-slate-600">
           Professional insights for {niches.length} niches across {totalPages.toLocaleString()} localized pages. 
@@ -169,31 +114,29 @@ function firstPageForCity(locSlug: string, niche: string) {
       </div>
 
       <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-        {niches.map(([niche, stats]) => {
-          // Find sample for icon
-          const sample = pseoContent.find(e => e.niche === niche);
-          const description = NICHE_DESCRIPTIONS[niche] || `Comprehensive guides for ${niche.replace(/-/g, ' ')} services, covering local costs and compliance.`;
+        {niches.map((entry) => {
+          const description = NICHE_DESCRIPTIONS[entry.niche] || `Comprehensive guides for ${entry.niche.replace(/-/g, ' ')} services, covering local costs and compliance.`;
           return (
             <a 
-              href={`/insights#${niche}`}
+              href={`/insights#${entry.niche}`}
               class="group relative flex flex-col justify-between overflow-hidden rounded-[2rem] border border-slate-200 bg-white p-8 transition-all hover:-translate-y-1 hover:border-blue-500 hover:shadow-2xl hover:shadow-blue-100"
             >
               <div class="absolute -right-4 -top-4 h-24 w-24 rounded-full bg-slate-50 transition-colors group-hover:bg-blue-50"></div>
               <div class="relative">
                 <div class="flex h-14 w-14 items-center justify-center rounded-2xl bg-slate-50 text-3xl transition-colors group-hover:bg-blue-600 group-hover:scale-110">
-                  {sample?.icon || '🛠️'}
+                  {entry.icon || '🛠️'}
                 </div>
-                <h3 class="mt-6 text-xl font-black capitalize tracking-tight text-slate-900">{niche.replace(/-/g, ' ')}</h3>
+                <h3 class="mt-6 text-xl font-black capitalize tracking-tight text-slate-900">{entry.nicheLabel}</h3>
                 <p class="mt-2 text-sm leading-relaxed text-slate-500">
                   {description}
                 </p>
               </div>
               <div class="mt-8 flex items-center justify-between border-t border-slate-50 pt-6">
                 <span class="text-[10px] font-black uppercase tracking-widest text-slate-400 group-hover:text-blue-600">
-                  {stats.count.toLocaleString()} Active Pages
+                  {entry.pageCount.toLocaleString()} Active Pages
                 </span>
                 <span class="rounded-full bg-blue-50 px-3 py-1 text-[10px] font-bold text-blue-700 transition-colors group-hover:bg-blue-600 group-hover:text-white">
-                  {stats.subNiches.size} Guides
+                  {entry.subNiches.length} Guides
                 </span>
               </div>
             </a>
@@ -230,22 +173,22 @@ function firstPageForCity(locSlug: string, niche: string) {
             </div>
             
             <div class="grid grid-cols-2 gap-2 mb-6">
-               {niches.slice(0, 4).map(([n_name, _]) => {
-                 const sample = firstPageForCity(loc.slug, n_name);
-                 const href = sample ? `/${sample.slug}` : null;
+               {niches.slice(0, 4).map((entry) => {
+                 const slug = findFirstPseoSlugForLocationNiche(loc.slug, entry.niche);
+                 const href = slug ? `/${slug}` : null;
                  if (!href) return null;
                  return (
                    <a
                      href={href}
                      class="flex items-center justify-center rounded-xl bg-slate-50 py-3 text-[10px] font-black uppercase tracking-wider text-slate-500 transition hover:bg-blue-600 hover:text-white"
                    >
-                     {n_name.split('-')[0]}
+                     {entry.nicheLabel.split(' ')[0]}
                    </a>
                  );
                })}
             </div>
             
-            <a href={`/insights/${loc.slug}/roofing/roof-replacement`} class="flex items-center justify-center gap-2 w-full py-4 rounded-xl border border-slate-100 text-xs font-black uppercase tracking-widest text-blue-600 transition hover:bg-blue-50">
+            <a href={`/${findFirstPseoSlugForLocationNiche(loc.slug, niches[0]?.niche ?? '') ?? `insights/${loc.slug}`}`} class="flex items-center justify-center gap-2 w-full py-4 rounded-xl border border-slate-100 text-xs font-black uppercase tracking-widest text-blue-600 transition hover:bg-blue-50">
               Access All {niches.length} Guides
               <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
             </a>

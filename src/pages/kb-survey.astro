@@ -1,19 +1,46 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import { pseoContent } from '../utils/pseo';
-import locationsData from '../data/pseo/globals/locations.json';
+import { PSEO_LOCATIONS, getPseoCategoryCatalog, getPseoSubNicheMap } from '../utils/pseo';
 
-const niches = [...new Set(pseoContent.map(e => e.niche))].sort();
-const locations = (locationsData as any[]).sort((a, b) => a.city.localeCompare(b.city));
+const locations = [...PSEO_LOCATIONS].sort((a, b) => a.city.localeCompare(b.city));
+const subNicheMap = getPseoSubNicheMap();
 
-// Pre-calculate sub-niches per niche for stage 2
-const subNicheMap: Record<string, string[]> = {};
-for (const entry of pseoContent) {
-  if (!subNicheMap[entry.niche]) subNicheMap[entry.niche] = [];
-  if (!subNicheMap[entry.niche].includes(entry.subNiche)) {
-    subNicheMap[entry.niche].push(entry.subNiche);
-  }
-}
+const categoryPresentation: Record<string, { id: string; label: string; desc: string; icon: string; order: number }> = {
+  'home-services': {
+    id: 'home-services',
+    label: 'Home Services',
+    desc: 'Roofing, HVAC, Plumbing, Electrical, and in-home upgrades',
+    icon: '🏠',
+    order: 1,
+  },
+  'specialty-trades': {
+    id: 'specialty-trades',
+    label: 'Specialty Trades',
+    desc: 'Painting, siding, solar, windows, fencing, gutters, and more',
+    icon: '🎨',
+    order: 2,
+  },
+  'pro-services': {
+    id: 'pro-services',
+    label: 'Professional & Business',
+    desc: 'Legal, accounting, marketing, and real estate growth services',
+    icon: '💼',
+    order: 3,
+  },
+};
+
+const surveyCategories = getPseoCategoryCatalog()
+  .map((category) => ({
+    ...(categoryPresentation[category.category] ?? {
+      id: category.category,
+      label: category.label,
+      desc: `${category.niches.length} business niches available`,
+      icon: '🛠️',
+      order: 99,
+    }),
+    niches: category.niches.map((niche) => niche.slug),
+  }))
+  .sort((a, b) => a.order - b.order || a.label.localeCompare(b.label));
 ---
 
 <BaseLayout 
@@ -41,36 +68,7 @@ for (const entry of pseoContent) {
           </div>
           
           <div class="grid gap-4 sm:grid-cols-2">
-            {[
-              { 
-                id: 'home-systems', 
-                label: 'Critical Home Systems', 
-                desc: 'Roofing, HVAC, Plumbing, & Electrical',
-                icon: '🏠',
-                niches: ['roofing', 'plumbing', 'hvac', 'electrical', 'gutters', 'solar']
-              },
-              { 
-                id: 'surface-exterior', 
-                label: 'Surface & Exterior', 
-                desc: 'Painting, Siding, Windows, & Flooring',
-                icon: '🎨',
-                niches: ['painting', 'flooring', 'windows-doors', 'siding', 'fencing']
-              },
-              { 
-                id: 'pro-business', 
-                label: 'Professional & Business', 
-                desc: 'Legal, Accounting, & Marketing',
-                icon: '💼',
-                niches: ['business-law', 'accounting', 'marketing', 'legal-pi']
-              },
-              { 
-                id: 'maintenance-outdoor', 
-                label: 'Maintenance & Outdoor', 
-                desc: 'Landscaping, Cleaning, & Restoration',
-                icon: '🌳',
-                niches: ['cleaning', 'landscaping', 'pest-control', 'restoration', 'pool-service', 'remodeling', 'kitchen-bath']
-              }
-            ].map(cat => (
+            {surveyCategories.map(cat => (
               <div class="category-card group relative cursor-pointer" data-category={cat.id} data-niches={JSON.stringify(cat.niches)}>
                 <div class="flex flex-col h-full rounded-3xl border-2 border-slate-100 bg-white p-7 transition-all hover:border-blue-600 hover:shadow-2xl hover:shadow-blue-50">
                   <span class="text-4xl mb-4 transition-transform group-hover:scale-110 group-hover:rotate-6 inline-block">{cat.icon}</span>

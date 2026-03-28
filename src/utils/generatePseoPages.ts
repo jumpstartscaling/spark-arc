@@ -37,15 +37,7 @@ import legalPiCampaign from '../data/pseo/campaigns/pro-services/legal-pi.json';
 import businessLawCampaign from '../data/pseo/campaigns/pro-services/business-law.json';
 import realEstateCampaign from '../data/pseo/campaigns/pro-services/real-estate.json';
 import accountingCampaign from '../data/pseo/campaigns/pro-services/accounting.json';
-export const ALL_CAMPAIGNS = [
-  roofingCampaign, plumbingCampaign, hvacCampaign, electricalCampaign, pestControlCampaign,
-  landscapingCampaign, cleaningCampaign, restorationCampaign, flooringCampaign, kitchenBathCampaign,
-  paintingCampaign, windowsDoorsCampaign, sidingCampaign, guttersCampaign, fencingCampaign,
-  solarCampaign, poolServiceCampaign, legalPiCampaign, businessLawCampaign, realEstateCampaign,
-  accountingCampaign, marketingCampaign
-];
-
-import { siteConfig } from '../config/site';
+import marketingCampaign from '../data/pseo/campaigns/pro-services/marketing.json';
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
@@ -142,7 +134,7 @@ interface Campaign {
 
 // ─── All registered campaigns ─────────────────────────────────────────────────
 
-const ALL_CAMPAIGNS: Campaign[] = [
+export const ALL_CAMPAIGNS: Campaign[] = [
   roofingCampaign as unknown as Campaign,
   plumbingCampaign as unknown as Campaign,
   hvacCampaign as unknown as Campaign,

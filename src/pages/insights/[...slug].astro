@@ -1,6 +1,6 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import { pseoContent, type PseoEntry } from '../../utils/pseo';
+import { getPseoPaths, getPseoEntry, type PseoEntry } from '../../utils/pseo';
 import RegionalBrandShowcase from '../../components/pseo/RegionalBrandShowcase.astro';
 import MaterialShowdown from '../../components/pseo/MaterialShowdown.astro';
 import InteractiveGauge from '../../components/pseo/InteractiveGauge.astro';
@@ -17,15 +17,21 @@ import LocalMap from '../../components/pseo/LocalMap.astro';
 
 export function getStaticPaths() {
   // slug format: "[loc-slug]/[niche]/[sub-niche]"
-  return pseoContent.map((entry) => ({
-    params: { slug: entry.slug.replace(/^insights\//, '') },
-    props: { entry },
+  const paths = getPseoPaths();
+  return paths.map((p: string) => ({
+    params: { slug: p.replace(/^insights\//, '') },
   }));
 }
 
-interface Props {
-  entry: PseoEntry;
+const { slug } = Astro.params;
+const entry = getPseoEntry(`insights/${slug}`);
+
+if (!entry) {
+  // Return early if entry not found during build (prevents crashing)
+  return new Response(null, { status: 404 });
 }
+
+// Ensure the rest of the template uses the 'entry' we just looked up
 
 interface PageBlock {
   block_type: string;
@@ -56,7 +62,7 @@ interface ServiceSurveyBlockData {
   sub_niche: string;
 }
 
-const { entry } = Astro.props;
+// entry is already defined above via getPseoEntry
 
 function renderMarkdown(str: string): string {
   if (!str) return '';

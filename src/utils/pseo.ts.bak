@@ -34,6 +34,8 @@ function extractHeadline(blocksStr: string): string {
   return 'Local service guide';
 }
 
+const rawContentFromEngine = generatePseoPages();
+
 export interface PseoEntry {
   title: string;
   slug: string;
@@ -49,32 +51,25 @@ export interface PseoEntry {
   excerpt?: string;
 }
 
-/**
- * Memory-efficient path collection for getStaticPaths
- */
-export function getPseoPaths() {
-  const { getAllPseoSlugs } = require('./generatePseoPages');
-  return getAllPseoSlugs();
-}
-
-/**
- * Lazy lookup for a single page's content
- */
-export function getPseoEntry(slug: string): PseoEntry | null {
-  const { generatePseoPageBySlug } = require('./generatePseoPages');
-  const item = generatePseoPageBySlug(slug);
-  if (!item) return null;
-
-  const loc = locFromSlug(item.slug);
-  const city = loc?.city ?? 'Unknown';
-  const state = loc?.state ?? 'Unknown';
-  const neighborhood = loc?.neighborhood ?? city;
-
-  return {
-    ...item,
-    city,
-    state,
-    neighborhood,
-    headline: extractHeadline(item.blocks),
-  };
-}
+export const pseoContent: PseoEntry[] = rawContentFromEngine
+  .filter((item) => item.slug?.startsWith('insights/'))
+  .map((item) => {
+    const loc = locFromSlug(item.slug);
+    const city = loc?.city ?? 'Unknown';
+    const state = loc?.state ?? 'Unknown';
+    const neighborhood = loc?.neighborhood ?? city;
+    return {
+      title: item.title,
+      slug: item.slug,
+      category: item.category,
+      niche: item.niche,
+      subNiche: item.subNiche,
+      city,
+      state,
+      neighborhood,
+      headline: extractHeadline(item.blocks),
+      blocks: item.blocks,
+      schema: item.schema,
+      excerpt: item.excerpt,
+    };
+  });

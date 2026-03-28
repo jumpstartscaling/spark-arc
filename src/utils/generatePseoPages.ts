@@ -229,181 +229,272 @@ function resolveSpintax(
   return res;
 }
 
-// ─── Main generator ───────────────────────────────────────────────────────────
+// ─── Core Logic (Refactored for Lazy Loading) ────────────────────────────────
 
+export function getAllPseoSlugs(): string[] {
+  const slugs: string[] = [];
+  for (const campaign of ALL_CAMPAIGNS) {
+    for (const loc of locations) {
+      if (!loc.slug) continue;
+      for (const subNiche of campaign.service_config.sub_niches) {
+        slugs.push(`insights/${loc.slug}/${campaign.service_config.niche_slug}/${subNiche.slug}`);
+      }
+    }
+  }
+  return slugs;
+}
+
+export function generatePseoPageBySlug(targetSlug: string): GeneratedPage | null {
+  // Extract parts from slug: insights/[loc-slug]/[niche-slug]/[sub-niche-slug]
+  const parts = targetSlug.split('/');
+  if (parts.length < 4) return null;
+  const targetLocSlug = parts[1];
+  const targetNicheSlug = parts[2];
+  const targetSubNicheSlug = parts[3];
+
+  const campaign = ALL_CAMPAIGNS.find((c) => c.service_config.niche_slug === targetNicheSlug);
+  if (!campaign) return null;
+
+  const loc = locations.find((l) => l.slug === targetLocSlug);
+  if (!loc) return null;
+
+  const subNiche = campaign.service_config.sub_niches.find((sn) => sn.slug === targetSubNicheSlug);
+  if (!subNiche) return null;
+
+  return generateSinglePage(campaign, loc, subNiche);
+}
+
+function generateSinglePage(campaign: Campaign, loc: LocationRecord, subNiche: { label: string; slug: string }): GeneratedPage {
+  const { service_config, spintax, show_tell, trust, encyclopedia, sub_niche_templates, regional_nuance } = campaign;
+
+  // Merge synonyms
+  const nicheSynonyms: SynonymGroup[] = spintax?.synonyms ?? [];
+  const nicheCategoryKeys = new Set(nicheSynonyms.map((s) => s.category));
+  const mergedSynonyms: SynonymGroup[] = [
+    ...globalSynonyms.filter((s) => !nicheCategoryKeys.has(s.category)),
+    ...nicheSynonyms,
+  ];
+
+  // Pick regional nuance
+  const nuance: RegionalNuance | undefined =
+    regional_nuance?.[loc.state] ??
+    regional_nuance?.['FL'] ??
+    (regional_nuance ? Object.values(regional_nuance)[0] : undefined);
+
+  const urlSlug = `insights/${loc.slug}/${service_config.niche_slug}/${subNiche.slug}`;
+  const pageSeed = urlSlug;
+
+  const ctx = (): Record<string, string> => ({
+    city: loc.city,
+    state: loc.state,
+    neighborhood: loc.neighborhood ?? loc.city,
+    county: loc.county ?? `${loc.city} area`,
+    landmark: (loc.landmarks && loc.landmarks.length > 0)
+      ? pickSeeded(loc.landmarks, pageSeed + 'lm')
+      : 'downtown',
+    parks: (loc.parks && loc.parks.length > 0)
+      ? pickSeeded(loc.parks, pageSeed + 'pk')
+      : 'local parks',
+    motto: loc.motto ?? '',
+    zip: loc.zip ?? '',
+    niche: service_config.niche,
+    sub_niche: subNiche.label,
+    reg_focus: nuance?.focus ?? '',
+    reg_top_brand: nuance?.top_brand ?? '',
+    reg_tech: nuance?.tech ?? '',
+    brand: nuance?.top_brand ?? service_config.niche,
+  });
+
+  const spin = (t: string, subSeed = '') =>
+    resolveSpintax(t, pageSeed + subSeed, ctx(), mergedSynonyms);
+
+  const tpl: SubNicheTemplate = sub_niche_templates?.[subNiche.slug] ?? {};
+  const headlinePool = (tpl.headline_templates && tpl.headline_templates.length > 0)
+    ? tpl.headline_templates
+    : globalHeadlines;
+  const headline = spin(pickSeeded(headlinePool, pageSeed + 'head'));
+
+  const faqItems = (tpl.faqs ?? []).map((f, i) => ({
+    q: spin(f.q, `faqq${i}`),
+    a: spin(f.a, `faqa${i}`),
+  }));
+
+  const surveySteps = (tpl.survey?.steps ?? []).map((step, i) => ({
+    id: step.id,
+    label: spin(step.label, `sv${i}`),
+    options: step.options,
+    placeholder: step.placeholder ? spin(step.placeholder, `sph${i}`) : undefined,
+  }));
+
+  const st = show_tell;
+
+  const blocks = [
+    {
+      block_type: 'hero',
+      data: {
+        badge: spin(tpl.headline_templates?.[0] || st?.weather_anchor?.headline || (globalHeadlines as any)?.[campaign.service_config.category_slug]?.hero_badge || 'Expert Verified Guide'),
+        headline: headline,
+        subhead: spin(st?.weather_anchor?.body || (globalHeadlines as any)?.[campaign.service_config.category_slug]?.hero_subhead || 'Connecting you with certified local pros near {{neighborhood}}.'),
+        cta_label: spin(tpl.lead_magnet?.cta || 'Get {{city}} Assessment'),
+        image_alt: spin(`{{sub_niche}} services and professional local contractors in {{neighborhood}}, {{city}}`),
+        cta_href: '#service-survey',
+      },
+    },
+    ...(nuance && st?.weather_anchor ? [{
+      block_type: 'regional_snapshot',
+      data: {
+        title: spin(`The {{reg_focus}} angle for {{city}}`),
+        brand_name: nuance.top_brand,
+        technology: nuance.tech,
+        description: spin(nuance.logic),
+      },
+    }] : []),
+    ...(st?.interactive_cost_logic ? [{
+      block_type: 'interactive_gauge',
+      data: {
+        warning: spin(
+          `Based on typical {{reg_focus}} conditions near {{landmark}}, many {{neighborhood}} homes benefit from a documented inspection.`
+        ),
+        markup: spin(st.interactive_cost_logic.markup),
+      },
+    }] : []),
+    ...(st?.weather_anchor ? [{
+      block_type: 'weather_alert',
+      data: {
+        headline: spin(st.weather_anchor.headline),
+        body: spin(st.weather_anchor.body),
+      },
+    }] : []),
+    ...(st?.material_comparison ? [{
+      block_type: 'material_showdown',
+      data: {
+        title: spin(st.material_comparison.title),
+        rows: st.material_comparison.table_rows.map((row) => ({
+          category: row.category,
+          cheap: spin(row.cheap),
+          premium: spin(row.premium),
+        })),
+      },
+    }] : []),
+    ...((tpl.process_guide || st?.process_guide) ? [{
+      block_type: 'process_guide',
+      data: {
+        headline: spin(tpl.process_guide?.headline ?? st?.process_guide?.headline ?? ''),
+        steps: (tpl.process_guide?.steps ?? st?.process_guide?.steps ?? []).map((s, i) => ({
+          title: spin(s.title, `ps_t${i}`),
+          text: spin(s.text, `ps_tm${i}`),
+        })),
+      },
+    }] : []),
+    ...((tpl.seasonal_maintenance || st?.seasonal_maintenance) ? [{
+      block_type: 'seasonal_tips',
+      data: {
+        headline: spin(tpl.seasonal_maintenance?.headline ?? st?.seasonal_maintenance?.headline ?? ''),
+        fall_tips: spin(tpl.seasonal_maintenance?.fall_tips ?? st?.seasonal_maintenance?.fall_tips ?? ''),
+        summer_tips: spin(tpl.seasonal_maintenance?.summer_tips ?? st?.seasonal_maintenance?.summer_tips ?? ''),
+      },
+    }] : []),
+    ...((tpl.comparison_guide || st?.comparison_guide) ? [{
+      block_type: 'comparison_guide',
+      data: {
+        title: spin(tpl.comparison_guide?.title ?? st?.comparison_guide?.title ?? ''),
+        comparison: {
+          option_a: spin(tpl.comparison_guide?.comparison?.option_a ?? st?.comparison_guide?.comparison?.option_a ?? ''),
+          option_b: spin(tpl.comparison_guide?.comparison?.option_b ?? st?.comparison_guide?.comparison?.option_b ?? ''),
+          details: spin(tpl.comparison_guide?.comparison?.details ?? st?.comparison_guide?.comparison?.details ?? ''),
+        },
+      },
+    }] : []),
+    ...((tpl.market_analytics || st?.market_analytics) ? [{
+      block_type: 'market_analytics',
+      data: {
+        headline: spin(tpl.market_analytics?.headline ?? st?.market_analytics?.headline ?? ''),
+        analysis: spin(tpl.market_analytics?.analysis ?? st?.market_analytics?.analysis ?? ''),
+        stats: (tpl.market_analytics?.stats ?? st?.market_analytics?.stats ?? []).map((s, i) => ({
+          label: spin(s.label, `mslt_${i}`),
+          value: spin(s.value, `mskv_${i}`),
+          hint: spin(s.hint, `msh_${i}`),
+        })),
+      },
+    }] : []),
+    ...((tpl.compliance_checklist || st?.compliance_checklist) ? [{
+      block_type: 'compliance_checklist',
+      data: {
+        title: spin(tpl.compliance_checklist?.title ?? st?.compliance_checklist?.title ?? ''),
+        warning: spin(tpl.compliance_checklist?.warning ?? st?.compliance_checklist?.warning ?? ''),
+        items: (tpl.compliance_checklist?.items ?? st?.compliance_checklist?.items ?? []).map((s, i) => ({
+          title: spin(s.title, `cct_${i}`),
+          text: spin(s.text, `ccm_${i}`),
+        })),
+      },
+    }] : []),
+    ...(tpl.encyclopedia ? [{
+      block_type: 'encyclopedia',
+      data: {
+        brands: (tpl.encyclopedia.brands || {}),
+        costs: (tpl.encyclopedia.pricing_benchmarks || []),
+        aoe_intro: pickSeeded(tpl.encyclopedia.aoe_hints || [], pageSeed + 'aoe'),
+      },
+    }] : []),
+    ...(st?.landmark_proximity ? [{
+      block_type: 'local_trust',
+      data: {
+        badge: spin(st.landmark_proximity.trust_badge),
+        text: spin(st.landmark_proximity.text),
+      },
+    }] : []),
+    {
+      block_type: 'silo_links',
+      data: {
+        city: loc.city,
+        currentNiche: service_config.niche,
+      },
+    },
+    {
+      block_type: 'survey_flow',
+      data: {
+        title: spin(tpl.survey?.title ?? 'Start Your Discovery'),
+        subhead: spin(tpl.survey?.subhead ?? 'Answer a few questions to find the right guide.'),
+        steps: surveySteps,
+      },
+    },
+    {
+      block_type: 'faq_section',
+      data: {
+        items: faqItems,
+      },
+    },
+    {
+      block_type: 'lead_magnet',
+      data: {
+        headline: spin(tpl.lead_magnet?.headline ?? 'Download the Local Guide'),
+        subhead: spin(tpl.lead_magnet?.subhead ?? 'Get all the details in a printable format.'),
+        bullets: (tpl.lead_magnet?.bullets ?? []).map((b, i) => spin(b, `lmb${i}`)),
+        cta: spin(tpl.lead_magnet?.cta ?? 'Download Now'),
+      },
+    },
+  ];
+
+  return {
+    title: spin(pickSeeded(headlinePool, pageSeed + 'title')),
+    slug: urlSlug,
+    category: service_config.category_slug,
+    niche: service_config.niche_slug,
+    subNiche: subNiche.slug,
+    schema: JSON.stringify({
+      '@context': 'https://schema.org',
+      '@type': 'Article',
+      headline: headline,
+      description: spin(`Find reliable local {{sub_niche}} experts in {{neighborhood}}, {{city}}.`),
+    }),
+    blocks: JSON.stringify(blocks),
+    excerpt: spin(`Discover the best {{sub_niche}} solutions in {{city}}. Our guide covers local standards, pricing, and certified providers near {{landmark}}.`),
+  };
+}
+
+// ─── Legacy Export (kept for now, but will be minimized soon) ─────────────────
 export function generatePseoPages(): GeneratedPage[] {
   const allPages: GeneratedPage[] = [];
-
-  for (const campaign of ALL_CAMPAIGNS) {
-    const { service_config, spintax, show_tell, trust, encyclopedia, sub_niche_templates, regional_nuance, conversion } = campaign;
-
-    // Merge synonyms: global first, niche overrides on same category key
-    const nicheSynonyms: SynonymGroup[] = spintax?.synonyms ?? [];
-    const nicheCategoryKeys = new Set(nicheSynonyms.map((s) => s.category));
-    const mergedSynonyms: SynonymGroup[] = [
-      ...globalSynonyms.filter((s) => !nicheCategoryKeys.has(s.category)),
-      ...nicheSynonyms,
-    ];
-
-    for (const loc of locations) {
-      if (!loc.city || !loc.state || !loc.slug) continue;
-
-      // Pick regional nuance (fallback chain: state → FL → first available)
-      const nuance: RegionalNuance | undefined =
-        regional_nuance?.[loc.state] ??
-        regional_nuance?.['FL'] ??
-        (regional_nuance ? Object.values(regional_nuance)[0] : undefined);
-
-      for (const subNiche of service_config.sub_niches) {
-        const urlSlug = `insights/${loc.slug}/${service_config.niche_slug}/${subNiche.slug}`;
-        const pageSeed = urlSlug;
-
-        const spin = (t: string, subSeed = '') =>
-          resolveSpintax(t, pageSeed + subSeed, ctx(), mergedSynonyms);
-
-        const ctx = (): Record<string, string> => ({
-          city: loc.city,
-          state: loc.state,
-          neighborhood: loc.neighborhood ?? loc.city,
-          county: loc.county ?? `${loc.city} area`,
-          landmark: (loc.landmarks && loc.landmarks.length > 0)
-            ? pickSeeded(loc.landmarks, pageSeed + 'lm')
-            : 'downtown',
-          parks: (loc.parks && loc.parks.length > 0)
-            ? pickSeeded(loc.parks, pageSeed + 'pk')
-            : 'local parks',
-          motto: loc.motto ?? '',
-          zip: loc.zip ?? '',
-          niche: service_config.niche,
-          sub_niche: subNiche.label,
-          reg_focus: nuance?.focus ?? '',
-          reg_top_brand: nuance?.top_brand ?? '',
-          reg_tech: nuance?.tech ?? '',
-          brand: nuance?.top_brand ?? service_config.niche,
-        });
-
-        // Grab sub-niche specific template (or empty fallback)
-        const tpl: SubNicheTemplate = sub_niche_templates?.[subNiche.slug] ?? {};
-
-        // Headline: prefer sub-niche headlines, fall back to global pool
-        const headlinePool = (tpl.headline_templates && tpl.headline_templates.length > 0)
-          ? tpl.headline_templates
-          : globalHeadlines;
-        const headline = spin(pickSeeded(headlinePool, pageSeed + 'head'));
-
-        // FAQs
-        const faqItems = (tpl.faqs ?? []).map((f, i) => ({
-          q: spin(f.q, `faqq${i}`),
-          a: spin(f.a, `faqa${i}`),
-        }));
-
-        // Survey steps
-        const surveySteps = (tpl.survey?.steps ?? []).map((step, i) => ({
-          id: step.id,
-          label: spin(step.label, `sv${i}`),
-          options: step.options,
-          placeholder: step.placeholder ? spin(step.placeholder, `sph${i}`) : undefined,
-        }));
-
-        // Lead magnet
-        const lm = tpl.lead_magnet;
-
-        // Show/tell blocks (niche-level, used where available)
-        const st = show_tell;
-        const tr = trust;
-
-        // ── Assemble page blocks ───────────────────────────────────────────
-        const blocks = [
-          {
-            block_type: 'hero',
-            data: {
-              badge: spin(tpl.headline_templates?.[0] || st?.weather_anchor?.headline || (globalHeadlines as any)?.[campaign.service_config.category_slug]?.hero_badge || 'Expert Verified Guide'),
-              headline: headline, // Keeping existing headline variable
-              subhead: spin(st?.weather_anchor?.body || (globalHeadlines as any)?.[campaign.service_config.category_slug]?.hero_subhead || 'Connecting you with certified local pros near {{neighborhood}}.'),
-              cta_label: spin(tpl.lead_magnet?.cta || 'Get {{city}} Assessment'),
-              image_alt: spin(`{{sub_niche}} services and professional local contractors in {{neighborhood}}, {{city}}`),
-              cta_href: '#service-survey',
-            },
-          },
-          ...(nuance && st?.weather_anchor ? [{
-            block_type: 'regional_snapshot',
-            data: {
-              title: spin(`The {{reg_focus}} angle for {{city}}`),
-              brand_name: nuance.top_brand,
-              technology: nuance.tech,
-              description: spin(nuance.logic),
-            },
-          }] : []),
-          ...(st?.interactive_cost_logic ? [{
-            block_type: 'interactive_gauge',
-            data: {
-              warning: spin(
-                `Based on typical {{reg_focus}} conditions near {{landmark}}, many {{neighborhood}} homes benefit from a documented inspection.`
-              ),
-              markup: spin(st.interactive_cost_logic.markup),
-            },
-          }] : []),
-          ...(st?.weather_anchor ? [{
-            block_type: 'weather_alert',
-            data: {
-              headline: spin(st.weather_anchor.headline),
-              body: spin(st.weather_anchor.body),
-            },
-          }] : []),
-          ...(st?.material_comparison ? [{
-            block_type: 'material_showdown',
-            data: {
-              title: spin(st.material_comparison.title),
-              rows: st.material_comparison.table_rows.map((row) => ({
-                category: row.category,
-                cheap: spin(row.cheap),
-                premium: spin(row.premium),
-              })),
-            },
-          }] : []),
-          // ─── Phase 2: Modular 1,500 Word Blocks ───
-          ...((tpl.process_guide || st?.process_guide) ? [{
-            block_type: 'process_guide',
-            data: {
-              headline: spin(tpl.process_guide?.headline ?? st?.process_guide?.headline ?? ''),
-              steps: (tpl.process_guide?.steps ?? st?.process_guide?.steps ?? []).map((s, i) => ({
-                title: spin(s.title, `ps_t${i}`),
-                text: spin(s.text, `ps_tm${i}`),
-              })),
-            },
-          }] : []),
-          ...((tpl.seasonal_maintenance || st?.seasonal_maintenance) ? [{
-            block_type: 'seasonal_tips',
-            data: {
-              headline: spin(tpl.seasonal_maintenance?.headline ?? st?.seasonal_maintenance?.headline ?? ''),
-              fall_tips: spin(tpl.seasonal_maintenance?.fall_tips ?? st?.seasonal_maintenance?.fall_tips ?? ''),
-              summer_tips: spin(tpl.seasonal_maintenance?.summer_tips ?? st?.seasonal_maintenance?.summer_tips ?? ''),
-            },
-          }] : []),
-          ...((tpl.comparison_guide || st?.comparison_guide) ? [{
-            block_type: 'comparison_guide',
-            data: {
-              title: spin(tpl.comparison_guide?.title ?? st?.comparison_guide?.title ?? ''),
-              comparison: {
-                option_a: spin(tpl.comparison_guide?.comparison?.option_a ?? st?.comparison_guide?.comparison?.option_a ?? ''),
-                option_b: spin(tpl.comparison_guide?.comparison?.option_b ?? st?.comparison_guide?.comparison?.option_b ?? ''),
-                details: spin(tpl.comparison_guide?.comparison?.details ?? st?.comparison_guide?.comparison?.details ?? ''),
-              },
-            },
-          }] : []),
-          ...((tpl.market_analytics || st?.market_analytics) ? [{
-            block_type: 'market_analytics',
-            data: {
-              headline: spin(tpl.market_analytics?.headline ?? st?.market_analytics?.headline ?? ''),
-              analysis: spin(tpl.market_analytics?.analysis ?? st?.market_analytics?.analysis ?? ''),
-              stats: (tpl.market_analytics?.stats ?? st?.market_analytics?.stats ?? []).map((s, i) => ({
-                label: spin(s.label, `mslt_${i}`),
-                value: spin(s.value, `mslv_${i}`),
-                hint: spin(s.hint, `mslh_${i}`),
-              })),
-            },
-          }] : []),
-          ...((tpl.compliance_checklist || st?.compliance_checklist) ? [{
             block_type: 'compliance_checklist',
             data: {
               title: spin(tpl.compliance_checklist?.title ?? st?.compliance_checklist?.title ?? ''),

@@ -1,7 +1,39 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import { pseoContent, STATE_NAME_MAP } from '../utils/pseo';
+import { getPseoPaths, STATE_NAME_MAP } from '../utils/pseo';
+import { getAllPseoSlugs } from '../utils/generatePseoPages';
 import locationsData from '../data/pseo/globals/locations.json';
+// Import campaigns to get niche list without generating 77k objects
+import roofingCampaign from '../data/pseo/campaigns/home-services/roofing.json';
+import plumbingCampaign from '../data/pseo/campaigns/home-services/plumbing.json';
+import hvacCampaign from '../data/pseo/campaigns/home-services/hvac.json';
+import electricalCampaign from '../data/pseo/campaigns/home-services/electrical.json';
+import pestControlCampaign from '../data/pseo/campaigns/home-services/pest-control.json';
+import landscapingCampaign from '../data/pseo/campaigns/home-services/landscaping.json';
+import cleaningCampaign from '../data/pseo/campaigns/home-services/cleaning.json';
+import restorationCampaign from '../data/pseo/campaigns/home-services/restoration.json';
+import flooringCampaign from '../data/pseo/campaigns/home-services/flooring.json';
+import kitchenBathCampaign from '../data/pseo/campaigns/home-services/kitchen-bath.json';
+import paintingCampaign from '../data/pseo/campaigns/specialty-trades/painting.json';
+import windowsDoorsCampaign from '../data/pseo/campaigns/specialty-trades/windows-doors.json';
+import sidingCampaign from '../data/pseo/campaigns/specialty-trades/siding.json';
+import guttersCampaign from '../data/pseo/campaigns/specialty-trades/gutters.json';
+import fencingCampaign from '../data/pseo/campaigns/specialty-trades/fencing.json';
+import solarCampaign from '../data/pseo/campaigns/specialty-trades/solar.json';
+import poolServiceCampaign from '../data/pseo/campaigns/specialty-trades/pool-service.json';
+import legalPiCampaign from '../data/pseo/campaigns/pro-services/legal-pi.json';
+import businessLawCampaign from '../data/pseo/campaigns/pro-services/business-law.json';
+import realEstateCampaign from '../data/pseo/campaigns/pro-services/real-estate.json';
+import accountingCampaign from '../data/pseo/campaigns/pro-services/accounting.json';
+import marketingCampaign from '../data/pseo/campaigns/pro-services/marketing.json';
+
+const ALL_CAMPAIGNS = [
+  roofingCampaign, plumbingCampaign, hvacCampaign, electricalCampaign, pestControlCampaign,
+  landscapingCampaign, cleaningCampaign, restorationCampaign, flooringCampaign, kitchenBathCampaign,
+  paintingCampaign, windowsDoorsCampaign, sidingCampaign, guttersCampaign, fencingCampaign,
+  solarCampaign, poolServiceCampaign, legalPiCampaign, businessLawCampaign, realEstateCampaign,
+  accountingCampaign, marketingCampaign
+];
 
 interface LocationRow {
   city: string;
@@ -21,12 +53,16 @@ for (const loc of locations) {
 }
 const states = [...byState.keys()].sort();
 
-// Niche summary from generated content
+// Niche summary from campaign metadata (No 77k loop!)
 const nicheMap: Record<string, { count: number; subNiches: Set<string> }> = {};
-for (const entry of pseoContent) {
-  if (!nicheMap[entry.niche]) nicheMap[entry.niche] = { count: 0, subNiches: new Set() };
-  nicheMap[entry.niche]!.count++;
-  nicheMap[entry.niche]!.subNiches.add(entry.subNiche);
+for (const campaign of ALL_CAMPAIGNS) {
+  const config = campaign.service_config;
+  if (!nicheMap[config.niche_slug]) {
+    nicheMap[config.niche_slug] = { count: 0, subNiches: new Set() };
+  }
+  const count = config.sub_niches.length * locations.length;
+  nicheMap[config.niche_slug]!.count = count;
+  config.sub_niches.forEach(sn => nicheMap[config.niche_slug]!.subNiches.add(sn.slug));
 }
 const niches = Object.entries(nicheMap).sort(([a], [b]) => a.localeCompare(b));
 

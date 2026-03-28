@@ -94,6 +94,7 @@ interface SubNicheTemplate {
   faqs?: Array<{ q: string; a: string }>;
   lead_magnet?: { headline: string; subhead: string; bullets: string[]; cta: string };
   survey?: { title: string; subhead: string; steps: Array<{ id: string; label: string; options?: string[]; placeholder?: string }> };
+  encyclopedia?: any;
   // Sub-niche can override/add these blocks
   process_guide?: { headline: string; steps: Array<{ title: string; text: string }> };
   seasonal_maintenance?: { headline: string; fall_tips: string; summer_tips: string };
@@ -492,143 +493,12 @@ function generateSinglePage(campaign: Campaign, loc: LocationRecord, subNiche: {
   };
 }
 
-// ─── Legacy Export (kept for now, but will be minimized soon) ─────────────────
+// ─── Legacy Export (Minimized for memory efficiency) ─────────────────────────
 export function generatePseoPages(): GeneratedPage[] {
-  const allPages: GeneratedPage[] = [];
-            block_type: 'compliance_checklist',
-            data: {
-              title: spin(tpl.compliance_checklist?.title ?? st?.compliance_checklist?.title ?? ''),
-              warning: spin(tpl.compliance_checklist?.warning ?? st?.compliance_checklist?.warning ?? ''),
-              items: (tpl.compliance_checklist?.items ?? st?.compliance_checklist?.items ?? []).map((it, i) => ({
-                title: spin(it.title, `cct_${i}`),
-                text: spin(it.text, `ccm_${i}`),
-              })),
-            },
-          }] : []),
-          ...(encyclopedia?.brands ? [{
-            block_type: 'brand_showcase',
-            data: {
-              brands: Object.fromEntries(
-                Object.entries(encyclopedia.brands).map(([k, v]) => [
-                  k,
-                  { ...v, value_prop: spin(v.value_prop, `brand_${k}`) },
-                ])
-              ),
-            },
-          }] : []),
-          ...(tr ? [{
-            block_type: 'local_trust',
-            data: {
-              story_headline: tr.hiring_local ? spin(tr.hiring_local.headline) : '',
-              story_body:     tr.hiring_local ? spin(tr.hiring_local.body) : '',
-              secondary_headline: tr.neighborhood_pride ? spin(tr.neighborhood_pride.headline) : '',
-              secondary_body:     tr.neighborhood_pride ? spin(tr.neighborhood_pride.body) : '',
-              permit_headline: tr.permitting_logic ? spin(tr.permitting_logic.headline) : '',
-          permit_body:     tr.permitting_logic ? spin(tr.permitting_logic.body) : '',
-              landmark_badge:  st?.landmark_proximity ? spin(st.landmark_proximity.trust_badge) : '',
-              landmark_text:   st?.landmark_proximity ? spin(st.landmark_proximity.text) : '',
-            },
-          }] : []),
-          ...(encyclopedia ? [{
-            block_type: 'encyclopedia',
-            data: {
-              brands: encyclopedia.brands || {},
-              styles: {}, 
-              costs: (encyclopedia.pricing_benchmarks || []).reduce((acc, b) => ({
-                ...acc,
-                [spin(b.item)]: { per_sqft: spin(b.price), notes: spin(b.note) }
-              }), {}),
-              aoe_intro: spin(encyclopedia.aoe_hints?.[0] || 'Expert local service breakdowns.'),
-            },
-          }] : []),
-          ...(faqItems.length > 0 ? [{
-            block_type: 'aoe_faq',
-            data: { items: faqItems },
-          }] : []),
-          ...(lm ? [{
-            block_type: 'lead_magnet',
-            data: {
-              headline: spin(lm.headline),
-              subhead:  spin(lm.subhead),
-              bullets:  lm.bullets.map((b, i) => spin(b, `lb${i}`)),
-              button:   spin(lm.cta),
-            },
-          }] : []),
-          {
-            block_type: 'closing_trust',
-            data: { text: spin(conversion?.closing_trust ?? 'We connect {{city}} homeowners with verified local pros.') },
-          },
-          {
-            block_type: 'service_survey',
-            data: {
-              title:   spin(tpl.survey?.title ?? '{Quick|Fast} {{sub_niche}} assessment'),
-              subhead: spin(tpl.survey?.subhead ?? 'A few questions—takes under a minute.'),
-              steps:   surveySteps,
-              niche:   service_config.niche_slug,
-              sub_niche: subNiche.slug,
-            },
-          },
-          {
-            block_type: 'silo_links',
-            data: {
-              city: loc.city,
-              currentNiche: service_config.niche_slug,
-            },
-          },
-        ];
-
-        // ── Schema markup ──────────────────────────────────────────────────
-        const nicheSuffix = campaign.branding?.business_name_suffix || siteConfig.businessNameSuffix;
-        const businessName = `${siteConfig.siteName} ${loc.city} ${nicheSuffix}`;
-        const schemaObj = {
-          '@context': 'https://schema.org',
-          '@graph': [
-            {
-              '@type': 'LocalBusiness',
-              name: businessName,
-              description: spin(`${service_config.niche} education and contractor matching for {{neighborhood}} and {{county}}.`),
-              areaServed: { '@type': 'City', name: loc.city },
-              slogan: loc.motto || undefined,
-            },
-            {
-              '@type': 'HowTo',
-              name: spin(`How to evaluate {{sub_niche}} services in {{city}}`),
-              description: spin(`Costs, providers, and next steps for {{neighborhood}} homeowners.`),
-              step: [
-                { '@type': 'HowToStep', name: 'Document the issue', text: spin('Note symptoms, age of equipment, and any prior repairs near {{landmark}}.') },
-                { '@type': 'HowToStep', name: 'Compare providers', text: spin('Verify licensing, insurance, and local references in {{county}}.') },
-                { '@type': 'HowToStep', name: 'Get a written scope', text: spin('Ensure labor, parts, and warranty terms are spelled out before work begins in {{city}}.') },
-              ],
-              totalTime: 'P1D',
-            },
-            ...(faqItems.length > 0 ? [{
-              '@type': 'FAQPage',
-              mainEntity: faqItems.map((faq) => ({
-                '@type': 'Question',
-                name: faq.q,
-                acceptedAnswer: { '@type': 'Answer', text: faq.a },
-              })),
-            }] : []),
-          ],
-        };
-
-        const excerpt = spin(`{{city}} {{sub_niche}}: costs, local providers, and a quick {{niche}} checklist.`);
-
-        allPages.push({
-          title: spin(`{{city}} {{sub_niche}} | {{neighborhood}} — ${siteConfig.siteName}`),
-          slug: urlSlug,
-          niche: service_config.niche_slug,
-          category: service_config.category_slug,
-          subNiche: subNiche.slug,
-          schema: JSON.stringify(schemaObj),
-          blocks: JSON.stringify(blocks),
-          excerpt,
-        });
-      }
-    }
-  }
-
-  return allPages;
+  const slugs = getAllPseoSlugs();
+  return slugs
+    .map(slug => generatePseoPageBySlug(slug))
+    .filter((p): p is GeneratedPage => p !== null);
 }
 
 // ─── Legacy shim (keeps any old imports from breaking) ────────────────────────

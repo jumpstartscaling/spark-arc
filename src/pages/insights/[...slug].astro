@@ -173,8 +173,6 @@ try {
           return <ComplianceChecklist data={data as any} />;
         }
 
-        if (block_type === 'roof_cross_section') {
-          return <RoofCrossSection />;
         if (block_type === 'material_showdown') {
           return <MaterialShowdown data={data as any} />;
         }
@@ -184,7 +182,7 @@ try {
         }
 
         if (block_type === 'encyclopedia') {
-          return <EncyclopediaSection data={data as any} niche={entry.niche} />;
+          return <EncyclopediaSection data={data as any} niche={entry!.niche} />;
         }
 
         if (block_type === 'local_trust') {

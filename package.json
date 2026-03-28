@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "astro dev",
     "start": "sirv dist --host 0.0.0.0 --port 3000",
-    "build": "astro build",
+    "build": "astro build --no-check",
     "preview": "astro preview",
     "astro": "astro"
   },

@@ -47,19 +47,24 @@
       }
     }
   },
+  "branding": {
+    "business_name_suffix": "Cleaning Specialists"
+  },
   "encyclopedia": {
     "brands": {
       "Stanley_Steemer": { "tier": "National Standard", "flagship": "Carpet Extraction", "value_prop": "Fast response and water extraction—great for {{county}} households.", "price_point": "$$" },
       "Merry_Maids":    { "tier": "Trusted Service",  "flagship": "Whole-Home Clean",  "value_prop": "Consistent, background-checked crews for {{city}} families.", "price_point": "$$" },
       "Miele":          { "tier": "Equipment High",   "flagship": "HEPA Vacuuming",   "value_prop": "Best-in-class filtration for {{neighborhood}} allergy sufferers.", "price_point": "$$$" }
     },
+    "pricing_benchmarks": [
+      { "item": "Standard House Cleaning", "price": "$150 - $250", "note": "Based on average 3-bedroom home in {{city}}." },
+      { "item": "Deep Cleaning (One-Time)", "price": "$300 - $600", "note": "Includes baseboards, appliances, and detail work near {{neighborhood}}." },
+      { "item": "Move-In / Move-Out Clean", "price": "$400 - $800", "note": "Full sanitization for empty {{neighborhood}} homes." },
+      { "item": "Carpet Steam Cleaning", "price": "$125 - $350", "note": "Depends on room count and stain level in {{county}}." }
+    ],
     "styles": {
       "Eco-Clean": { "human_name": "Green Cleaning", "benefit": "Non-toxic; safe for pets and infants in {{city}}.", "aoe_hint": "Check for LEED-certified products in {{state}}." },
       "Heavy-Duty": { "human_name": "Post-Construction", "benefit": "Removes fine dust and drywall residue near {{landmark}} projects.", "aoe_hint": "Requires HEPA filtration for {{county}} air quality." }
-    },
-    "costs_2026": {
-      "Bi_Weekly_Maid": { "per_sqft": "$150 - $250 / visit", "notes": "Standard 3-bedroom home in {{city}}." },
-      "Deep_Clean":     { "per_sqft": "$300 - $600 / one-time", "notes": "Full day service near {{neighborhood}}." }
     }
   },
   "sub_niche_templates": {

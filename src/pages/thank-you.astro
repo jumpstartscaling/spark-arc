@@ -2,10 +2,45 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import ThankYouContent from '../components/pseo/ThankYouContent.astro';
 
-const city = Astro.url.searchParams.get('city') || 'the Tampa Bay area';
-const neighborhood = Astro.url.searchParams.get('neighborhood') || city;
+// Default values for static rendering
+const city = 'the Tampa Bay area';
+const neighborhood = city;
 ---
 
 <BaseLayout title={`Thank you | ${city}`}>
   <ThankYouContent city={city} neighborhood={neighborhood} />
 </BaseLayout>
+
+<script>
+  // Read query parameters from URL and update city/neighborhood text
+  document.addEventListener('DOMContentLoaded', () => {
+    const urlParams = new URLSearchParams(window.location.search);
+    const cityParam = urlParams.get('city');
+    const neighborhoodParam = urlParams.get('neighborhood');
+    
+    if (cityParam) {
+      // Update elements containing city information
+      const cityElements = document.querySelectorAll('[data-city]');
+      cityElements.forEach(el => {
+        el.textContent = cityParam;
+      });
+      
+      // Update page title
+      document.title = `Thank you | ${cityParam}`;
+    }
+    
+    if (neighborhoodParam) {
+      // Update elements containing neighborhood information
+      const neighborhoodElements = document.querySelectorAll('[data-neighborhood]');
+      neighborhoodElements.forEach(el => {
+        el.textContent = neighborhoodParam;
+      });
+    } else if (cityParam) {
+      // If no neighborhood but city exists, use city as neighborhood fallback
+      const neighborhoodElements = document.querySelectorAll('[data-neighborhood]');
+      neighborhoodElements.forEach(el => {
+        el.textContent = cityParam;
+      });
+    }
+  });
+</script>

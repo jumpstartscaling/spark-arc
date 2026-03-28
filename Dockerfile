@@ -1,5 +1,5 @@
-# Multi-stage Dockerfile for Ion Arc Online (Astro SSG)
-# Optimized for Coolify and high-volume static generation
+# Hybrid Dockerfile for Ion Arc Online (Static nginx + Node.js Admin API)
+# Optimized for Coolify with hot-swap PSEO rebuild capability
 
 # --- Build Stage ---
 FROM node:20-alpine AS build
@@ -39,19 +39,36 @@ ENV PUBLIC_SITE_URL=$PUBLIC_SITE_URL
 COPY package*.json ./
 RUN npm ci
 
-# Copy source and build
+# Copy source and build initial static site
 COPY . .
 RUN npm run build
 
 # --- Production Stage ---
-FROM nginx:alpine AS runtime
+FROM node:20-alpine AS runtime
 
-# Copy the static export from build stage
-COPY --from=build /app/dist /usr/share/nginx/html
+# Install nginx for static file serving
+RUN apk add --no-cache nginx
 
-# Custom nginx config to handle SPA routing if needed (though this is SSG)
-COPY nginx.conf /etc/nginx/conf.d/default.conf
+# Set working directory
+WORKDIR /app
 
+# Copy built application from build stage
+COPY --from=build /app/dist ./dist
+COPY --from=build /app/node_modules ./node_modules
+COPY --from=build /app/package*.json ./
+
+# Copy server and configuration files
+COPY server.js ./
+COPY nginx.conf /etc/nginx/nginx.conf
+COPY entrypoint.sh ./
+RUN chmod +x entrypoint.sh
+
+# Create required directories
+RUN mkdir -p /app/src/data/pseo /var/log/nginx
+
+# Expose port 80 for nginx
 EXPOSE 80
-CMD ["nginx", "-g", "daemon off;"]
+
+# Set entrypoint script
+ENTRYPOINT ["./entrypoint.sh"]
 

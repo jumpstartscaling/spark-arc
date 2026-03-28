@@ -47,19 +47,24 @@
       }
     }
   },
+  "branding": {
+    "business_name_suffix": "Seamless Gutter Systems"
+  },
   "encyclopedia": {
     "brands": {
       "LeafFilter": { "tier": "National Premium", "flagship": "Gutter Guards", "value_prop": "The industry leader for permanent clog protection in {{county}}.", "price_point": "$$$" },
       "PlyGem":      { "tier": "Trade-Grade",    "flagship": "Mastic Performance", "value_prop": "High-durability aluminum colors—ideal for {{city}} residential use.", "price_point": "$$" },
       "Spectra":    { "tier": "Fabrication High", "flagship": "Seamless Coil",  "value_prop": "Best-in-class aluminum coil for on-site {{neighborhood}} extrusions.", "price_point": "$$" }
     },
+    "pricing_benchmarks": [
+      { "item": "Seamless Gutter Install (per linear ft)", "price": "$9 - $18", "note": "Includes 6-inch aluminum and hidden hangers in {{city}}." },
+      { "item": "Gutter Guard Add-on (per linear ft)", "price": "$6 - $12", "note": "Stainless micro-mesh guards for {{neighborhood}} tree cover." },
+      { "item": "Full System Replacement", "price": "$1,500 - $4,500", "note": "Typical 1,500–2,000 sq ft home in {{county}} including removal." },
+      { "item": "Gutter Cleaning Service", "price": "$125 - $275", "note": "Manual debris removal and downspout flush in {{city}}." }
+    ],
     "styles": {
       "K-Style": { "human_name": "Standard Crown", "benefit": "Classic aesthetic; highest volume per linear foot in {{city}}.", "aoe_hint": "Check for 6-inch oversize options in {{state}}." },
       "Half-Round": { "human_name": "Old World Detail", "benefit": "Ideal for copper or historic {{parks}} renovations.", "aoe_hint": "Requires specialty hangers in {{county}}." }
-    },
-    "costs_2026": {
-      "Seamless_Full": { "per_sqft": "$1,200 - $3,500", "notes": "Typical 1,500 sqft home install in {{city}}." },
-      "Gutter_Guards": { "per_sqft": "$15 - $45 / linear ft", "notes": "Depends on mesh grade near {{neighborhood}}." }
     }
   },
   "sub_niche_templates": {

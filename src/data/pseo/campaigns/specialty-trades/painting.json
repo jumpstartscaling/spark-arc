@@ -58,18 +58,14 @@
       "Behr": { "tier": "Consumer Value", "flagship": "Marquee", "value_prop": "One-coat coverage for quick flips in {{neighborhood}} rental properties.", "price_point": "$$" }
     },
     "pricing_benchmarks": [
-      { "item": "Standard Interior (per sq ft)", "price": "$3.50 - $5.50", "note": "Includes basic prep, masking, and 2 coats." },
-      { "item": "Exterior Siding Paint", "price": "$2.50 - $4.00", "note": "Varies by surface texture in {{county}}." },
-      { "item": "Cabinet Refinishing (Full)", "price": "$2,500 - $5,000", "note": "Depends on door count and finish style." },
-      { "item": "Deck / Fence Staining", "price": "$0.75 - $1.25", "note": "Highly recommended for {{state}} winters." }
+      { "item": "Interior Room Painting", "price": "$450 - $950 / room", "note": "Standard 12x12 room including 2 coats and minor prep in {{city}}." },
+      { "item": "Exterior Full Home Paint", "price": "$3,500 - $8,500", "note": "Typical 2-story home in {{county}} including wash and scrape." },
+      { "item": "Cabinet Refinishing (Full)", "price": "$2,500 - $6,500", "note": "Professional spray finish for 20+ doors near {{neighborhood}}." },
+      { "item": "Deck Cleaning & Staining", "price": "$600 - $1,800", "note": "Depends on footage and stain type (solid vs semi) in {{city}}." }
     ],
     "styles": {
       "Limewash": { "human_name": "Mineral Paint", "benefit": "Breathable, antique aesthetic for brick in {{parks}} properties.", "aoe_hint": "Check historic board rules in {{state}}." },
       "Stain":    { "human_name": "Wood Preservation", "benefit": "Protects decks and fences near {{landmark}} from UV damage.", "aoe_hint": "Needs re-application every 2–3 years in {{city}}." }
-    },
-    "costs_2026": {
-      "Interior_Room": { "per_sqft": "$400 - $800 / room", "notes": "Standard 12x12 room in {{city}}." },
-      "Exterior_Full": { "per_sqft": "$3,500 - $8,500", "notes": "Typical 2-story home near {{neighborhood}}." }
     },
     "aoe_hints": [
       "Wait for humidity to drop below 50% in {{city}} before starting exterior projects."

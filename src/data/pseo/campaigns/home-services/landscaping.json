@@ -47,19 +47,24 @@
       }
     }
   },
+  "branding": {
+    "business_name_suffix": "Landscape Design & Care"
+  },
   "encyclopedia": {
     "brands": {
       "RainBird": { "tier": "Irrigation Standard", "flagship": "ESP-Me3", "value_prop": "The gold standard for smart irrigation in {{county}}.", "price_point": "$$" },
       "Stihl":    { "tier": "Trade-Grade", "flagship": "Pro Series", "value_prop": "Precision tree work tools—common for {{city}} arborists.", "price_point": "$$$" },
       "Belgard":  { "tier": "Hardscape Leader", "flagship": "Paver Systems", "value_prop": "Modern aesthetics for {{neighborhood}} patio renovations.", "price_point": "$$$" }
     },
+    "pricing_benchmarks": [
+      { "item": "Monthly Maintenance (Full-Service)", "price": "$180 - $450 / mo", "note": "Includes mowing, edging, weeding, and blow-off in {{city}}." },
+      { "item": "New Sod Installation (per sq ft)", "price": "$1.50 - $3.50", "note": "Instant lawn including soil prep and rolling near {{neighborhood}}." },
+      { "item": "Hardscape Patio (Pavers)", "price": "$18 - $45 / sq ft", "note": "Depends on stone selection and drainage needs in {{county}}." },
+      { "item": "Tree Trimming & Removal", "price": "$300 - $1,200", "note": "Based on tree height and proximity to {{city}} structures." }
+    ],
     "styles": {
       "Native Garden": { "human_name": "Xeriscaping (Drought-Ready)", "benefit": "Low water use; saves money on {{city}} utility bills.", "aoe_hint": "Check state incentives for xeriscaping in {{state}}." },
       "Manicured Estate": { "human_name": "Traditional Lawn", "benefit": "Classic curb appeal near {{parks}} properties.", "aoe_hint": "Needs regular {{county}} lawn maintenance." }
-    },
-    "costs_2026": {
-      "Monthly_Maint":   { "per_sqft": "$150 - $450 / mo", "notes": "Typical full-service plan in {{city}}." },
-      "Hardscape_Patio": { "per_sqft": "$15 - $45 / sqft", "notes": "Paver installs near {{neighborhood}}." }
     }
   },
   "sub_niche_templates": {

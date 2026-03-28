@@ -47,19 +47,24 @@
       }
     }
   },
+  "branding": {
+    "business_name_suffix": "Fencing & Perimeter Pros"
+  },
   "encyclopedia": {
     "brands": {
       "CertainTeed": { "tier": "Vinyl Standard", "flagship": "Bufftech", "value_prop": "Best-in-class texture and wind-rating for {{county}} households.", "price_point": "$$$" },
       "ActiveYards": { "tier": "Ingenious Design", "flagship": "StayStraight", "value_prop": "Proprietary locking rails for maximum durability in {{city}} residential use.", "price_point": "$$$" },
       "Master_Halco":{ "tier": "Trade-Grade",    "flagship": "Wood & Chain", "value_prop": "The industry standard for {{neighborhood}} security and dog runs.", "price_point": "$$" }
     },
+    "pricing_benchmarks": [
+      { "item": "Vinyl Privacy Fence (per linear ft)", "price": "$35 - $65", "note": "Includes standard 6ft height and professional install in {{city}}." },
+      { "item": "Cedar Wood Privacy (per linear ft)", "price": "$22 - $38", "note": "Depends on local lumber market and board style near {{neighborhood}}." },
+      { "item": "Ornamental Aluminum (per linear ft)", "price": "$30 - $55", "note": "Classic look for {{parks}} properties with zero maintenance." },
+      { "item": "Standard Chain Link (per linear ft)", "price": "$15 - $28", "note": "Safest and most economical option for larger {{county}} lots." }
+    ],
     "styles": {
       "Privacy": { "human_name": "Solid Tongue-Groove", "benefit": "100% seclusion; great for {{parks}} backyard pools.", "aoe_hint": "Check 6ft height rules in {{state}}." },
       "Picket":  { "human_name": "Classic Scalloped", "benefit": "Classic curb appeal near {{landmark}} front yards.", "aoe_hint": "Ideal for decorative use in {{city}}." }
-    },
-    "costs_2026": {
-      "Vinyl_Privacy_Full": { "per_sqft": "$35 - $65 / linear ft", "notes": "Typical 150ft residential install in {{city}}." },
-      "Wood_Picket_Full":  { "per_sqft": "$18 - $35 / linear ft", "notes": "Depends on lumber market near {{neighborhood}}." }
     }
   },
   "sub_niche_templates": {

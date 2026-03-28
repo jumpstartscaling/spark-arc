@@ -77,6 +77,7 @@ interface RegionalNuance {
 
 interface ShowTell {
   weather_anchor?: { headline: string; body: string };
+  weather_alert?: { headline: string; body: string };
   material_comparison?: { title: string; table_rows: Array<{ category: string; cheap: string; premium: string }> };
   landmark_proximity?: { trust_badge: string; text: string };
   interactive_cost_logic?: { markup: string; base_sqft_price?: number | null };
@@ -107,6 +108,8 @@ interface Trust {
   permitting_logic?: { headline: string; body: string };
 }
 
+interface Synonyms { synonyms: SynonymGroup[] }
+
 interface Campaign {
   service_config: {
     niche: string;
@@ -119,12 +122,13 @@ interface Campaign {
   branding?: {
     business_name_suffix: string; // e.g. "Roofing" or "Painting Specialists"
   };
-  spintax?: { synonyms: SynonymGroup[] };
+  spintax?: Synonyms;
   show_tell?: ShowTell;
   trust?: Trust;
   encyclopedia?: {
     brands?: Record<string, { tier: string; flagship: string; value_prop: string; price_point: string }>;
     pricing_benchmarks?: Array<{ item: string; price: string; note: string }>;
+    costs_2026?: any; // To tolerate different formats
     aoe_hints?: string[];
   };
   sub_niche_templates?: Record<string, SubNicheTemplate>;
@@ -134,7 +138,7 @@ interface Campaign {
 
 // ─── All registered campaigns ─────────────────────────────────────────────────
 
-export const ALL_CAMPAIGNS: Campaign[] = [
+export const REGISTERED_PSEO_CAMPAIGNS: Campaign[] = [
   roofingCampaign as unknown as Campaign,
   plumbingCampaign as unknown as Campaign,
   hvacCampaign as unknown as Campaign,
@@ -210,10 +214,12 @@ function resolveSpintax(
   synonyms.forEach((group) => {
     const token = `%${group.category}%`;
     if (res.includes(token)) {
-      const terms = JSON.parse(group.terms) as string[];
-      res = res.replace(new RegExp(`%${group.category}%`, 'g'), () =>
-        fillCtx(terms[Math.floor(getRng() * terms.length)]!)
-      );
+      try {
+        const terms = JSON.parse(group.terms) as string[];
+        res = res.replace(new RegExp(`%${group.category}%`, 'g'), () =>
+          fillCtx(terms[Math.floor(getRng() * terms.length)]!)
+        );
+      } catch { /* ignore bad JSON inside synonyms */ }
     }
   });
 
@@ -232,10 +238,11 @@ function resolveSpintax(
 
 export function getAllPseoSlugs(): string[] {
   const slugs: string[] = [];
-  for (const campaign of ALL_CAMPAIGNS) {
+  for (const campaign of REGISTERED_PSEO_CAMPAIGNS) {
+    if (!campaign.service_config) continue;
     for (const loc of locations) {
       if (!loc.slug) continue;
-      for (const subNiche of campaign.service_config.sub_niches) {
+      for (const subNiche of campaign.service_config.sub_niches || []) {
         slugs.push(`insights/${loc.slug}/${campaign.service_config.niche_slug}/${subNiche.slug}`);
       }
     }
@@ -251,13 +258,13 @@ export function generatePseoPageBySlug(targetSlug: string): GeneratedPage | null
   const targetNicheSlug = parts[2];
   const targetSubNicheSlug = parts[3];
 
-  const campaign = ALL_CAMPAIGNS.find((c) => c.service_config.niche_slug === targetNicheSlug);
+  const campaign = REGISTERED_PSEO_CAMPAIGNS.find((c) => c.service_config?.niche_slug === targetNicheSlug);
   if (!campaign) return null;
 
   const loc = locations.find((l) => l.slug === targetLocSlug);
   if (!loc) return null;
 
-  const subNiche = campaign.service_config.sub_niches.find((sn) => sn.slug === targetSubNicheSlug);
+  const subNiche = campaign.service_config?.sub_niches?.find((sn) => sn.slug === targetSubNicheSlug);
   if (!subNiche) return null;
 
   return generateSinglePage(campaign, loc, subNiche);
@@ -305,7 +312,7 @@ function generateSinglePage(campaign: Campaign, loc: LocationRecord, subNiche: {
   });
 
   const spin = (t: string, subSeed = '') =>
-    resolveSpintax(t, pageSeed + subSeed, ctx(), mergedSynonyms);
+    resolveSpintax(t || '', pageSeed + subSeed, ctx(), mergedSynonyms);
 
   const tpl: SubNicheTemplate = sub_niche_templates?.[subNiche.slug] ?? {};
   const headlinePool = (tpl.headline_templates && tpl.headline_templates.length > 0)
@@ -327,13 +334,13 @@ function generateSinglePage(campaign: Campaign, loc: LocationRecord, subNiche: {
 
   const st = show_tell;
 
-  const blocks = [
+  const blocks: any[] = [
     {
       block_type: 'hero',
       data: {
-        badge: spin(tpl.headline_templates?.[0] || st?.weather_anchor?.headline || (globalHeadlines as any)?.[campaign.service_config.category_slug]?.hero_badge || 'Expert Verified Guide'),
+        badge: spin(tpl.headline_templates?.[0] || st?.weather_anchor?.headline || 'Expert Verified Guide'),
         headline: headline,
-        subhead: spin(st?.weather_anchor?.body || (globalHeadlines as any)?.[campaign.service_config.category_slug]?.hero_subhead || 'Connecting you with certified local pros near {{neighborhood}}.'),
+        subhead: spin(st?.weather_anchor?.body || 'Connecting you with certified local pros near {{neighborhood}}.'),
         cta_label: spin(tpl.lead_magnet?.cta || 'Get {{city}} Assessment'),
         image_alt: spin(`{{sub_niche}} services and professional local contractors in {{neighborhood}}, {{city}}`),
         cta_href: '#service-survey',
@@ -352,23 +359,23 @@ function generateSinglePage(campaign: Campaign, loc: LocationRecord, subNiche: {
       block_type: 'interactive_gauge',
       data: {
         warning: spin(
-          `Based on typical {{reg_focus}} conditions near {{landmark}}, many {{neighborhood}} homes benefit from a documented inspection.`
+          `Based on typical conditions near {{landmark}}, many {{neighborhood}} homes benefit from a documented inspection.`
         ),
         markup: spin(st.interactive_cost_logic.markup),
       },
     }] : []),
-    ...(st?.weather_anchor ? [{
+    ...(st?.weather_alert ? [{
       block_type: 'weather_alert',
       data: {
-        headline: spin(st.weather_anchor.headline),
-        body: spin(st.weather_anchor.body),
+        headline: spin((st as any).weather_alert.headline),
+        body: spin((st as any).weather_alert.body),
       },
     }] : []),
     ...(st?.material_comparison ? [{
       block_type: 'material_showdown',
       data: {
         title: spin(st.material_comparison.title),
-        rows: st.material_comparison.table_rows.map((row) => ({
+        rows: (st.material_comparison.table_rows || []).map((row) => ({
           category: row.category,
           cheap: spin(row.cheap),
           premium: spin(row.premium),
@@ -427,12 +434,12 @@ function generateSinglePage(campaign: Campaign, loc: LocationRecord, subNiche: {
         })),
       },
     }] : []),
-    ...(tpl.encyclopedia ? [{
+    ...(tpl.encyclopedia || encyclopedia ? [{
       block_type: 'encyclopedia',
       data: {
-        brands: (tpl.encyclopedia.brands || {}),
-        costs: (tpl.encyclopedia.pricing_benchmarks || []),
-        aoe_intro: pickSeeded(tpl.encyclopedia.aoe_hints || [], pageSeed + 'aoe'),
+        brands: (tpl.encyclopedia?.brands || encyclopedia?.brands || {}),
+        costs: (tpl.encyclopedia?.pricing_benchmarks || encyclopedia?.pricing_benchmarks || []),
+        aoe_intro: pickSeeded(tpl.encyclopedia?.aoe_hints || encyclopedia?.aoe_hints || [], pageSeed + 'aoe'),
       },
     }] : []),
     ...(st?.landmark_proximity ? [{

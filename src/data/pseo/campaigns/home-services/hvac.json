@@ -96,6 +96,9 @@
     }
   },
 
+  "branding": {
+    "business_name_suffix": "Comfort & Climate Pros"
+  },
   "encyclopedia": {
     "brands": {
       "Carrier":  { "tier": "Market leader",    "flagship": "Infinity 24 Series",    "value_prop": "Variable-speed compressor with Greenspeed intelligence—very efficient in {{state}} mixed climates.",   "price_point": "$$$" },
@@ -104,6 +107,12 @@
       "Rheem":    { "tier": "Value leader",      "flagship": "Prestige Series",       "value_prop": "Solid mid-tier option; wide parts availability for faster {{city}} emergency repairs.",                  "price_point": "$$"  },
       "Goodman":  { "tier": "Budget-friendly",   "flagship": "GSXC18",               "value_prop": "Reliable compressor with 10-year warranty; strong value for {{county}} rental and flip projects.",        "price_point": "$"   }
     },
+    "pricing_benchmarks": [
+      { "item": "Standard AC / Furnace Tune-up", "price": "$125 - $249", "note": "Includes 21-point safety check and filter replacement in {{city}}." },
+      { "item": "Central AC Replace (14-16 SEER)", "price": "$5,800 - $9,500", "note": "Installed cost including pad and electrical for average {{neighborhood}} home." },
+      { "item": "Duct Cleaning (Full Home)", "price": "$350 - $850", "note": "NADCA standard cleaning near {{landmark}} to remove allergens." },
+      { "item": "Emergency Service Call", "price": "$250 - $600", "note": "Reflects after-hours or peak summer dispatch rates in {{county}}." }
+    ],
     "aoe_hints": [
       "Oversized AC units short-cycle in {{city}} humidity, leaving air feeling clammy even at the set temperature.",
       "SEER2 ratings replace SEER starting 2023—compare apples to apples when getting {{county}} quotes.",

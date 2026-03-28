@@ -14,10 +14,6 @@
     ]
   },
 
-  "branding": {
-    "business_name_suffix": "Plumbing Experts"
-  },
-
   "spintax": {
     "synonyms": [
       {
@@ -100,6 +96,9 @@
     }
   },
 
+  "branding": {
+    "business_name_suffix": "Plumbing & Drain Experts"
+  },
   "encyclopedia": {
     "brands": {
       "Rheem":         { "tier": "Market leader",     "flagship": "Performance Platinum",   "value_prop": "Wide parts availability across {{state}}—great for fast emergency repairs in {{city}}.",          "price_point": "$$"  },
@@ -109,10 +108,10 @@
       "Bradford_White":{ "tier": "Pro-grade",         "flagship": "AeroTherm",              "value_prop": "Contractor-preferred tank heater; solid warranty support for {{county}} installs.",                  "price_point": "$$"  }
     },
     "pricing_benchmarks": [
-      { "item": "Standard Service Call", "price": "$89 - $175", "note": "Covers diagnostic and travel to {{neighborhood}}." },
-      { "item": "Standard Drain Snake", "price": "$175 - $350", "note": "For residential main lines in {{county}}." },
-      { "item": "Water Heater (Tank)", "price": "$1,200 - $2,200", "note": "Includes labor and local {{city}} removal." },
-      { "item": "Sewer Line Scoping", "price": "$250 - $450", "note": "High-def camera inspection within {{state}} code." }
+      { "item": "Standard Service Call", "price": "$150 - $450", "note": "Covers diagnostic and basic repair in {{city}}." },
+      { "item": "Water Heater Tank (40-50 gal)", "price": "$1,200 - $2,200", "note": "Full install including removal of old unit near {{neighborhood}}." },
+      { "item": "Main Sewer Line Clearing", "price": "$250 - $600", "note": "Hydro-jetting or heavy-duty snaking through main cleanout." },
+      { "item": "Whole Home Repiping (PEX)", "price": "$5,000 - $15,000", "note": "Depends on footage and fixture count in {{county}}." }
     ],
     "aoe_hints": [
       "Slab leaks are detected with pressure testing and electronic listening devices—don't let a plumber guess in {{city}}.",

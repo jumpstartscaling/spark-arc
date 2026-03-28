@@ -19,7 +19,7 @@ const { city, neighborhood } = Astro.props;
         Thank you for choosing Ion Arc Online
       </h1>
       <p class="mt-6 text-lg leading-8 text-slate-600">
-        We've received your request for services in <strong>{neighborhood}</strong>. One of our verified local professionals in the {city} area will be in touch shortly to provide your custom assessment.
+        We've received your request for services in <strong data-neighborhood>{neighborhood}</strong>. One of our verified local professionals in the <span data-city>{city}</span> area will be in touch shortly to provide your custom assessment.
       </p>
       
       <div class="mt-10 flex flex-col items-center gap-6 sm:flex-row sm:justify-center">
@@ -37,7 +37,7 @@ const { city, neighborhood } = Astro.props;
       <div class="mt-16 grid grid-cols-1 gap-8 border-t border-slate-100 pt-16 sm:grid-cols-3">
         <div>
           <h3 class="text-sm font-semibold text-slate-900">Verified Pros</h3>
-          <p class="mt-2 text-sm text-slate-500">Only licensed and insured contractors in {city}.</p>
+          <p class="mt-2 text-sm text-slate-500">Only licensed and insured contractors in <span data-city>{city}</span>.</p>
         </div>
         <div>
           <h3 class="text-sm font-semibold text-slate-900">Fast Response</h3>

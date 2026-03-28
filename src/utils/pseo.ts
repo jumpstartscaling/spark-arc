@@ -1,5 +1,14 @@
 import locationsDataRaw from '../data/pseo/globals/locations.json';
-import { ALL_CAMPAIGNS, getAllPseoSlugs, generatePseoPageBySlug, type LocationRecord } from './generatePseoPages';
+import { REGISTERED_PSEO_CAMPAIGNS, getAllPseoSlugs, generatePseoPageBySlug, type LocationRecord } from './generatePseoPages';
+
+// Build gating for PSEO pages
+const ENABLE_PSEO = process.env.RENDER_PSEO === 'true';
+
+if (!ENABLE_PSEO) {
+  console.log('🚫 PSEO build gating: RENDER_PSEO is not "true" - skipping PSEO page generation');
+} else {
+  console.log('✅ PSEO build gating: RENDER_PSEO is "true" - generating all PSEO pages');
+}
 
 export const STATE_NAME_MAP: Record<string, string> = {
   AL: 'Alabama', AK: 'Alaska', AZ: 'Arizona', AR: 'Arkansas', CA: 'California',
@@ -45,13 +54,11 @@ export interface PseoSiblingLink {
   href: string;
 }
 
-const locations = [...(locationsDataRaw as LocationRecord[])].sort((a, b) =>
-  a.city !== b.city ? a.city.localeCompare(b.city) : a.state.localeCompare(b.state)
-);
+const locations = locationsDataRaw as unknown as LocationRecord[];
 
 export const PSEO_LOCATIONS = locations;
 
-const pseoCatalog = ALL_CAMPAIGNS.flatMap<PseoCatalogEntry>((campaign) => {
+const pseoCatalog = REGISTERED_PSEO_CAMPAIGNS.flatMap<PseoCatalogEntry>((campaign) => {
     const firstSubNiche = campaign.service_config.sub_niches[0]?.slug;
     if (!firstSubNiche) return [];
 
@@ -138,8 +145,12 @@ export interface PseoEntry {
 
 /**
  * Memory-efficient path collection for getStaticPaths
+ * Returns empty array when PSEO is disabled for fast core builds
  */
 export function getPseoPaths() {
+  if (!ENABLE_PSEO) {
+    return [];
+  }
   return getAllPseoSlugs();
 }
 

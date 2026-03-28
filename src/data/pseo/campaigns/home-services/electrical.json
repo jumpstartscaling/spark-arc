@@ -47,19 +47,24 @@
       }
     }
   },
+  "branding": {
+    "business_name_suffix": "Electrical Safety & Repair"
+  },
   "encyclopedia": {
     "brands": {
       "Square D": { "tier": "Premium", "flagship": "QO Series", "value_prop": "Industry gold standard for reliability and circuit-trip speed.", "price_point": "$$$" },
       "Eaton":    { "tier": "Standard", "flagship": "BR Series", "value_prop": "Cost-effective protection for residential use in {{county}}.", "price_point": "$$" },
       "Leviton": { "tier": "Smart Tech", "flagship": "Load Center", "value_prop": "Smart circuit monitoring via app—ideal for tech-forward {{city}} homes.", "price_point": "$$$" }
     },
+    "pricing_benchmarks": [
+      { "item": "Standard Service Call", "price": "$125 - $250", "note": "Covers diagnostic and basic repair in {{city}}." },
+      { "item": "200A Panel Upgrade (Full)", "price": "$2,800 - $4,800", "note": "Full swap including main breaker and grounding for {{neighborhood}} homes." },
+      { "item": "EV Charger Level 2 Install", "price": "$800 - $1,800", "note": "Does not include the charger unit price—depends on run distance near {{landmark}}." },
+      { "item": "Whole Home Surge Protection", "price": "$300 - $600", "note": "Installed at the main panel for total device safety in {{county}}." }
+    ],
     "styles": {
       "Main Lug": { "human_name": "Sub-panel setup", "benefit": "Great for garage EV installs or basement renovations.", "aoe_hint": "Check code requirements for main disconnects in {{state}}." },
       "Circuit Breaker": { "human_name": "Standard Service", "benefit": "Most common and safest standard for {{city}} homes.", "aoe_hint": "Modern AFCI/GFCI combos are now standard in {{county}}." }
-    },
-    "costs_2026": {
-      "200A_Upgrade": { "per_sqft": "$2,800 - $4,500", "notes": "Typical total cost for a full panel swap in {{city}}." },
-      "EV_Charger":   { "per_sqft": "$800 - $1,500", "notes": "Level 2 charger install near {{neighborhood}}." }
     }
   },
   "sub_niche_templates": {

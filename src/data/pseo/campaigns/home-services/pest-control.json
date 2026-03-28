@@ -47,19 +47,24 @@
       }
     }
   },
+  "branding": {
+    "business_name_suffix": "Pest & Rodent Defense"
+  },
   "encyclopedia": {
     "brands": {
       "Sentricon": { "tier": "Premium Termite", "flagship": "Always Active", "value_prop": "The industry leader for termite baiting—highly effective in {{county}} moist soil.", "price_point": "$$$" },
       "Termidor":  { "tier": "Liquid Barrier", "flagship": "HE High-Efficiency", "value_prop": "Transfer-effect chemical that eliminates entire colonies in {{city}} infestations.", "price_point": "$$" },
       "Orkin":     { "tier": "National Standard", "flagship": "Precision Service", "value_prop": "Robust tracking and science-backed protocols for {{state}} residential areas.", "price_point": "$$" }
     },
+    "pricing_benchmarks": [
+      { "item": "Standard Quarterly Shield", "price": "$125 - $195 / qtr", "note": "Covers ants, spiders, and common perimeter pests in {{city}}." },
+      { "item": "Termite Mitigation (Sentricon)", "price": "$1,200 - $2,800", "note": "Full baiting system install and 1st year monitoring in {{county}}." },
+      { "item": "Bed Bug Heat Treatment", "price": "$1,000 - $3,500", "note": "Depends on room count and infestation level near {{neighborhood}}." },
+      { "item": "Rodent Exclusion (Sealing)", "price": "$400 - $1,500", "note": "Sealing entry points and trapping for {{city}} homes." }
+    ],
     "styles": {
       "Tenting": { "human_name": "Full Fumigation", "benefit": "Eliminates 100% of drywood termites—standard for older {{neighborhood}} wood frames.", "aoe_hint": "Check state regulations for property vacating in {{state}}." },
       "Baiting": { "human_name": "Proactive Monitoring", "benefit": "Less invasive; great for preventive maintenance near {{parks}}.", "aoe_hint": "Modern smart stations notify tech of hits in {{city}} instantly." }
-    },
-    "costs_2026": {
-      "Quarterly_Service": { "per_sqft": "$125 - $250 / qtr", "notes": "Typical residential perimeter plan in {{city}}." },
-      "Termite_Treatment": { "per_sqft": "$1,200 - $3,500", "notes": "Depends on linear footage and brand (Sentricon vs. Liquid)." }
     }
   },
   "sub_niche_templates": {

@@ -24,10 +24,8 @@ const DEFAULT_PROD =
 const DEFAULT_TEST =
   'https://n8n.jumpstartscaling.com/webhook-test/d282e622-9c83-4936-9d93-05c37eaa7b68';
 
-const publicEnv =
-  (import.meta as { env?: { [k: string]: string | undefined } }).env ?? {};
-const webhookProd = publicEnv.PUBLIC_N8N_WEBHOOK_URL || DEFAULT_PROD;
-const webhookTest = publicEnv.PUBLIC_N8N_WEBHOOK_TEST_URL || DEFAULT_TEST;
+const webhookProd = import.meta.env.PUBLIC_N8N_WEBHOOK_URL || DEFAULT_PROD;
+const webhookTest = import.meta.env.PUBLIC_N8N_WEBHOOK_TEST_URL || DEFAULT_TEST;
 ---
 
 <section class="my-20 px-4 scroll-mt-24" id="service-survey">

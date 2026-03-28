@@ -47,19 +47,24 @@
       }
     }
   },
+  "branding": {
+    "business_name_suffix": "Emergency Restoration Pros"
+  },
   "encyclopedia": {
     "brands": {
       "Servpro":    { "tier": "National Franchise", "flagship": "Water Mitigation", "value_prop": "Unmatched scale and dispatch speed for {{county}} disasters.", "price_point": "$$$" },
       "ServiceMaster":{ "tier": "Cleanup Standard", "flagship": "Fire Restoration", "value_prop": "Deep expertise in smoke and odor removal for {{city}} households.", "price_point": "$$" },
       "Dri-Eaz":    { "tier": "Equipment High",   "flagship": "LGR Dehumidifier", "value_prop": "The standard for structural drying in moist {{state}} climates.", "price_point": "$$$" }
     },
+    "pricing_benchmarks": [
+      { "item": "Water Mitigation (Extraction & Dry)", "price": "$2,500 - $7,500", "note": "Standard residential flood event in {{city}}." },
+      { "item": "Mold Remediation (Certified)", "price": "$1,500 - $5,000", "note": "Depends on square footage and moisture source near {{neighborhood}}." },
+      { "item": "Fire & Smoke Cleanup", "price": "$3,000 - $15,000", "note": "Full soot removal and deodorization for {{county}} homes." },
+      { "item": "Full Structural Rebuild", "price": "$10,000 - $50,000+", "note": "Drywall, flooring, and paint after the drying is done." }
+    ],
     "styles": {
       "Remediation": { "human_name": "Mold Removal", "benefit": "Ensures air quality is safe for {{city}} families.", "aoe_hint": "Check for IICRC-certified techs in {{state}}." },
       "Emergency": { "human_name": "Flood Extraction", "benefit": "Stops structural rot near {{landmark}} flooding events.", "aoe_hint": "Response time is critical for {{county}} claims." }
-    },
-    "costs_2026": {
-      "Water_Mitigation": { "per_sqft": "$1,500 - $4,500", "notes": "Typical residential drying plan in {{city}}." },
-      "Mold_Removal":     { "per_sqft": "$2,500 - $8,000", "notes": "Depends on square footage and moisture source near {{neighborhood}}." }
     }
   },
   "sub_niche_templates": {

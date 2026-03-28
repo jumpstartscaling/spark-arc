@@ -47,19 +47,24 @@
       }
     }
   },
+  "branding": {
+    "business_name_suffix": "Kitchen & Bath Remodelers"
+  },
   "encyclopedia": {
     "brands": {
       "Cambria": { "tier": "Premium Quartz", "flagship": "Signature Series", "value_prop": "Best-in-class stone designs for {{county}} high-end homes.", "price_point": "$$$" },
       "Kohler":  { "tier": "Fixture Leader", "flagship": "Artifacts", "value_prop": "Timeless bath and kitchen fixtures for {{city}} residential use.", "price_point": "$$" },
       "KraftMaid": { "tier": "Cabinet Standard", "flagship": "Vantage", "value_prop": "The industry favorite for custom storage in {{neighborhood}} kitchens.", "price_point": "$$" }
     },
+    "pricing_benchmarks": [
+      { "item": "Minor Bath Refresh", "price": "$3,000 - $8,500", "note": "Includes new vanity, fixtures, and paint in {{city}}." },
+      { "item": "Cabinet Refacing (Full Kitchen)", "price": "$4,500 - $12,000", "note": "New doors and hardware with existing boxes near {{neighborhood}}." },
+      { "item": "Quartz / Granite Countertops", "price": "$2,500 - $6,500", "note": "Installed price for average {{county}} kitchen footage." },
+      { "item": "Full Kitchen Remodel", "price": "$18,000 - $55,000+", "note": "Full demo, new cabinets, lighting, and plumbing in {{city}}." }
+    ],
     "styles": {
       "Farmhouse": { "human_name": "Modern Traditional", "benefit": "Classic apron-front sinks and shiplap for {{parks}} properties.", "aoe_hint": "Needs durable countertops in {{county}}." },
       "Minimalist": { "human_name": "Handleless Modern", "benefit": "Sleek, easy-to-clean lines for {{neighborhood}} urban lofts.", "aoe_hint": "Focus on high-quality hardware in {{state}}." }
-    },
-    "costs_2026": {
-      "Countertop_Install": { "per_sqft": "$45 - $125 / sqft", "notes": "Includes template and install in {{city}}." },
-      "Shower_Remodel":    { "per_sqft": "$6,000 - $15,000", "notes": "Full wet-area renovation near {{neighborhood}}." }
     }
   },
   "sub_niche_templates": {

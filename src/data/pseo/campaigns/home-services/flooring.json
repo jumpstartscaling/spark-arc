@@ -47,19 +47,24 @@
       }
     }
   },
+  "branding": {
+    "business_name_suffix": "Premium Flooring Installers"
+  },
   "encyclopedia": {
     "brands": {
       "Shaw":     { "tier": "Industry Leader", "flagship": "Floorte", "value_prop": "Best-in-class LVP durability for {{county}} households.", "price_point": "$$" },
       "Mohawk":   { "tier": "Quality Standard", "flagship": "SolidTech", "value_prop": "Stain-resistant carpet and hard surfaces for {{city}} families.", "price_point": "$$" },
       "Bona":     { "tier": "Hardwood Care", "flagship": "Traffic HD", "value_prop": "The standard set for commercial-grade hardwood refinishing in {{state}}.", "price_point": "$$$" }
     },
+    "pricing_benchmarks": [
+      { "item": "Hardwood Install (per sq ft)", "price": "$8 - $15", "note": "Includes standard oak and basic underlayment in {{city}}." },
+      { "item": "LVP / Laminate (per sq ft)", "price": "$4 - $9", "note": "Waterproof options ideal for {{neighborhood}} kitchens." },
+      { "item": "Hardwood Refinishing (per sq ft)", "price": "$3 - $6", "note": "Dustless sanding and 3 coats of poly in {{county}}." },
+      { "item": "Tile / Stone (per sq ft)", "price": "$10 - $22", "note": "Depends on tile size and pattern complexity near {{landmark}}." }
+    ],
     "styles": {
       "European_Oak": { "human_name": "Wide Plank Hardwood", "benefit": "Modern, elegant aesthetic for {{neighborhood}} renovations.", "aoe_hint": "Needs stable {{city}} climate control." },
       "Large_Format": { "human_name": "Modern Tile", "benefit": "Fewer grout lines; great for {{parks}} master baths.", "aoe_hint": "Requires perfectly level subfloor in {{county}}." }
-    },
-    "costs_2026": {
-      "Hardwood_Refinsh": { "per_sqft": "$4.50 - $7.50", "notes": "Dustless sand and 3 coats of finish in {{city}}." },
-      "LVP_Installation": { "per_sqft": "$6.00 - $12.00", "notes": "Includes material and basic floor prep near {{neighborhood}}." }
     }
   },
   "sub_niche_templates": {

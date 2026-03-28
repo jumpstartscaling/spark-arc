@@ -136,7 +136,7 @@ try {
 
         if (block_type === 'brand_showcase') {
           // Generic brand showcase — reuses the same component, data shape is compatible
-          return <EncyclopediaSection data={{ brands: (data as any).brands, styles: {}, costs: {}, aoe_intro: '' }} />;
+          return <EncyclopediaSection data={{ brands: (data as any).brands, costs: {}, aoe_intro: '' }} niche={entry.niche} />;
         }
 
         if (block_type === 'interactive_gauge') {
@@ -152,7 +152,7 @@ try {
         }
 
         if (block_type === 'seasonal_tips') {
-          return <SeasonalTips data={data as any} city={entry.city} />;
+          return <SeasonalTips data={data as any} />;
         }
 
         if (block_type === 'comparison_guide') {
@@ -160,7 +160,7 @@ try {
         }
 
         if (block_type === 'market_analytics') {
-          return <MarketAnalytics data={data as any} city={entry.city} />;
+          return <MarketAnalytics data={data as any} />;
         }
 
         if (block_type === 'compliance_checklist') {
@@ -169,10 +169,12 @@ try {
 
         if (block_type === 'roof_cross_section') {
           return <RoofCrossSection />;
-        }
-
         if (block_type === 'material_showdown') {
           return <MaterialShowdown data={data as any} />;
+        }
+
+        if (block_type === 'silo_links') {
+          return <SiloLinks data={data as any} />;
         }
 
         if (block_type === 'encyclopedia') {

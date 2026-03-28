@@ -1,5 +1,5 @@
 import locationsDataRaw from '../data/pseo/globals/locations.json';
-import { generatePseoPages, type LocationRecord } from './generatePseoPages';
+import { getAllPseoSlugs, generatePseoPageBySlug, type LocationRecord } from './generatePseoPages';
 
 export const STATE_NAME_MAP: Record<string, string> = {
   AL: 'Alabama', AK: 'Alaska', AZ: 'Arizona', AR: 'Arkansas', CA: 'California',
@@ -26,6 +26,7 @@ function locFromSlug(slug: string): LocationRecord | null {
 }
 
 function extractHeadline(blocksStr: string): string {
+  if (!blocksStr) return 'Local service guide';
   try {
     const blocks = JSON.parse(blocksStr) as Array<{ block_type?: string; data?: { headline?: string } }>;
     const hero = blocks.find((b) => b.block_type === 'hero');
@@ -53,7 +54,6 @@ export interface PseoEntry {
  * Memory-efficient path collection for getStaticPaths
  */
 export function getPseoPaths() {
-  const { getAllPseoSlugs } = require('./generatePseoPages');
   return getAllPseoSlugs();
 }
 
@@ -61,7 +61,6 @@ export function getPseoPaths() {
  * Lazy lookup for a single page's content
  */
 export function getPseoEntry(slug: string): PseoEntry | null {
-  const { generatePseoPageBySlug } = require('./generatePseoPages');
   const item = generatePseoPageBySlug(slug);
   if (!item) return null;
 
